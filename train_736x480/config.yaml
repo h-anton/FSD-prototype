@@ -1,0 +1,9 @@
+train: C:\Users\antohaes\Documents\fsoco_yolo_960x600\train\images\
+test: C:\Users\antohaes\Documents\fsoco_yolo_960x600\test\images\
+val: C:\Users\antohaes\Documents\fsoco_yolo_960x600\val\images\
+
+#Classes
+nc: 5
+
+#Class names
+names: ['yellow', 'blue', 'orange', 'ORANGE', 'unknown']
