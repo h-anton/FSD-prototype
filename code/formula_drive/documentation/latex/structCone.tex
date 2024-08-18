@@ -1,0 +1,126 @@
+\doxysection{Cone Struct Reference}
+\hypertarget{structCone}{}\label{structCone}\index{Cone@{Cone}}
+
+
+Represents a detected cone in an image with associated properties.  
+
+
+
+
+{\ttfamily \#include $<$Cone.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structCone_a45ba12c27149901567682e222369ca4c}{Cone}} (int cone\+\_\+type, int pixel\+\_\+x, int pixel\+\_\+y, cv\+::\+Mat cone\+\_\+frame)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structCone_a1ae183a3acb1412109761f42287671da}{type}}
+\item 
+int \mbox{\hyperlink{structCone_abc9f29a7bd520b5a69e1805479ab935b}{world\+\_\+coordinates\+\_\+mm}} \mbox{[}2\mbox{]}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{structCone_a03a383ce95f0f75f12bc011926364b75}{frame}}
+\item 
+int \mbox{\hyperlink{structCone_ad70b4301e3cf39d38bbc745cc490bb6f}{start\+\_\+x}}
+\item 
+int \mbox{\hyperlink{structCone_ab96105cf40849ccff8d4e7114381699f}{start\+\_\+y}}
+\item 
+int \mbox{\hyperlink{structCone_ac602adf2067693ea492a68561d2c51aa}{end\+\_\+x}}
+\item 
+int \mbox{\hyperlink{structCone_a8fede9e2467e4cb63fce91eedc423ee3}{end\+\_\+y}}
+\item 
+int \mbox{\hyperlink{structCone_ad3a30e293659bdd8de857167f44a380c}{width}}
+\item 
+int \mbox{\hyperlink{structCone_adb170d776d55011fdb9c4c84738fce12}{height}}
+\item 
+std\+::vector$<$ std\+::pair$<$ float, float $>$ $>$ \mbox{\hyperlink{structCone_afb5b1d7805225e77086661121aa4045e}{keypoints}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a detected cone in an image with associated properties. 
+
+This struct encapsulates the information related to a cone detected in an image. It includes the type of the cone, its position and dimensions in pixel coordinates, and the cropped image frame that contains just the cone. Additionally, it stores keypoints for feature extraction or analysis.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structCone_a45ba12c27149901567682e222369ca4c}\index{Cone@{Cone}!Cone@{Cone}}
+\index{Cone@{Cone}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{Cone()}{Cone()}}
+{\footnotesize\ttfamily \label{structCone_a45ba12c27149901567682e222369ca4c} 
+Cone\+::\+Cone (\begin{DoxyParamCaption}\item[{int}]{cone\+\_\+type}{, }\item[{int}]{pixel\+\_\+x}{, }\item[{int}]{pixel\+\_\+y}{, }\item[{cv\+::\+Mat}]{cone\+\_\+frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCone_ac602adf2067693ea492a68561d2c51aa}\index{Cone@{Cone}!end\_x@{end\_x}}
+\index{end\_x@{end\_x}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{end\_x}{end\_x}}
+{\footnotesize\ttfamily \label{structCone_ac602adf2067693ea492a68561d2c51aa} 
+int Cone\+::end\+\_\+x}
+
+\Hypertarget{structCone_a8fede9e2467e4cb63fce91eedc423ee3}\index{Cone@{Cone}!end\_y@{end\_y}}
+\index{end\_y@{end\_y}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{end\_y}{end\_y}}
+{\footnotesize\ttfamily \label{structCone_a8fede9e2467e4cb63fce91eedc423ee3} 
+int Cone\+::end\+\_\+y}
+
+\Hypertarget{structCone_a03a383ce95f0f75f12bc011926364b75}\index{Cone@{Cone}!frame@{frame}}
+\index{frame@{frame}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{frame}{frame}}
+{\footnotesize\ttfamily \label{structCone_a03a383ce95f0f75f12bc011926364b75} 
+cv\+::\+Mat Cone\+::frame}
+
+\Hypertarget{structCone_adb170d776d55011fdb9c4c84738fce12}\index{Cone@{Cone}!height@{height}}
+\index{height@{height}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{structCone_adb170d776d55011fdb9c4c84738fce12} 
+int Cone\+::height}
+
+\Hypertarget{structCone_afb5b1d7805225e77086661121aa4045e}\index{Cone@{Cone}!keypoints@{keypoints}}
+\index{keypoints@{keypoints}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{keypoints}{keypoints}}
+{\footnotesize\ttfamily \label{structCone_afb5b1d7805225e77086661121aa4045e} 
+std\+::vector$<$std\+::pair$<$float, float$>$ $>$ Cone\+::keypoints}
+
+\Hypertarget{structCone_ad70b4301e3cf39d38bbc745cc490bb6f}\index{Cone@{Cone}!start\_x@{start\_x}}
+\index{start\_x@{start\_x}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{start\_x}{start\_x}}
+{\footnotesize\ttfamily \label{structCone_ad70b4301e3cf39d38bbc745cc490bb6f} 
+int Cone\+::start\+\_\+x}
+
+\Hypertarget{structCone_ab96105cf40849ccff8d4e7114381699f}\index{Cone@{Cone}!start\_y@{start\_y}}
+\index{start\_y@{start\_y}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{start\_y}{start\_y}}
+{\footnotesize\ttfamily \label{structCone_ab96105cf40849ccff8d4e7114381699f} 
+int Cone\+::start\+\_\+y}
+
+\Hypertarget{structCone_a1ae183a3acb1412109761f42287671da}\index{Cone@{Cone}!type@{type}}
+\index{type@{type}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{structCone_a1ae183a3acb1412109761f42287671da} 
+int Cone\+::type}
+
+\Hypertarget{structCone_ad3a30e293659bdd8de857167f44a380c}\index{Cone@{Cone}!width@{width}}
+\index{width@{width}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{structCone_ad3a30e293659bdd8de857167f44a380c} 
+int Cone\+::width}
+
+\Hypertarget{structCone_abc9f29a7bd520b5a69e1805479ab935b}\index{Cone@{Cone}!world\_coordinates\_mm@{world\_coordinates\_mm}}
+\index{world\_coordinates\_mm@{world\_coordinates\_mm}!Cone@{Cone}}
+\doxysubsubsection{\texorpdfstring{world\_coordinates\_mm}{world\_coordinates\_mm}}
+{\footnotesize\ttfamily \label{structCone_abc9f29a7bd520b5a69e1805479ab935b} 
+int Cone\+::world\+\_\+coordinates\+\_\+mm\mbox{[}2\mbox{]}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Cone_8hpp}{Cone.\+hpp}}\end{DoxyCompactItemize}

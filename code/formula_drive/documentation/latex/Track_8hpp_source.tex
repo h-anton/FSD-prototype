@@ -1,0 +1,58 @@
+\doxysection{Track.\+hpp}
+\hypertarget{Track_8hpp_source}{}\label{Track_8hpp_source}\index{include/Track.hpp@{include/Track.hpp}}
+\mbox{\hyperlink{Track_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TRACK\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TRACK\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPoint}{Point}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ std::pair<T,\ T>\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}};}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{structPoint_aea76b1130f1a203722d8f2254ced8e66}{Point}}()\ :\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}}\{0,\ 0,\ -\/1\}\ \{\}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{structPoint_a4236452aa9c9f4cffc58b04180fea343}{Point}}(T\ x,\ T\ y)\ :\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}}(x,\ y)\ \{\}}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{structPoint_aeea88cdb3c1cc1c2241c71eaa2f3c122}{Point}}(T\ x,\ T\ y,\ \textcolor{keywordtype}{int}\ c)\ :\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}}(x,\ y),\ \mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}(c)\ \{\}}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ T\ \mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}}.first;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ T\ \mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPoint_a38a3deea29c1d38dfb7b6129513f1db7}{point}}.second;}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPoint_aae5a01d9babc868208d4aa0ffcd3599a}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ ==\ other.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ \&\&\ \mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ ==\ other.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPoint_abd48ae57a30e41bc8c941f26b1abcac6}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ ==\ other.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}())}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ <\ other.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ <\ other.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}();}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ std::string\ \mbox{\hyperlink{structPoint_a41eec7011924c17cd2b8ce79026a229a}{print}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}Point("{}}\ <<\ \mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ \mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ <<\ \textcolor{stringliteral}{"{},\ color="{}}\ <<\ \mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00104\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEdge}{Edge}}\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<T>}}\ \mbox{\hyperlink{structEdge_a9a4ca291d1ed528c1564d0827f9b6949}{point1}};}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<T>}}\ \mbox{\hyperlink{structEdge_a8380cd200be1141f20e780407d68a27a}{point2}};}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structEdge_ac69ecbf40e58cd7ca68ee76fa8194948}{same\_color}};}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{structEdge_a2eeda30cdd23d01b40683cb5724ba3b7}{Edge}}(\mbox{\hyperlink{structPoint}{Point<T>}}\&\ pt1,\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ pt2,\ \textcolor{keywordtype}{bool}\ sc)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structEdge_a9a4ca291d1ed528c1564d0827f9b6949}{point1}}(pt1),\ \mbox{\hyperlink{structEdge_a8380cd200be1141f20e780407d68a27a}{point2}}(pt2),\ \mbox{\hyperlink{structEdge_ac69ecbf40e58cd7ca68ee76fa8194948}{same\_color}}(sc)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRACK\_HPP}}
+\DoxyCodeLine{00133\ }
+
+\end{DoxyCode}

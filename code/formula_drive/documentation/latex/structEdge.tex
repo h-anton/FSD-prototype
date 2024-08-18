@@ -1,0 +1,101 @@
+\doxysection{Edge\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{structEdge}{}\label{structEdge}\index{Edge$<$ T $>$@{Edge$<$ T $>$}}
+
+
+A template structure representing an edge connecting two 2D points with an attribute indicating if they share the same color.  
+
+
+
+
+{\ttfamily \#include $<$Track.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structEdge_a2eeda30cdd23d01b40683cb5724ba3b7}{Edge}} (\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&pt1, \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&pt2, bool sc)
+\begin{DoxyCompactList}\small\item\em Constructor initializing the edge with two points and a color comparison flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \mbox{\hyperlink{structEdge_a9a4ca291d1ed528c1564d0827f9b6949}{point1}}
+\begin{DoxyCompactList}\small\item\em The first point of the edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \mbox{\hyperlink{structEdge_a8380cd200be1141f20e780407d68a27a}{point2}}
+\begin{DoxyCompactList}\small\item\em The second point of the edge. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structEdge_ac69ecbf40e58cd7ca68ee76fa8194948}{same\+\_\+color}}
+\begin{DoxyCompactList}\small\item\em A boolean indicating whether the two points share the same color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct Edge$<$ T $>$}
+A template structure representing an edge connecting two 2D points with an attribute indicating if they share the same color. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The data type for the coordinates of the points (e.\+g., int, float, double). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structEdge_a2eeda30cdd23d01b40683cb5724ba3b7}\index{Edge$<$ T $>$@{Edge$<$ T $>$}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily \label{structEdge_a2eeda30cdd23d01b40683cb5724ba3b7} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{structEdge}{Edge}}$<$ T $>$\mbox{\hyperlink{structEdge}{\+::\+Edge}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{pt1}{, }\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{pt2}{, }\item[{bool}]{sc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor initializing the edge with two points and a color comparison flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt1} & The first point of the edge. \\
+\hline
+{\em pt2} & The second point of the edge. \\
+\hline
+{\em sc} & A boolean indicating whether the points share the same color. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structEdge_a9a4ca291d1ed528c1564d0827f9b6949}\index{Edge$<$ T $>$@{Edge$<$ T $>$}!point1@{point1}}
+\index{point1@{point1}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{point1}{point1}}
+{\footnotesize\ttfamily \label{structEdge_a9a4ca291d1ed528c1564d0827f9b6949} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{structPoint}{Point}}$<$T$>$ \mbox{\hyperlink{structEdge}{Edge}}$<$ T $>$\+::point1}
+
+
+
+The first point of the edge. 
+
+\Hypertarget{structEdge_a8380cd200be1141f20e780407d68a27a}\index{Edge$<$ T $>$@{Edge$<$ T $>$}!point2@{point2}}
+\index{point2@{point2}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{point2}{point2}}
+{\footnotesize\ttfamily \label{structEdge_a8380cd200be1141f20e780407d68a27a} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{structPoint}{Point}}$<$T$>$ \mbox{\hyperlink{structEdge}{Edge}}$<$ T $>$\+::point2}
+
+
+
+The second point of the edge. 
+
+\Hypertarget{structEdge_ac69ecbf40e58cd7ca68ee76fa8194948}\index{Edge$<$ T $>$@{Edge$<$ T $>$}!same\_color@{same\_color}}
+\index{same\_color@{same\_color}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{same\_color}{same\_color}}
+{\footnotesize\ttfamily \label{structEdge_ac69ecbf40e58cd7ca68ee76fa8194948} 
+template$<$typename T $>$ \\
+bool \mbox{\hyperlink{structEdge}{Edge}}$<$ T $>$\+::same\+\_\+color}
+
+
+
+A boolean indicating whether the two points share the same color. 
+
+True if both points have the same color, false otherwise. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Track_8hpp}{Track.\+hpp}}\end{DoxyCompactItemize}

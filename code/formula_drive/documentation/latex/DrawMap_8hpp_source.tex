@@ -1,0 +1,95 @@
+\doxysection{Draw\+Map.\+hpp}
+\hypertarget{DrawMap_8hpp_source}{}\label{DrawMap_8hpp_source}\index{include/DrawMap.hpp@{include/DrawMap.hpp}}
+\mbox{\hyperlink{DrawMap_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DRAW\_MAP\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DRAW\_MAP\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UI_8hpp}{UI.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cone_8hpp}{Cone.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Track_8hpp}{Track.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Private\ functions}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\{}
+\DoxyCodeLine{00013\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ drawCones3D(cv::Mat*\ frame,\ std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ point\_thickness\ =\ 10;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{structCone}{Cone}}\ cone:\ *cones)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ color\ of\ the\ cone}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Scalar\ color;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cone.type\ ==\ \mbox{\hyperlink{Cone_8hpp_a711c85d3893c956ac6914e0e99f2ec81}{YELLOW\_CONE}})\ color\ =\ \mbox{\hyperlink{UI_8hpp_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cone.type\ ==\ \mbox{\hyperlink{Cone_8hpp_a406ac9109f6ca78d5ccbd3157a95cef1}{BLUE\_CONE}})\ color\ =\ \mbox{\hyperlink{UI_8hpp_a23c70d699a5a775bc2e1ebeb8603f630}{COLOR\_BLUE}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ coordinates\ of\ the\ cone}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ point\_x\ =\ cone.world\_coordinates\_mm[0]\ +\ frame-\/>cols/2;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ point\_y\ =\ frame-\/>rows\ -\/\ cone.world\_coordinates\_mm[1];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point\ point\ =\ cv::Point(point\_x,\ point\_y);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ cone}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ cv::circle(*frame,\ point,\ point\_thickness,\ color,\ -\/1);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ drawEdges(cv::Mat*\ frame,\ std::vector<\mbox{\hyperlink{structEdge}{Edge<double>}}>*\ edges)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ line\_thickness\ =\ 3;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structEdge}{Edge<double>}}\ edge:\ *edges)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ only\ draw\ the\ boundaries\ of\ the\ track}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge.same\_color)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ start\ and\ end\ point\ of\ each\ edge}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_point\_x\ =\ edge.point1.getX()\ +\ frame-\/>cols/2;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_point\_y\ =\ frame-\/>rows\ -\/\ edge.point1.getY();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point\ start\_point(start\_point\_x,\ start\_point\_y);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\_point\_x\ =\ edge.point2.getX()\ +\ frame-\/>cols/2;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\_point\_y\ =\ frame-\/>rows\ -\/\ edge.point2.getY();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point\ end\_point(end\_point\_x,\ end\_point\_y);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ color\ of\ the\ track\ boundary}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Scalar\ color;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge.point1.color\ ==\ \mbox{\hyperlink{Cone_8hpp_a711c85d3893c956ac6914e0e99f2ec81}{YELLOW\_CONE}})\ color\ =\ \mbox{\hyperlink{UI_8hpp_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge.point1.color\ ==\ \mbox{\hyperlink{Cone_8hpp_a406ac9109f6ca78d5ccbd3157a95cef1}{BLUE\_CONE}})\ color\ =\ \mbox{\hyperlink{UI_8hpp_a23c70d699a5a775bc2e1ebeb8603f630}{COLOR\_BLUE}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ edge}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::line(*frame,\ start\_point,\ end\_point,\ color,\ line\_thickness,\ cv::LINE\_8);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ drawPath(cv::Mat*\ frame,\ std::vector<\mbox{\hyperlink{structPoint}{Point<int>}}>*\ path)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ line\_thickness\ =\ 3;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ path-\/>size()-\/1;\ i++)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ start\ and\ end\ point\ of\ each\ edge\ in\ the\ path}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_point\_x\ =\ (*path)[i].getX()\ +\ frame-\/>cols/2;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_point\_y\ =\ frame-\/>rows\ -\/\ (*path)[i].getY();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point\ start\_point\ =\ cv::Point(start\_point\_x,\ start\_point\_y);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\_point\_x\ =\ (*path)[i+1].getX()\ +\ frame-\/>cols/2;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\_point\_y\ =\ frame-\/>rows\ -\/\ (*path)[i+1].getY();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Point\ end\_point\ =\ cv::Point(end\_point\_x,\ end\_point\_y);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ edge}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ cv::line(*frame,\ start\_point,\ end\_point,\ \mbox{\hyperlink{UI_8hpp_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}},\ line\_thickness,\ cv::LINE\_8);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ Public\ functions}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceDrawMap}{DrawMap}}\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00125\ \ \ \ \ cv::Mat\ \mbox{\hyperlink{namespaceDrawMap_a6a61f298337b660489a5b8862df00bdf}{getMapFrame}}(std::vector<Cone>*\ cones,\ std::vector<\mbox{\hyperlink{structEdge}{Edge<double>}}>*\ edges,\ std::vector<\mbox{\hyperlink{structPoint}{Point<int>}}>*\ path)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_width\ =\ 736*3;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_height\ =\ 480*3;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ cv::Mat\ frame(frame\_height,\ frame\_width,\ CV\_8UC3,\ \mbox{\hyperlink{UI_8hpp_a502b77f3a488ac4b6331e37d0ee3a80e}{COLOR\_GREY}});}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ drawCones3D(\&frame,\ cones);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ drawEdges(\&frame,\ edges);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ drawPath(\&frame,\ path);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frame;}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DRAW\_MAP\_HPP}}
+\DoxyCodeLine{00140\ }
+
+\end{DoxyCode}

@@ -1,0 +1,111 @@
+\doxysection{delaunator Namespace Reference}
+\hypertarget{namespacedelaunator}{}\label{namespacedelaunator}\index{delaunator@{delaunator}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdelaunator_1_1compare}{compare}}
+\item 
+class \mbox{\hyperlink{classdelaunator_1_1Delaunator}{Delaunator}}
+\item 
+struct \mbox{\hyperlink{structdelaunator_1_1DelaunatorPoint}{Delaunator\+Point}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{namespacedelaunator_a3bf510ee4922ac9e97b969e0c405e98b}{fast\+\_\+mod}} (const size\+\_\+t i, const size\+\_\+t c)
+\item 
+double \mbox{\hyperlink{namespacedelaunator_aa0fda089647a091b92b8548ad3c0f100}{sum}} (const std\+::vector$<$ double $>$ \&x)
+\item 
+double \mbox{\hyperlink{namespacedelaunator_a9e2a3ffc907659930fa0edad646d49dc}{dist}} (const double ax, const double ay, const double bx, const double by)
+\item 
+double \mbox{\hyperlink{namespacedelaunator_a41cf84f19316cc7fb922b160b35af8f9}{circumradius}} (const double ax, const double ay, const double bx, const double by, const double cx, const double cy)
+\item 
+bool \mbox{\hyperlink{namespacedelaunator_aebc9337156dd42cb19372d15119525db}{orient}} (const double px, const double py, const double qx, const double qy, const double rx, const double ry)
+\item 
+std\+::tuple$<$ double, double $>$ \mbox{\hyperlink{namespacedelaunator_a5cb85f0efec3884e0d545874f2796a83}{circumcenter}} (const double ax, const double ay, const double bx, const double by, const double cx, const double cy)
+\item 
+bool \mbox{\hyperlink{namespacedelaunator_a5e7a51e33a9d4eea7ac9ca2e38aa7fa6}{in\+\_\+circle}} (const double ax, const double ay, const double bx, const double by, const double cx, const double cy, const double px, const double py)
+\item 
+bool \mbox{\hyperlink{namespacedelaunator_acd98fbc5da3dc94d8ee30d704eed18e9}{check\+\_\+pts\+\_\+equal}} (double x1, double y1, double x2, double y2)
+\item 
+double \mbox{\hyperlink{namespacedelaunator_a3cdb1c51389d918a83f3db7264891305}{pseudo\+\_\+angle}} (const double dx, const double dy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr double \mbox{\hyperlink{namespacedelaunator_a2bba00df8f04d31916772f7ebc15734c}{EPSILON}} = std\+::numeric\+\_\+limits$<$double$>$\+::epsilon()
+\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacedelaunator_acb0d4406320caf27239204ed6e5809bf}{INVALID\+\_\+\+INDEX}} = std\+::numeric\+\_\+limits$<$std\+::size\+\_\+t$>$\+::max()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacedelaunator_acd98fbc5da3dc94d8ee30d704eed18e9}\index{delaunator@{delaunator}!check\_pts\_equal@{check\_pts\_equal}}
+\index{check\_pts\_equal@{check\_pts\_equal}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{check\_pts\_equal()}{check\_pts\_equal()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_acd98fbc5da3dc94d8ee30d704eed18e9} 
+bool delaunator\+::check\+\_\+pts\+\_\+equal (\begin{DoxyParamCaption}\item[{double}]{x1}{, }\item[{double}]{y1}{, }\item[{double}]{x2}{, }\item[{double}]{y2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a5cb85f0efec3884e0d545874f2796a83}\index{delaunator@{delaunator}!circumcenter@{circumcenter}}
+\index{circumcenter@{circumcenter}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{circumcenter()}{circumcenter()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a5cb85f0efec3884e0d545874f2796a83} 
+std\+::tuple$<$ double, double $>$ delaunator\+::circumcenter (\begin{DoxyParamCaption}\item[{const double}]{ax}{, }\item[{const double}]{ay}{, }\item[{const double}]{bx}{, }\item[{const double}]{by}{, }\item[{const double}]{cx}{, }\item[{const double}]{cy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a41cf84f19316cc7fb922b160b35af8f9}\index{delaunator@{delaunator}!circumradius@{circumradius}}
+\index{circumradius@{circumradius}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{circumradius()}{circumradius()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a41cf84f19316cc7fb922b160b35af8f9} 
+double delaunator\+::circumradius (\begin{DoxyParamCaption}\item[{const double}]{ax}{, }\item[{const double}]{ay}{, }\item[{const double}]{bx}{, }\item[{const double}]{by}{, }\item[{const double}]{cx}{, }\item[{const double}]{cy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a9e2a3ffc907659930fa0edad646d49dc}\index{delaunator@{delaunator}!dist@{dist}}
+\index{dist@{dist}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{dist()}{dist()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a9e2a3ffc907659930fa0edad646d49dc} 
+double delaunator\+::dist (\begin{DoxyParamCaption}\item[{const double}]{ax}{, }\item[{const double}]{ay}{, }\item[{const double}]{bx}{, }\item[{const double}]{by}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a3bf510ee4922ac9e97b969e0c405e98b}\index{delaunator@{delaunator}!fast\_mod@{fast\_mod}}
+\index{fast\_mod@{fast\_mod}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{fast\_mod()}{fast\_mod()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a3bf510ee4922ac9e97b969e0c405e98b} 
+size\+\_\+t delaunator\+::fast\+\_\+mod (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i}{, }\item[{const size\+\_\+t}]{c}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a5e7a51e33a9d4eea7ac9ca2e38aa7fa6}\index{delaunator@{delaunator}!in\_circle@{in\_circle}}
+\index{in\_circle@{in\_circle}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{in\_circle()}{in\_circle()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a5e7a51e33a9d4eea7ac9ca2e38aa7fa6} 
+bool delaunator\+::in\+\_\+circle (\begin{DoxyParamCaption}\item[{const double}]{ax}{, }\item[{const double}]{ay}{, }\item[{const double}]{bx}{, }\item[{const double}]{by}{, }\item[{const double}]{cx}{, }\item[{const double}]{cy}{, }\item[{const double}]{px}{, }\item[{const double}]{py}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_aebc9337156dd42cb19372d15119525db}\index{delaunator@{delaunator}!orient@{orient}}
+\index{orient@{orient}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{orient()}{orient()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_aebc9337156dd42cb19372d15119525db} 
+bool delaunator\+::orient (\begin{DoxyParamCaption}\item[{const double}]{px}{, }\item[{const double}]{py}{, }\item[{const double}]{qx}{, }\item[{const double}]{qy}{, }\item[{const double}]{rx}{, }\item[{const double}]{ry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_a3cdb1c51389d918a83f3db7264891305}\index{delaunator@{delaunator}!pseudo\_angle@{pseudo\_angle}}
+\index{pseudo\_angle@{pseudo\_angle}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{pseudo\_angle()}{pseudo\_angle()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a3cdb1c51389d918a83f3db7264891305} 
+double delaunator\+::pseudo\+\_\+angle (\begin{DoxyParamCaption}\item[{const double}]{dx}{, }\item[{const double}]{dy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacedelaunator_aa0fda089647a091b92b8548ad3c0f100}\index{delaunator@{delaunator}!sum@{sum}}
+\index{sum@{sum}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{sum()}{sum()}}
+{\footnotesize\ttfamily \label{namespacedelaunator_aa0fda089647a091b92b8548ad3c0f100} 
+double delaunator\+::sum (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacedelaunator_a2bba00df8f04d31916772f7ebc15734c}\index{delaunator@{delaunator}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily \label{namespacedelaunator_a2bba00df8f04d31916772f7ebc15734c} 
+double delaunator\+::\+EPSILON = std\+::numeric\+\_\+limits$<$double$>$\+::epsilon()\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacedelaunator_acb0d4406320caf27239204ed6e5809bf}\index{delaunator@{delaunator}!INVALID\_INDEX@{INVALID\_INDEX}}
+\index{INVALID\_INDEX@{INVALID\_INDEX}!delaunator@{delaunator}}
+\doxysubsubsection{\texorpdfstring{INVALID\_INDEX}{INVALID\_INDEX}}
+{\footnotesize\ttfamily \label{namespacedelaunator_acb0d4406320caf27239204ed6e5809bf} 
+std\+::size\+\_\+t delaunator\+::\+INVALID\+\_\+\+INDEX = std\+::numeric\+\_\+limits$<$std\+::size\+\_\+t$>$\+::max()\hspace{0.3cm}{\ttfamily [constexpr]}}
+

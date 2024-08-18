@@ -1,0 +1,58 @@
+\doxysection{UI.\+hpp}
+\hypertarget{UI_8hpp_source}{}\label{UI_8hpp_source}\index{include/UI.hpp@{include/UI.hpp}}
+\mbox{\hyperlink{UI_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UI\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UI\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ COLOR\_RED\ \ \ \ \ \ \ cv::Scalar(0,\ 0,\ 255)}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ COLOR\_GREEN\ \ \ \ \ cv::Scalar(0,\ 255,\ 0)}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ COLOR\_BLUE\ \ \ \ \ \ cv::Scalar(255,\ 0,\ 0)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ COLOR\_YELLOW\ \ \ \ cv::Scalar(0,\ 255,\ 255)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ COLOR\_GREY\ \ \ \ \ \ cv::Scalar(127,\ 127,\ 127)}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWindow}{Window}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classWindow_a4dd46cefbc11d477f18a3d99c1a3e84c}{Window}}(\textcolor{keyword}{const}\ std::string\&\ name)\ :\ window\_name(name)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ cv::namedWindow(window\_name,\ cv::WINDOW\_AUTOSIZE);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6}{\string~Window}}()\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ cv::destroyWindow(window\_name);}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a581919fb3895d01f3cea77343343783c}{loadFrame}}(cv::Mat\ frame)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ cv::imshow(window\_name,\ frame);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv::waitKey(1);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a16f107b89114576d2ba6fb73564badcb}{loadFrame}}(cv::Mat*\ frame,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ cv::resize(*frame,\ *frame,\ cv::Size(width,\ height));}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ cv::imshow(window\_name,\ *frame);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv::waitKey(1);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classWindow_a68e21cdbe153e5b9348abd7f1b649c4d}{load2Frames}}(cv::Mat*\ frame\_left,\ cv::Mat*\ frame\_right,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resize\ the\ left\ frame\ to\ match\ the\ output\ size}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ cv::resize(*frame\_left,\ *frame\_left,\ cv::Size(width,\ height));}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resize\ the\ right\ frame\ to\ match\ the\ output\ size}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ cv::resize(*frame\_right,\ *frame\_right,\ cv::Size(width,\ height));}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ a\ new\ frame,\ and\ fill\ it\ with\ the\ left\ and\ right\ frame}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ cv::Mat\ combined\_frame(width*2,\ height,\ CV\_8UC3);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ cv::hconcat(*frame\_left,\ *frame\_right,\ combined\_frame);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ show\ the\ frame}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ cv::imshow(window\_name,\ combined\_frame);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv::waitKey(1);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \ \ std::string\ window\_name;\ \textcolor{comment}{//\ The\ name\ of\ the\ OpenCV\ window.}}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UI\_HPP}}
+\DoxyCodeLine{00097\ }
+
+\end{DoxyCode}

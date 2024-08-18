@@ -1,0 +1,132 @@
+\doxysection{Yolo Class Reference}
+\hypertarget{classYolo}{}\label{classYolo}\index{Yolo@{Yolo}}
+
+
+A class for running YOLO object detection with Tensor\+RT.  
+
+
+
+
+{\ttfamily \#include $<$Yolo.\+hpp$>$}
+
+Inheritance diagram for Yolo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classYolo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classYolo_a0fd4533639f9f9aef55597e21b808069}{Yolo}} (std\+::string engine\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classYolo}{Yolo} object and initializes the Tensor\+RT engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classYolo_ad52ebc48ff2d75412a9864662cd5283a}{\texorpdfstring{$\sim$}{\string~}\+Yolo}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \mbox{\hyperlink{classYolo_a1a58814033aa002f37de4c414df1f93c}{get\+Cones}} (cv\+::\+Mat frame)
+\begin{DoxyCompactList}\small\item\em Processes a frame to detect cones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object and loads the network from the specified engine file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision, int max\+\_\+number\+\_\+of\+\_\+batches)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object with a specified maximum batch size and loads the network. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classTensorEngine_a82d12691a322c557177f4613ffe60ba2}{\texorpdfstring{$\sim$}{\string~}\+Tensor\+Engine}} ()
+\item 
+void \mbox{\hyperlink{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}{run\+Inference}} ()
+\begin{DoxyCompactList}\small\item\em Runs inference on the loaded Tensor\+RT engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{check\+Cuda\+Error\+Code}} (cuda\+Error\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Default function to checks for CUDA error codes and throws an exception if an error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\+\_\+index}} = 0
+\item 
+std\+::vector$<$ void \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\+\_\+of\+\_\+batches}}
+\item 
+int \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\+\_\+batch\+\_\+size}} = -\/1
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\+\_\+dimensions}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\+\_\+dimensions}}
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IRuntime $>$ \mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+ICuda\+Engine $>$ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IExecution\+Context $>$ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for running YOLO object detection with Tensor\+RT. 
+
+This class extends the \doxylink{classTensorEngine}{Tensor\+Engine} class to provide functionality specific to YOLO object detection. It handles preprocessing of input frames, running inference, and post-\/processing of results to extract detected objects, such as traffic cones.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classYolo_a0fd4533639f9f9aef55597e21b808069}\index{Yolo@{Yolo}!Yolo@{Yolo}}
+\index{Yolo@{Yolo}!Yolo@{Yolo}}
+\doxysubsubsection{\texorpdfstring{Yolo()}{Yolo()}}
+{\footnotesize\ttfamily \label{classYolo_a0fd4533639f9f9aef55597e21b808069} 
+Yolo\+::\+Yolo (\begin{DoxyParamCaption}\item[{std\+::string}]{engine\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classYolo}{Yolo} object and initializes the Tensor\+RT engine. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+\_\+path} & Path to the Tensor\+RT engine file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classYolo_ad52ebc48ff2d75412a9864662cd5283a}\index{Yolo@{Yolo}!````~Yolo@{\texorpdfstring{$\sim$}{\string~}Yolo}}
+\index{````~Yolo@{\texorpdfstring{$\sim$}{\string~}Yolo}!Yolo@{Yolo}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Yolo()}{\string~Yolo()}}
+{\footnotesize\ttfamily \label{classYolo_ad52ebc48ff2d75412a9864662cd5283a} 
+Yolo\+::\texorpdfstring{$\sim$}{\string~}\+Yolo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classYolo_a1a58814033aa002f37de4c414df1f93c}\index{Yolo@{Yolo}!getCones@{getCones}}
+\index{getCones@{getCones}!Yolo@{Yolo}}
+\doxysubsubsection{\texorpdfstring{getCones()}{getCones()}}
+{\footnotesize\ttfamily \label{classYolo_a1a58814033aa002f37de4c414df1f93c} 
+std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ Yolo\+::get\+Cones (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Processes a frame to detect cones. 
+
+This method performs preprocessing on the input frame, runs inference using the YOLO model, and then post-\/processes the results to detect and return cones found in the frame.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The input frame (image) on which to run detection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{structCone}{Cone} objects representing detected cones. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Yolo_8hpp}{Yolo.\+hpp}}\end{DoxyCompactItemize}

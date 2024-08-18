@@ -1,0 +1,106 @@
+\doxysection{Rekt\+Net.\+hpp}
+\hypertarget{RektNet_8hpp_source}{}\label{RektNet_8hpp_source}\index{include/RektNet.hpp@{include/RektNet.hpp}}
+\mbox{\hyperlink{RektNet_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REKTNET\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REKTNET\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <opencv2/core/cuda.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <opencv2/cudawarping.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <opencv2/cudaimgproc.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <opencv2/cudaarithm.hpp>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{TensorEngine_8hpp}{TensorEngine.hpp}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cone_8hpp}{Cone.hpp}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRektNet}{RektNet}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTensorEngine}{TensorEngine}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classRektNet_a828df7fa85dea83eb32452d8ad430f4a}{RektNet}}(std::string\ engine\_path)\ :\ \mbox{\hyperlink{classTensorEngine}{TensorEngine}}(engine\_path,\ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}::\mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aa4bf99d6945c25077fd6660d536af8a0}{FP16}},\ 32)\ \{\}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ RektNet\ class}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classRektNet_a3ba068108d04091000a45d500af5aea1}{\string~RektNet}}\ ()\ \{\}}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRektNet_ae54e8bf8ba26f6745b5beb218ee40b8f}{getKeypoints}}(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cones-\/>size()\ !=\ 0)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ preProcess(cones);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}{runInference}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ postProcess(cones);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ preProcess(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ cuda\ stream\ that\ will\ be\ used\ for\ pre\ processing}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ cudaStream\_t\ inferenceCudaStream;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamCreate(\&inferenceCudaStream));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}}\ =\ cones-\/>size();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::vector<int>\ input\_size\ =\ \{\mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}},\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].number\_of\_channels,\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].width,\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].height\};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ cv::Mat\ processed\_input(input\_size,\ CV\_32FC1);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ nvinfer1::Dims4\ dimensions\ =\ \{\mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}},\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].number\_of\_channels,\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].height,\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].width\};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}}-\/>setInputShape(\mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getIOTensorName(0),\ dimensions);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}};\ i++)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ cv::resize((*cones)[i].frame,\ (*cones)[i].frame,\ cv::Size(\mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].width,\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}[0].height));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ float\_img;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ (*cones)[i].frame.convertTo(float\_img,\ CV\_32FC3,\ 1.0\ /\ 255.0);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ c\ =\ 0;\ c\ <\ float\_img.channels();\ ++c)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ float\_img.cols;\ ++j)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ float\_img.rows;\ ++k)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index[4]\ =\ \{i,\ c,\ j,\ k\};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processed\_input.at<\textcolor{keywordtype}{float}>(index)\ =\ float\_img.at<cv::Vec3f>(j,\ k)[c];}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ input\_size\_bytes\ =\ processed\_input.channels()\ *\ processed\_input.rows\ *\ processed\_input.cols;\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ input\_data\_pointer\ =\ processed\_input.ptr<\textcolor{keywordtype}{void}>();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ processedInput\ to\ input\ buffer}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaMemcpy(\mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}[0],\ input\_data\_pointer,\ input\_size\_bytes,\ cudaMemcpyHostToDevice));}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Synchronize\ the\ cuda\ stream}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamSynchronize(inferenceCudaStream));}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamDestroy(inferenceCudaStream));}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ postProcess(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ cuda\ stream\ that\ will\ be\ used\ for\ post\ processing}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ cudaStream\_t\ inferenceCudaStream;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamCreate(\&inferenceCudaStream));}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ output\_size\_bytes\ =\ \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}}\ *\ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}}[1].number\_of\_channels\ *\ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}}[1].number\_of\_anchors\ *\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ output\_data\_host\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[\mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}}\ *\ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}}[1].number\_of\_channels\ *\ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}}[1].number\_of\_anchors];\ \textcolor{comment}{//\ batch\_size\ *\ 7\ *\ 2}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaMemcpyAsync(output\_data\_host,\ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}[2],\ output\_size\_bytes,\ cudaMemcpyDeviceToHost,\ inferenceCudaStream));}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ std::vector<std::vector<std::pair<float,\ float>>>\ result(\mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}};\ i++)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ result[i].reserve(7);\ \textcolor{comment}{//\ Reserve\ memory\ for\ 7\ tuples}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Populate\ each\ vector\ with\ tuples}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 7;\ ++j)\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ tuple\_ptr\ =\ output\_data\_host\ +\ (i\ *\ 7\ *\ 2)\ +\ (j\ *\ 2);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[i].emplace\_back(tuple\_ptr[0],\ tuple\_ptr[1]);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ (*cones)[i].keypoints\ =\ result[i];}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Synchronize\ the\ cuda\ stream}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamSynchronize(inferenceCudaStream));}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamDestroy(inferenceCudaStream));}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REKTNET\_HPP}}
+\DoxyCodeLine{00144\ }
+
+\end{DoxyCode}

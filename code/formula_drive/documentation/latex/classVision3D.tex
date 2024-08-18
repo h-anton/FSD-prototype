@@ -1,0 +1,92 @@
+\doxysection{Vision3D Class Reference}
+\hypertarget{classVision3D}{}\label{classVision3D}\index{Vision3D@{Vision3D}}
+
+
+A class to calculate the real world position of cones.  
+
+
+
+
+{\ttfamily \#include $<$Vision3\+D.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVision3D_a5c9694ff883415d133a7217d998ddffa}{Vision3D}} (const std\+::string \&calibration\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classVision3D}{Vision3D} object for calculating the position of cones. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVision3D_a1164cc0fc7aa4c7d725d752bc2ba3c36}{\texorpdfstring{$\sim$}{\string~}\+Vision3D}} ()
+\item 
+void \mbox{\hyperlink{classVision3D_ab9efd4a70c66e96dba144a28f2bc413f}{calculate\+Position}} (std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}cones)
+\begin{DoxyCompactList}\small\item\em Calculates the real-\/world position of cones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to calculate the real world position of cones. 
+
+This class allows users to read the calibration data from the calibration program, and to calculate the real world position (world coordinates) of the cones given their pixel coordinates.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVision3D_a5c9694ff883415d133a7217d998ddffa}\index{Vision3D@{Vision3D}!Vision3D@{Vision3D}}
+\index{Vision3D@{Vision3D}!Vision3D@{Vision3D}}
+\doxysubsubsection{\texorpdfstring{Vision3D()}{Vision3D()}}
+{\footnotesize\ttfamily \label{classVision3D_a5c9694ff883415d133a7217d998ddffa} 
+Vision3\+D\+::\+Vision3D (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{calibration\+\_\+file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classVision3D}{Vision3D} object for calculating the position of cones. 
+
+Reads the calibration file (containing the calibration data of the camera), and store the values in a \doxylink{structCalibrationData}{Calibration\+Data} struct.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em calibration\+\_\+file} & The path to the calibration file (in a specific format) that contains camera calibration data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the file containing the calibration data could not be opened. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classVision3D_a1164cc0fc7aa4c7d725d752bc2ba3c36}\index{Vision3D@{Vision3D}!````~Vision3D@{\texorpdfstring{$\sim$}{\string~}Vision3D}}
+\index{````~Vision3D@{\texorpdfstring{$\sim$}{\string~}Vision3D}!Vision3D@{Vision3D}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Vision3D()}{\string~Vision3D()}}
+{\footnotesize\ttfamily \label{classVision3D_a1164cc0fc7aa4c7d725d752bc2ba3c36} 
+Vision3\+D\+::\texorpdfstring{$\sim$}{\string~}\+Vision3D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVision3D_ab9efd4a70c66e96dba144a28f2bc413f}\index{Vision3D@{Vision3D}!calculatePosition@{calculatePosition}}
+\index{calculatePosition@{calculatePosition}!Vision3D@{Vision3D}}
+\doxysubsubsection{\texorpdfstring{calculatePosition()}{calculatePosition()}}
+{\footnotesize\ttfamily \label{classVision3D_ab9efd4a70c66e96dba144a28f2bc413f} 
+void Vision3\+D\+::calculate\+Position (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}}]{cones}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculates the real-\/world position of cones. 
+
+This function computes the real-\/world coordinates (world coordinates) for each cone in a vector of cones. The calculated positions are stored directly in the provided vector.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cones} & A pointer to the vector containing all the cones the car has detected. The real-\/world positions of these cones will be calculated and updated within this vector. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Vision3D_8hpp}{Vision3\+D.\+hpp}}\end{DoxyCompactItemize}

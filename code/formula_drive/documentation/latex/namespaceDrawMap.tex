@@ -1,0 +1,37 @@
+\doxysection{Draw\+Map Namespace Reference}
+\hypertarget{namespaceDrawMap}{}\label{namespaceDrawMap}\index{DrawMap@{DrawMap}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Mat \mbox{\hyperlink{namespaceDrawMap_a6a61f298337b660489a5b8862df00bdf}{get\+Map\+Frame}} (std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}cones, std\+::vector$<$ \mbox{\hyperlink{structEdge}{Edge}}$<$ double $>$ $>$ \texorpdfstring{$\ast$}{*}edges, std\+::vector$<$ \mbox{\hyperlink{structPoint}{Point}}$<$ int $>$ $>$ \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Creates a frame with cones, track boundaries, and a path drawn on it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceDrawMap_a6a61f298337b660489a5b8862df00bdf}\index{DrawMap@{DrawMap}!getMapFrame@{getMapFrame}}
+\index{getMapFrame@{getMapFrame}!DrawMap@{DrawMap}}
+\doxysubsubsection{\texorpdfstring{getMapFrame()}{getMapFrame()}}
+{\footnotesize\ttfamily \label{namespaceDrawMap_a6a61f298337b660489a5b8862df00bdf} 
+cv\+::\+Mat Draw\+Map\+::get\+Map\+Frame (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}}]{cones}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{structEdge}{Edge}}$<$ double $>$ $>$ \texorpdfstring{$\ast$}{*}}]{edges}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{structPoint}{Point}}$<$ int $>$ $>$ \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Creates a frame with cones, track boundaries, and a path drawn on it. 
+
+This function generates a map frame and draws the cones, track boundaries, and path onto it. The frame is created with predefined dimensions and background color, and then updated with the visual representations of the cones, track boundaries, and path using the respective drawing functions.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cones} & A pointer to a vector of {\ttfamily \doxylink{structCone}{Cone}} objects representing the detected cones to be drawn. \\
+\hline
+{\em edges} & A pointer to a vector of {\ttfamily \doxylink{structEdge}{Edge}\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>}} objects representing the edges to be drawn. \\
+\hline
+{\em path} & A pointer to a vector of {\ttfamily \doxylink{structPoint}{Point}\texorpdfstring{$<$}{<}int\texorpdfstring{$>$}{>}} objects representing the path to be drawn.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily cv\+::\+Mat} containing the final frame with the cones, edges, and path drawn on it. 
+\end{DoxyReturn}

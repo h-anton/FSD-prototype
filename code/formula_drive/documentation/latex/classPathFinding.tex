@@ -1,0 +1,118 @@
+\doxysection{Path\+Finding Class Reference}
+\hypertarget{classPathFinding}{}\label{classPathFinding}\index{PathFinding@{PathFinding}}
+
+
+A class to find the path the car should follow given the detected cones.  
+
+
+
+
+{\ttfamily \#include $<$Path\+Finding.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPathFinding_ad282d3ad66f2cf020f7c78b1fd9145dd}{Path\+Finding}} ()
+\item 
+\mbox{\hyperlink{classPathFinding_a0fc7389a32fa31a194a940a89f252bdb}{\texorpdfstring{$\sim$}{\string~}\+Path\+Finding}} ()
+\item 
+void \mbox{\hyperlink{classPathFinding_a2366eb97b9197f9832c023b332feca72}{find\+Path}} (std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}cones)
+\begin{DoxyCompactList}\small\item\em Finds a path based on the given cones. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classPathFinding_aafad33c570050df6f5ed252f1228e4a8}{calculate\+Direction}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the direction the car should drive in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structEdge}{Edge}}$<$ double $>$ $>$ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structPoint}{Point}}$<$ int $>$ $>$ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to find the path the car should follow given the detected cones. 
+
+This class allows the car to calculate the path the car should follow given the detected cones. It also allows to calculate the direction the car should follow.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPathFinding_ad282d3ad66f2cf020f7c78b1fd9145dd}\index{PathFinding@{PathFinding}!PathFinding@{PathFinding}}
+\index{PathFinding@{PathFinding}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{PathFinding()}{PathFinding()}}
+{\footnotesize\ttfamily \label{classPathFinding_ad282d3ad66f2cf020f7c78b1fd9145dd} 
+Path\+Finding\+::\+Path\+Finding (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classPathFinding_a0fc7389a32fa31a194a940a89f252bdb}\index{PathFinding@{PathFinding}!````~PathFinding@{\texorpdfstring{$\sim$}{\string~}PathFinding}}
+\index{````~PathFinding@{\texorpdfstring{$\sim$}{\string~}PathFinding}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PathFinding()}{\string~PathFinding()}}
+{\footnotesize\ttfamily \label{classPathFinding_a0fc7389a32fa31a194a940a89f252bdb} 
+Path\+Finding\+::\texorpdfstring{$\sim$}{\string~}\+Path\+Finding (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPathFinding_aafad33c570050df6f5ed252f1228e4a8}\index{PathFinding@{PathFinding}!calculateDirection@{calculateDirection}}
+\index{calculateDirection@{calculateDirection}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{calculateDirection()}{calculateDirection()}}
+{\footnotesize\ttfamily \label{classPathFinding_aafad33c570050df6f5ed252f1228e4a8} 
+uint8\+\_\+t Path\+Finding\+::calculate\+Direction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the direction the car should drive in. 
+
+This function calculates all the angles between each \textquotesingle{}section\textquotesingle{} of the path, as well as the length of each section. This is then used to calculate the angle at which the car should point it wheels in order to follow the path.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+The angle the car should point its front wheels at. 
+\end{DoxyReturn}
+\Hypertarget{classPathFinding_a2366eb97b9197f9832c023b332feca72}\index{PathFinding@{PathFinding}!findPath@{findPath}}
+\index{findPath@{findPath}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{findPath()}{findPath()}}
+{\footnotesize\ttfamily \label{classPathFinding_a2366eb97b9197f9832c023b332feca72} 
+void Path\+Finding\+::find\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}}]{cones}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finds a path based on the given cones. 
+
+This function finds the path the car should follow given the cones. It achieves this by triangulating all the cones, removing unnecessary edges from this triangulation, and finally calculating the path. The result is stored in the path vector of this class.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cones} & A pointer to a vector containing {\ttfamily \doxylink{structCone}{Cone}} objects. This vector represents the detected cones and is used as input for the triangulation and pathfinding process.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The world\+\_\+coordinates\+\_\+mm field of the cone objects should already be calculated. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}\index{PathFinding@{PathFinding}!edges@{edges}}
+\index{edges@{edges}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{edges}{edges}}
+{\footnotesize\ttfamily \label{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a} 
+std\+::vector$<$\mbox{\hyperlink{structEdge}{Edge}}$<$double$>$ $>$ Path\+Finding\+::edges}
+
+\Hypertarget{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}\index{PathFinding@{PathFinding}!path@{path}}
+\index{path@{path}!PathFinding@{PathFinding}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily \label{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0} 
+std\+::vector$<$\mbox{\hyperlink{structPoint}{Point}}$<$int$>$ $>$ Path\+Finding\+::path}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{PathFinding_8hpp}{Path\+Finding.\+hpp}}\end{DoxyCompactItemize}

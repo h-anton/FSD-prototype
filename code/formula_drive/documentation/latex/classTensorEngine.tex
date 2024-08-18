@@ -1,0 +1,205 @@
+\doxysection{Tensor\+Engine Class Reference}
+\hypertarget{classTensorEngine}{}\label{classTensorEngine}\index{TensorEngine@{TensorEngine}}
+
+
+A class for managing Tensor\+RT inference operations.  
+
+
+
+
+{\ttfamily \#include $<$Tensor\+Engine.\+hpp$>$}
+
+Inheritance diagram for Tensor\+Engine\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTensorEngine}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object and loads the network from the specified engine file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision, int max\+\_\+number\+\_\+of\+\_\+batches)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object with a specified maximum batch size and loads the network. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classTensorEngine_a82d12691a322c557177f4613ffe60ba2}{\texorpdfstring{$\sim$}{\string~}\+Tensor\+Engine}} ()
+\item 
+void \mbox{\hyperlink{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}{run\+Inference}} ()
+\begin{DoxyCompactList}\small\item\em Runs inference on the loaded Tensor\+RT engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{check\+Cuda\+Error\+Code}} (cuda\+Error\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Default function to checks for CUDA error codes and throws an exception if an error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\+\_\+index}} = 0
+\item 
+std\+::vector$<$ void \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\+\_\+of\+\_\+batches}}
+\item 
+int \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\+\_\+batch\+\_\+size}} = -\/1
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\+\_\+dimensions}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\+\_\+dimensions}}
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IRuntime $>$ \mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+ICuda\+Engine $>$ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IExecution\+Context $>$ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for managing Tensor\+RT inference operations. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d}\index{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}}
+\index{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{TensorEngine()}{TensorEngine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d} 
+Tensor\+Engine\+::\+Tensor\+Engine (\begin{DoxyParamCaption}\item[{std\+::string}]{engine\+\_\+path}{, }\item[{\mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}}]{precision}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object and loads the network from the specified engine file. 
+
+This constructor initializes the \doxylink{classTensorEngine}{Tensor\+Engine} by loading the network from the specified engine file and setting up necessary resources.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+\_\+path} & Path to the Tensor\+RT engine file. \\
+\hline
+{\em precision} & The precision to be used for inference (e.\+g., FP16, INT8). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57}\index{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}}
+\index{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{TensorEngine()}{TensorEngine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57} 
+Tensor\+Engine\+::\+Tensor\+Engine (\begin{DoxyParamCaption}\item[{std\+::string}]{engine\+\_\+path}{, }\item[{\mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}}]{precision}{, }\item[{int}]{max\+\_\+number\+\_\+of\+\_\+batches}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object with a specified maximum batch size and loads the network. 
+
+This constructor initializes the \doxylink{classTensorEngine}{Tensor\+Engine} by loading the network from the specified engine file and setting up necessary resources, including setting the maximum batch size.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+\_\+path} & Path to the Tensor\+RT engine file. \\
+\hline
+{\em precision} & The precision to be used for inference (e.\+g., FP16, INT8). \\
+\hline
+{\em max\+\_\+number\+\_\+of\+\_\+batches} & The maximum number of batches to be used for inference. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTensorEngine_a82d12691a322c557177f4613ffe60ba2}\index{TensorEngine@{TensorEngine}!````~TensorEngine@{\texorpdfstring{$\sim$}{\string~}TensorEngine}}
+\index{````~TensorEngine@{\texorpdfstring{$\sim$}{\string~}TensorEngine}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TensorEngine()}{\string~TensorEngine()}}
+{\footnotesize\ttfamily \label{classTensorEngine_a82d12691a322c557177f4613ffe60ba2} 
+virtual Tensor\+Engine\+::\texorpdfstring{$\sim$}{\string~}\+Tensor\+Engine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}\index{TensorEngine@{TensorEngine}!checkCudaErrorCode@{checkCudaErrorCode}}
+\index{checkCudaErrorCode@{checkCudaErrorCode}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{checkCudaErrorCode()}{checkCudaErrorCode()}}
+{\footnotesize\ttfamily \label{classTensorEngine_a50d538fbde35be94433458e2b0a927d7} 
+virtual void Tensor\+Engine\+::check\+Cuda\+Error\+Code (\begin{DoxyParamCaption}\item[{cuda\+Error\+\_\+t}]{code}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Default function to checks for CUDA error codes and throws an exception if an error occurs. 
+
+\Hypertarget{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}\index{TensorEngine@{TensorEngine}!runInference@{runInference}}
+\index{runInference@{runInference}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{runInference()}{runInference()}}
+{\footnotesize\ttfamily \label{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383} 
+void Tensor\+Engine\+::run\+Inference (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Runs inference on the loaded Tensor\+RT engine. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+This method creates a CUDA stream for inference, sets tensor addresses, performs inference, and synchronizes the CUDA stream. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}\index{TensorEngine@{TensorEngine}!buffers@{buffers}}
+\index{buffers@{buffers}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{buffers}{buffers}}
+{\footnotesize\ttfamily \label{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb} 
+std\+::vector$<$void\texorpdfstring{$\ast$}{*}$>$ Tensor\+Engine\+::buffers\hspace{0.3cm}{\ttfamily [protected]}}
+
+A vector of pointers to input and output buffers. \Hypertarget{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}\index{TensorEngine@{TensorEngine}!context@{context}}
+\index{context@{context}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{context}{context}}
+{\footnotesize\ttfamily \label{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582} 
+std\+::unique\+\_\+ptr$<$nvinfer1\+::\+IExecution\+Context$>$ Tensor\+Engine\+::context = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+Tensor\+RT execution context object. \Hypertarget{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}\index{TensorEngine@{TensorEngine}!device\_index@{device\_index}}
+\index{device\_index@{device\_index}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{device\_index}{device\_index}}
+{\footnotesize\ttfamily \label{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39} 
+int Tensor\+Engine\+::device\+\_\+index = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+The index of the GPU device to be used. \Hypertarget{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}\index{TensorEngine@{TensorEngine}!engine@{engine}}
+\index{engine@{engine}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily \label{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc} 
+std\+::unique\+\_\+ptr$<$nvinfer1\+::\+ICuda\+Engine$>$ Tensor\+Engine\+::engine = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+Tensor\+RT engine object. \Hypertarget{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}\index{TensorEngine@{TensorEngine}!input\_dimensions@{input\_dimensions}}
+\index{input\_dimensions@{input\_dimensions}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{input\_dimensions}{input\_dimensions}}
+{\footnotesize\ttfamily \label{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f} 
+std\+::vector$<$\mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}}$>$ Tensor\+Engine\+::input\+\_\+dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+Dimensions of input tensors. \Hypertarget{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}\index{TensorEngine@{TensorEngine}!max\_batch\_size@{max\_batch\_size}}
+\index{max\_batch\_size@{max\_batch\_size}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{max\_batch\_size}{max\_batch\_size}}
+{\footnotesize\ttfamily \label{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655} 
+int Tensor\+Engine\+::max\+\_\+batch\+\_\+size = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+The maximum batch size for the engine. \Hypertarget{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}\index{TensorEngine@{TensorEngine}!number\_of\_batches@{number\_of\_batches}}
+\index{number\_of\_batches@{number\_of\_batches}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{number\_of\_batches}{number\_of\_batches}}
+{\footnotesize\ttfamily \label{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230} 
+int32\+\_\+t Tensor\+Engine\+::number\+\_\+of\+\_\+batches\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of batches for inference. \Hypertarget{classTensorEngine_af050c42f8c63b708fce92731dd318998}\index{TensorEngine@{TensorEngine}!output\_dimensions@{output\_dimensions}}
+\index{output\_dimensions@{output\_dimensions}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{output\_dimensions}{output\_dimensions}}
+{\footnotesize\ttfamily \label{classTensorEngine_af050c42f8c63b708fce92731dd318998} 
+std\+::vector$<$\mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}}$>$ Tensor\+Engine\+::output\+\_\+dimensions\hspace{0.3cm}{\ttfamily [protected]}}
+
+Dimensions of output tensors. \Hypertarget{classTensorEngine_af98338193654bfd53091d61c62033aaa}\index{TensorEngine@{TensorEngine}!runtime@{runtime}}
+\index{runtime@{runtime}!TensorEngine@{TensorEngine}}
+\doxysubsubsection{\texorpdfstring{runtime}{runtime}}
+{\footnotesize\ttfamily \label{classTensorEngine_af98338193654bfd53091d61c62033aaa} 
+std\+::unique\+\_\+ptr$<$nvinfer1\+::\+IRuntime$>$ Tensor\+Engine\+::runtime = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+Tensor\+RT runtime object. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{TensorEngine_8hpp}{Tensor\+Engine.\+hpp}}\end{DoxyCompactItemize}

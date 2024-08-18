@@ -1,0 +1,108 @@
+\doxysection{Vision3\+D.\+hpp}
+\hypertarget{Vision3D_8hpp_source}{}\label{Vision3D_8hpp_source}\index{include/Vision3D.hpp@{include/Vision3D.hpp}}
+\mbox{\hyperlink{Vision3D_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VISION3D\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VISION3D\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}\ \textcolor{comment}{//\ library\ to\ write\ and\ read\ from\ files}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Dense>}\ \textcolor{comment}{//\ Eigen\ library\ for\ matrices}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cone_8hpp}{Cone.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UI_8hpp}{UI.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCalibrationData}{CalibrationData}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}};}
+\DoxyCodeLine{00022\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}};}
+\DoxyCodeLine{00023\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}};}
+\DoxyCodeLine{00024\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}};}
+\DoxyCodeLine{00025\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_aef72715c7adf87fad6ccc02836056133}{E}};}
+\DoxyCodeLine{00026\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}{F}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\_width}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\_height}};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVision3D}{Vision3D}}\ \{}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classVision3D_a5c9694ff883415d133a7217d998ddffa}{Vision3D}}(\textcolor{keyword}{const}\ std::string\&\ calibration\_file)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Open\ calibration\ file}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::ifstream\ file(calibration\_file,\ std::ios::in\ |\ std::ios::binary);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ open\ calibration\ file."{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ pixel\ width\ and\ height}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&calibration\_data.\mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\_width}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&calibration\_data.\mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\_height}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ matrix\ P}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rows,\ cols;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.resize(rows,\ cols);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ matrix\ K\_inv}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ rows,\ cols;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}.resize(rows,\ cols);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ matrix\ R\_inv}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ rows,\ cols;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}.resize(rows,\ cols);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ matrix\ t}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ rows,\ cols;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}.resize(rows,\ cols);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ precomputations,\ according\ to\ section\ 3.4\ of\ bachelor\ thesis}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_aef72715c7adf87fad6ccc02836056133}{E}}\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}\ *\ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}{F}}\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}\ *\ calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}};}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ Vision3D\ class}}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{classVision3D_a1164cc0fc7aa4c7d725d752bc2ba3c36}{\string~Vision3D}}()\ \{\}}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVision3D_ab9efd4a70c66e96dba144a28f2bc413f}{calculatePosition}}(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{structCone}{Cone}}\&\ cone:\ *cones)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ center\ of\ the\ cone}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ center\_x\ =\ 0;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ center\_y\ =\ 0;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::pair<float,\ float>\ keypoint:\ cone.keypoints)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center\_x\ +=\ (float)cone.start\_x\ +\ keypoint.first*cone.width;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ center\_y\ +=\ (float)cone.start\_y\ +\ keypoint.second*cone.height;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ center\_x\ /=\ 7;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ center\_y\ /=\ 7;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ world\ coordinates\ of\ the\ cone}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ z\_height\ =\ 16.5;\ \textcolor{comment}{//\ the\ height\ of\ the\ cone\ is\ known}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ Eigen::VectorXd\ pixel\_coord(3);\ \textcolor{comment}{//\ vector\ to\ store\ the\ pixel\_coordinates\ of\ the\ center\ of\ the\ cone}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ pixel\_coord\ <<\ center\_x,\ center\_y,\ 1;\ \textcolor{comment}{//\ populate\ pixel\_coord}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ LzC\ =\ (z\_height\ +\ calibration\_data.\mbox{\hyperlink{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}{F}}(2))\ /\ (calibration\_data.\mbox{\hyperlink{structCalibrationData_aef72715c7adf87fad6ccc02836056133}{E}}\ *\ pixel\_coord)(2);\ \textcolor{comment}{//\ calculate\ LzC\ according\ to\ Equation\ 15\ of\ bachelor\ thesis}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ Eigen::VectorXd\ Lw\ =\ LzC\ *\ calibration\_data.\mbox{\hyperlink{structCalibrationData_aef72715c7adf87fad6ccc02836056133}{E}}\ *\ pixel\_coord\ -\/\ calibration\_data.\mbox{\hyperlink{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}{F}};\ \textcolor{comment}{//\ calculate\ Lw\ according\ to\ Equation\ 14\ of\ bachelor\ thesis}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ the\ world\ coordinates\ in\ the\ cone\ object}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ cone.world\_coordinates\_mm[0]\ =\ (int)Lw(0);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ cone.world\_coordinates\_mm[1]\ =\ (int)Lw(1);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{structCalibrationData}{CalibrationData}}\ calibration\_data;\ \textcolor{comment}{//\ Struct\ where\ the\ calibration\ data\ from\ the\ camera\ is\ stored.}}
+\DoxyCodeLine{00145\ \};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VISION3D\_HPP}}
+\DoxyCodeLine{00148\ }
+
+\end{DoxyCode}

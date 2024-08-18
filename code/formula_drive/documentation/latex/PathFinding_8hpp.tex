@@ -1,0 +1,126 @@
+\doxysection{include/\+Path\+Finding.hpp File Reference}
+\hypertarget{PathFinding_8hpp}{}\label{PathFinding_8hpp}\index{include/PathFinding.hpp@{include/PathFinding.hpp}}
+{\ttfamily \#include "{}external/delaunator.\+hpp"{}}\newline
+{\ttfamily \#include "{}Cone.\+hpp"{}}\newline
+{\ttfamily \#include "{}Track.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPathFinding}{Path\+Finding}}
+\begin{DoxyCompactList}\small\item\em A class to find the path the car should follow given the detected cones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}} (const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&p1, const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Computes the Euclidean distance between two points. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{PathFinding_8hpp_a4107596e4c574e74846c23d09c459bad}{compare\+Distance}} (const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&p1, const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&p2, const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&reference\+\_\+point)
+\begin{DoxyCompactList}\small\item\em Compares the distances of two points from a reference point. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T1 , typename T2 $>$ }\\bool \mbox{\hyperlink{PathFinding_8hpp_a2a75ca43b5e5bbf799bc9d13f41bee0f}{intersects}} (\mbox{\hyperlink{structPoint}{Point}}$<$ T1 $>$ \&p1, \mbox{\hyperlink{structPoint}{Point}}$<$ T1 $>$ \&p2, \mbox{\hyperlink{structPoint}{Point}}$<$ T2 $>$ \&p3, \mbox{\hyperlink{structPoint}{Point}}$<$ T2 $>$ \&p4)
+\item 
+{\footnotesize template$<$typename T $>$ }\\double \mbox{\hyperlink{PathFinding_8hpp_a5cb24109f10d7e28bd13a13f25607e49}{calculate\+Angle}} (\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ A, \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ B)
+\begin{DoxyCompactList}\small\item\em Calculates the angle of the vector AB relative to the y-\/axis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{PathFinding_8hpp_a5cb24109f10d7e28bd13a13f25607e49}\index{PathFinding.hpp@{PathFinding.hpp}!calculateAngle@{calculateAngle}}
+\index{calculateAngle@{calculateAngle}!PathFinding.hpp@{PathFinding.hpp}}
+\doxysubsubsection{\texorpdfstring{calculateAngle()}{calculateAngle()}}
+{\footnotesize\ttfamily \label{PathFinding_8hpp_a5cb24109f10d7e28bd13a13f25607e49} 
+template$<$typename T $>$ \\
+double calculate\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$}]{A}{, }\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T $>$}]{B}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the angle of the vector AB relative to the y-\/axis. 
+
+This function computes the angle between the vector formed by two points, {\ttfamily A} and {\ttfamily B}, and the y-\/axis in the 2D plane. The angle is measured in degrees and is calculated using trigonometric functions. The angle is computed based on the difference in the coordinates of the two points.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the coordinates (e.\+g., {\ttfamily int}, {\ttfamily float}, {\ttfamily double}). This should be a numeric type that supports arithmetic operations and the {\ttfamily std\+::atan} function.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The starting point of the vector. \\
+\hline
+{\em B} & The ending point of the vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The angle in degrees between the vector AB and the y-\/axis. The angle is measured counterclockwise from the y-\/axis. 
+\end{DoxyReturn}
+\Hypertarget{PathFinding_8hpp_a4107596e4c574e74846c23d09c459bad}\index{PathFinding.hpp@{PathFinding.hpp}!compareDistance@{compareDistance}}
+\index{compareDistance@{compareDistance}!PathFinding.hpp@{PathFinding.hpp}}
+\doxysubsubsection{\texorpdfstring{compareDistance()}{compareDistance()}}
+{\footnotesize\ttfamily \label{PathFinding_8hpp_a4107596e4c574e74846c23d09c459bad} 
+template$<$typename T $>$ \\
+bool compare\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{p1}{, }\item[{const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{p2}{, }\item[{const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{reference\+\_\+point}{}\end{DoxyParamCaption})}
+
+
+
+Compares the distances of two points from a reference point. 
+
+This function calculates the Euclidean distances from a reference point to two other points, and then compares these distances. It returns {\ttfamily true} if the distance to the first point is smaller than the distance to the second point, and {\ttfamily false} otherwise.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the coordinates (e.\+g., {\ttfamily int}, {\ttfamily float}, {\ttfamily double}). This should be a numeric type that supports arithmetic operations and the {\ttfamily std\+::sqrt} function.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The first point to compare. \\
+\hline
+{\em p2} & The second point to compare. \\
+\hline
+{\em reference\+\_\+point} & The reference point from which distances to {\ttfamily p1} and {\ttfamily p2} are measured.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the distance from {\ttfamily previous\+\_\+point} to {\ttfamily p1} is less than the distance from {\ttfamily previous\+\_\+point} to {\ttfamily p2}; {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\Hypertarget{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}\index{PathFinding.hpp@{PathFinding.hpp}!distance@{distance}}
+\index{distance@{distance}!PathFinding.hpp@{PathFinding.hpp}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily \label{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27} 
+template$<$typename T $>$ \\
+T distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{p1}{, }\item[{const \mbox{\hyperlink{structPoint}{Point}}$<$ T $>$ \&}]{p2}{}\end{DoxyParamCaption})}
+
+
+
+Computes the Euclidean distance between two points. 
+
+This function calculates the Euclidean distance between two points in a 2D space. It uses the standard distance formula to compute the distance between the points represented by the {\ttfamily \doxylink{structPoint}{Point}} objects.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the coordinates (e.\+g., {\ttfamily int}, {\ttfamily float}, {\ttfamily double}). This should be a numeric type that supports arithmetic operations and the {\ttfamily std\+::sqrt} function.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & The first point. \\
+\hline
+{\em p2} & The second point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Euclidean distance between the points {\ttfamily p1} and {\ttfamily p2}. The return type is the same as the coordinate type {\ttfamily T}. 
+\end{DoxyReturn}
+\Hypertarget{PathFinding_8hpp_a2a75ca43b5e5bbf799bc9d13f41bee0f}\index{PathFinding.hpp@{PathFinding.hpp}!intersects@{intersects}}
+\index{intersects@{intersects}!PathFinding.hpp@{PathFinding.hpp}}
+\doxysubsubsection{\texorpdfstring{intersects()}{intersects()}}
+{\footnotesize\ttfamily \label{PathFinding_8hpp_a2a75ca43b5e5bbf799bc9d13f41bee0f} 
+template$<$typename T1 , typename T2 $>$ \\
+bool intersects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T1 $>$ \&}]{p1}{, }\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T1 $>$ \&}]{p2}{, }\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T2 $>$ \&}]{p3}{, }\item[{\mbox{\hyperlink{structPoint}{Point}}$<$ T2 $>$ \&}]{p4}{}\end{DoxyParamCaption})}
+

@@ -1,0 +1,176 @@
+\doxysection{Tensor\+Engine.\+hpp}
+\hypertarget{TensorEngine_8hpp_source}{}\label{TensorEngine_8hpp_source}\index{include/TensorEngine.hpp@{include/TensorEngine.hpp}}
+\mbox{\hyperlink{TensorEngine_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TENSOR\_ENGINE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TENSOR\_ENGINE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cuda\_runtime.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}\ \textcolor{comment}{//\ library\ to\ write\ and\ read\ from\ files}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}NvInfer.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2a693aa0bef84c25fe81c7e62e72f9313d}{FP32}},}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aa4bf99d6945c25077fd6660d536af8a0}{FP16}},}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aee9d73311ff0658494edfff14c3ec1e3}{INT8}},}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTensorDimensions}{TensorDimensions}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\_number\_of\_batches}};\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\_of\_channels}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c}{number\_of\_anchors}};\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTensorDimensions_a0d520be423e322919e78f565aeb84dae}{width}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTensorDimensions_a051043649a23c66206f2d042f205c975}{height}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{structTensorDimensions_a43520b6f16b58a58303cb660cbf059ab}{TensorDimensions}}(\textcolor{keywordtype}{int}\ batches,\ \textcolor{keywordtype}{int}\ channels,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\_number\_of\_batches}}(batches),\ \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\_of\_channels}}(channels),\ \mbox{\hyperlink{structTensorDimensions_a0d520be423e322919e78f565aeb84dae}{width}}(w),\ \mbox{\hyperlink{structTensorDimensions_a051043649a23c66206f2d042f205c975}{height}}(h)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}}\ =\ \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\_number\_of\_batches}}\ *\ \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\_of\_channels}}\ *\ \mbox{\hyperlink{structTensorDimensions_a0d520be423e322919e78f565aeb84dae}{width}}\ *\ \mbox{\hyperlink{structTensorDimensions_a051043649a23c66206f2d042f205c975}{height}};}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{structTensorDimensions_a1929f1f1a739991cb7ca161a5f000aed}{TensorDimensions}}(\textcolor{keywordtype}{int}\ batches,\ \textcolor{keywordtype}{int}\ channels,\ \textcolor{keywordtype}{int}\ anchors)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\_number\_of\_batches}}(batches),\ \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\_of\_channels}}(channels),\ \mbox{\hyperlink{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c}{number\_of\_anchors}}(anchors)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}}\ =\ \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\_number\_of\_batches}}\ *\ \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\_of\_channels}}\ *\ \mbox{\hyperlink{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c}{number\_of\_anchors}};}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLogger}{Logger}}\ :\ \textcolor{keyword}{public}\ nvinfer1::ILogger\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ log\ (Severity\ severity,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ msg)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (severity\ <=\ Severity::kERROR)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ msg\ <<\ std::endl;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTensorEngine}{TensorEngine}}\ \{}
+\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d}{TensorEngine}}(std::string\ engine\_path,\ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}\ precision)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ loadNetwork(engine\_path);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57}{TensorEngine}}(std::string\ engine\_path,\ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}\ precision,\ \textcolor{keywordtype}{int}\ max\_number\_of\_batches)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\_batch\_size}}(max\_number\_of\_batches)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ loadNetwork(engine\_path);}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ TensorEngine\ class}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classTensorEngine_a82d12691a322c557177f4613ffe60ba2}{\string~TensorEngine}}()\ \{\}}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}{runInference}}()\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ cuda\ stream\ that\ will\ be\ used\ for\ inference}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ cudaStream\_t\ inferenceCudaStream;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamCreate(\&inferenceCudaStream));}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}.size();\ i++)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}}-\/>setTensorAddress(\mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getIOTensorName(i),\ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}[i]);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Run\ inference}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}}-\/>enqueueV3(inferenceCudaStream);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Synchronize\ the\ cuda\ stream}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamSynchronize(inferenceCudaStream));}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamDestroy(inferenceCudaStream));}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\_index}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ std::vector<void*>\ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}};\ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ int32\_t\ \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\_of\_batches}};\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\_batch\_size}}\ =\ -\/1;\ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ std::vector<TensorDimensions>\ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}};\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ std::vector<TensorDimensions>\ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}};\ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ std::unique\_ptr<nvinfer1::IRuntime>\ \mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ std::unique\_ptr<nvinfer1::ICudaEngine>\ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ std::unique\_ptr<nvinfer1::IExecutionContext>\ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}}\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaError\_t\ code)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (code\ !=\ 0)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ error\_message\ =\ \textcolor{stringliteral}{"{}CUDA\ operation\ failed\ with\ code:\ "{}}\ +\ std::to\_string(code)\ +\ \textcolor{stringliteral}{"{}("{}}\ +\ cudaGetErrorName(code)\ +\ \textcolor{stringliteral}{"{}),\ with\ message:\ "{}}\ +\ cudaGetErrorString(code);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(error\_message);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ loadNetwork(std::string\ engine\_filename)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Open\ the\ engine\ file}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ std::ifstream\ file(engine\_filename,\ std::ios::binary\ |\ std::ios::ate);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ std::streamsize\ size\ =\ file.tellg();}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ file.seekg(0,\ std::ios::beg);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ std::vector<char>\ buffer(size);}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.read(buffer.data(),\ size))\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unable\ to\ read\ engine\ file"{}});}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ runtime\ to\ deserialize\ the\ engine\ file.}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger}{Logger}}\ logger;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}}\ =\ std::unique\_ptr<nvinfer1::IRuntime>\ \{nvinfer1::createInferRuntime(logger)\};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ device\ index}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ret\ =\ cudaSetDevice(\mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\_index}});}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ret\ !=\ 0)\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_GPUs;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ cudaGetDeviceCount(\&num\_GPUs);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ error\_message\ =\ \textcolor{stringliteral}{"{}Unable\ to\ set\ GPU\ device\ index\ to:\ "{}}\ +\ std::to\_string(\mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\_index}})\ +}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}.\ Note,\ your\ device\ has\ "{}}\ +\ std::to\_string(num\_GPUs)\ +\ \textcolor{stringliteral}{"{}\ CUDA-\/capable\ GPU(s)."{}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(error\_message);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ an\ engine,\ a\ representation\ of\ the\ optimized\ model.}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}\ =\ std::unique\_ptr<nvinfer1::ICudaEngine>(\mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}}-\/>deserializeCudaEngine(buffer.data(),\ buffer.size()));}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ execution\ context\ contains\ all\ of\ the\ state\ associated\ with\ a\ particular\ invocation}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}}\ =\ std::unique\_ptr<nvinfer1::IExecutionContext>(\mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>createExecutionContext());}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Storage\ for\ holding\ the\ input\ and\ output\ buffers}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ be\ passed\ to\ TensorRT\ for\ inference}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}.resize(\mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getNbIOTensors());}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ cuda\ stream}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ cudaStream\_t\ stream;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamCreate(\&stream));}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ GPU\ memory\ for\ input\ and\ output\ buffers}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getNbIOTensors();\ i++)\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tensor\_name\ =\ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getIOTensorName(i);}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ nvinfer1::TensorIOMode\ tensor\_type\ =\ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getTensorIOMode(tensor\_name);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ nvinfer1::Dims\ tensor\_shape\ =\ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}}-\/>getTensorShape(tensor\_name);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\_number\_of\_batches\ =\ tensor\_shape.d[0];}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_number\_of\_batches\ ==\ -\/1)\ \{\ \textcolor{comment}{//\ the\ network\ allows\ unlimited\ batch\ size}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_number\_of\_batches\ =\ \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\_batch\_size}};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ number\_of\_channels\ =\ tensor\_shape.d[1];}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ information\ about\ the\ input\ and\ output\ dimensions}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor\_type\ ==\ nvinfer1::TensorIOMode::kINPUT)\ \{\ \textcolor{comment}{//\ the\ binding\ is\ an\ input}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ input\_height\ =\ tensor\_shape.d[2];}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ input\_width\ =\ tensor\_shape.d[3];}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTensorDimensions}{TensorDimensions}}\ tensor\_dimensions\ =\ \mbox{\hyperlink{structTensorDimensions}{TensorDimensions}}(max\_number\_of\_batches,\ number\_of\_channels,\ input\_width,\ input\_height);}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\_dimensions}}.emplace\_back(tensor\_dimensions);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ the\ input\ (allocate\ enough\ to\ fit\ the\ max\ batch\ size,\ we\ could\ end\ up\ using\ less\ later)}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ input\_size\_bytes\ =\ tensor\_dimensions.\mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}}\ *\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaMallocAsync(\&\mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}[i],\ input\_size\_bytes,\ stream));}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (tensor\_type\ ==\ nvinfer1::TensorIOMode::kOUTPUT)\ \{\ \textcolor{comment}{//\ The\ binding\ is\ an\ output}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ number\_of\_anchors\ =\ tensor\_shape.d[2];}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTensorDimensions}{TensorDimensions}}\ tensor\_dimensions\ =\ \mbox{\hyperlink{structTensorDimensions}{TensorDimensions}}(max\_number\_of\_batches,\ number\_of\_channels,\ number\_of\_anchors);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\_dimensions}}.emplace\_back(tensor\_dimensions);}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ the\ output}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ output\_size\_bytes\ =\ tensor\_dimensions.\mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}}\ *\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaMallocAsync(\&\mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}[i],\ output\_size\_bytes,\ stream));}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error,\ IO\ Tensor\ is\ neither\ an\ input\ or\ output!"{}});}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Synchronize\ and\ destroy\ the\ cuda\ stream}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamSynchronize(stream));}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{checkCudaErrorCode}}(cudaStreamDestroy(stream));}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \};}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TENSOR\_ENGINE\_HPP}}
+\DoxyCodeLine{00243\ }
+
+\end{DoxyCode}

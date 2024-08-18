@@ -1,0 +1,117 @@
+\doxysection{Car.\+hpp}
+\hypertarget{Car_8hpp_source}{}\label{Car_8hpp_source}\index{include/Car.hpp@{include/Car.hpp}}
+\mbox{\hyperlink{Car_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CAR\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CAR\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCar}{Car}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{classCar_a5ff8ea54352bd45eab34773fb5440177}{max\_angle\_left}}\ =\ 52;\ \textcolor{comment}{//\ The\ maximum\ steering\ angle\ to\ the\ left\ in\ degrees.}}
+\DoxyCodeLine{00023\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{classCar_adcd7c8cb7838f84d56440981ca8b4379}{max\_angle\_right}}\ =\ 132;\ \textcolor{comment}{//\ The\ maximum\ steering\ angle\ to\ the\ right\ in\ degrees.}}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classCar_a1c803f7c5038d3e31b368b0d0a35493c}{Car}}()\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ initCAN(can\_bitrate);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ initRobot();}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ Car\ class}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classCar_a5933bb06e96b159fe339a128abda888a}{\string~Car}}()\ \{\}}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCar_aab9761e05a74207adeea3f16e8d8910a}{drive}}(uint8\_t\ angle,\ uint8\_t\ speedL,\ uint8\_t\ speedR)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ the\ angle\ does\ not\ exceed\ the\ steering\ capabilities\ of\ the\ car}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ <\ \mbox{\hyperlink{classCar_a5ff8ea54352bd45eab34773fb5440177}{max\_angle\_left}})\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ angle\ =\ \mbox{\hyperlink{classCar_a5ff8ea54352bd45eab34773fb5440177}{max\_angle\_left}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \mbox{\hyperlink{classCar_adcd7c8cb7838f84d56440981ca8b4379}{max\_angle\_right}})\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ \mbox{\hyperlink{classCar_adcd7c8cb7838f84d56440981ca8b4379}{max\_angle\_right}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ can\_id\ =\ 124;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ uint8\_t\ message[8];}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ message[0]\ =\ angle;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ message[1]\ =\ speedL;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ message[2]\ =\ speedR;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 3;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ message[i]\ =\ 0;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::string\ command\ =\ \textcolor{stringliteral}{"{}cansend\ can0\ "{}}\ +\ formatCANMessage(can\_id,\ message);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ system(command.c\_str());}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ can\_bitrate\ =\ 250000;\ \textcolor{comment}{//\ bitrate\ of\ the\ CAN\ network}}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ initCAN(\textcolor{keywordtype}{int}\ bitrate)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ we\ need\ to\ see\ if\ the\ CAN\ controller\ is\ enabled}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ FILE*\ stream\ =\ popen(\textcolor{stringliteral}{"{}ip\ link\ show\ can0"{}},\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stream)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[128];}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\_up\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\_down\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ stream)\ !=\ NULL)\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::string(buffer).find(\textcolor{stringliteral}{"{}UP"{}})\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\_up\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::string(buffer).find(\textcolor{stringliteral}{"{}DOWN"{}})\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\_down\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ pclose(stream);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (found\_up)\ \{\ \textcolor{comment}{//\ CAN\ is\ already\ running,\ there\ is\ nothing\ to\ do}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}CAN0\ is\ already\ turned\ on."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (found\_down)\ \{\ \textcolor{comment}{//\ CAN\ should\ be\ turned\ on}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ command\ =\ \textcolor{stringliteral}{"{}ip\ link\ set\ can0\ up\ type\ can\ bitrate\ "{}}\ +\ std::to\_string(bitrate)\ +\ \textcolor{stringliteral}{"{}\ dbitrate\ "{}}\ +\ std::to\_string(bitrate)\ +\ \textcolor{stringliteral}{"{}\ berr-\/reporting\ on\ fd\ on"{}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ system(command.c\_str());}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Problem\ turning\ CAN0\ on."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Unable\ to\ execute\ ip\ link\ command."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ std::string\ formatCANMessage(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ uint8\_t*\ message)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ string\ stream\ to\ build\ the\ output}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ length\ =\ \textcolor{keyword}{sizeof}(message);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ the\ ID}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{keywordtype}{id}\ <<\ \textcolor{stringliteral}{"{}\#"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ the\ hexadecimal\ values\ of\ each\ byte\ in\ the\ message}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ length;\ ++i)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ <<\ std::hex\ <<\ std::setw(2)\ <<\ std::setfill('0')\ <<\ static\_cast<int>(message[i]);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ the\ formatted\ string}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.str();}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{int}\ initRobot()\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ can\_id\ =\ 123;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ uint8\_t\ message[8];}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ message[i]\ =\ 0;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ std::string\ command\ =\ \textcolor{stringliteral}{"{}cansend\ can0\ "{}}\ +\ formatCANMessage(can\_id,\ message);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ system(command.c\_str());}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CAR\_HPP}}
+\DoxyCodeLine{00181\ }
+
+\end{DoxyCode}

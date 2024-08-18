@@ -1,0 +1,245 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}delaunator Namespace Reference}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Function Documentation}{9}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}check\_pts\_equal()}{9}{subsubsection.5.1.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}circumcenter()}{10}{subsubsection.5.1.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.1.3}circumradius()}{10}{subsubsection.5.1.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.1.4}dist()}{10}{subsubsection.5.1.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.1.5}fast\_mod()}{10}{subsubsection.5.1.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.1.6}in\_circle()}{10}{subsubsection.5.1.1.6}%
+\contentsline {subsubsection}{\numberline {5.1.1.7}orient()}{11}{subsubsection.5.1.1.7}%
+\contentsline {subsubsection}{\numberline {5.1.1.8}pseudo\_angle()}{11}{subsubsection.5.1.1.8}%
+\contentsline {subsubsection}{\numberline {5.1.1.9}sum()}{11}{subsubsection.5.1.1.9}%
+\contentsline {subsection}{\numberline {5.1.2}Variable Documentation}{11}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}EPSILON}{11}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}INVALID\_INDEX}{11}{subsubsection.5.1.2.2}%
+\contentsline {section}{\numberline {5.2}Draw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Map Namespace Reference}{11}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Function Documentation}{12}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}getMapFrame()}{12}{subsubsection.5.2.1.1}%
+\contentsline {chapter}{\numberline {6}Class Documentation}{13}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Basler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Camera Class Reference}{13}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{13}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Constructor \& Destructor Documentation}{14}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}BaslerCamera()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{14}{subsubsection.6.1.2.1}%
+\contentsline {subsubsection}{\numberline {6.1.2.2}BaslerCamera()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{14}{subsubsection.6.1.2.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.3}$\sim $BaslerCamera()}{15}{subsubsection.6.1.2.3}%
+\contentsline {subsection}{\numberline {6.1.3}Member Function Documentation}{15}{subsection.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.3.1}getFrame()}{15}{subsubsection.6.1.3.1}%
+\contentsline {subsection}{\numberline {6.1.4}Member Data Documentation}{15}{subsection.6.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.4.1}camera\_timeout}{15}{subsubsection.6.1.4.1}%
+\contentsline {section}{\numberline {6.2}Calibration\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data Struct Reference}{16}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{16}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Member Data Documentation}{16}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}E}{16}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}F}{16}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.3}K\_inv}{16}{subsubsection.6.2.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.2.4}P}{16}{subsubsection.6.2.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.2.5}pixel\_height}{17}{subsubsection.6.2.2.5}%
+\contentsline {subsubsection}{\numberline {6.2.2.6}pixel\_width}{17}{subsubsection.6.2.2.6}%
+\contentsline {subsubsection}{\numberline {6.2.2.7}R\_inv}{17}{subsubsection.6.2.2.7}%
+\contentsline {subsubsection}{\numberline {6.2.2.8}t}{17}{subsubsection.6.2.2.8}%
+\contentsline {section}{\numberline {6.3}Car Class Reference}{17}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{17}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Constructor \& Destructor Documentation}{18}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}Car()}{18}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}$\sim $Car()}{18}{subsubsection.6.3.2.2}%
+\contentsline {subsection}{\numberline {6.3.3}Member Function Documentation}{18}{subsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.1}drive()}{18}{subsubsection.6.3.3.1}%
+\contentsline {subsection}{\numberline {6.3.4}Member Data Documentation}{19}{subsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.4.1}max\_angle\_left}{19}{subsubsection.6.3.4.1}%
+\contentsline {subsubsection}{\numberline {6.3.4.2}max\_angle\_right}{19}{subsubsection.6.3.4.2}%
+\contentsline {section}{\numberline {6.4}delaunator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::compare Struct Reference}{19}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Member Function Documentation}{19}{subsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.1}operator()()}{19}{subsubsection.6.4.1.1}%
+\contentsline {subsection}{\numberline {6.4.2}Member Data Documentation}{19}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}coords}{19}{subsubsection.6.4.2.1}%
+\contentsline {subsubsection}{\numberline {6.4.2.2}cx}{20}{subsubsection.6.4.2.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.3}cy}{20}{subsubsection.6.4.2.3}%
+\contentsline {section}{\numberline {6.5}Cone Struct Reference}{20}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{20}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Constructor \& Destructor Documentation}{21}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}Cone()}{21}{subsubsection.6.5.2.1}%
+\contentsline {subsection}{\numberline {6.5.3}Member Data Documentation}{21}{subsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.1}end\_x}{21}{subsubsection.6.5.3.1}%
+\contentsline {subsubsection}{\numberline {6.5.3.2}end\_y}{21}{subsubsection.6.5.3.2}%
+\contentsline {subsubsection}{\numberline {6.5.3.3}frame}{21}{subsubsection.6.5.3.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.4}height}{21}{subsubsection.6.5.3.4}%
+\contentsline {subsubsection}{\numberline {6.5.3.5}keypoints}{21}{subsubsection.6.5.3.5}%
+\contentsline {subsubsection}{\numberline {6.5.3.6}start\_x}{21}{subsubsection.6.5.3.6}%
+\contentsline {subsubsection}{\numberline {6.5.3.7}start\_y}{21}{subsubsection.6.5.3.7}%
+\contentsline {subsubsection}{\numberline {6.5.3.8}type}{21}{subsubsection.6.5.3.8}%
+\contentsline {subsubsection}{\numberline {6.5.3.9}width}{22}{subsubsection.6.5.3.9}%
+\contentsline {subsubsection}{\numberline {6.5.3.10}world\_coordinates\_mm}{22}{subsubsection.6.5.3.10}%
+\contentsline {section}{\numberline {6.6}delaunator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Delaunator Class Reference}{22}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Constructor \& Destructor Documentation}{22}{subsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.1.1}Delaunator()}{22}{subsubsection.6.6.1.1}%
+\contentsline {subsection}{\numberline {6.6.2}Member Function Documentation}{22}{subsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.2.1}get\_hull\_area()}{22}{subsubsection.6.6.2.1}%
+\contentsline {subsection}{\numberline {6.6.3}Member Data Documentation}{23}{subsection.6.6.3}%
+\contentsline {subsubsection}{\numberline {6.6.3.1}coords}{23}{subsubsection.6.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.6.3.2}halfedges}{23}{subsubsection.6.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.6.3.3}hull\_next}{23}{subsubsection.6.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.6.3.4}hull\_prev}{23}{subsubsection.6.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.6.3.5}hull\_start}{23}{subsubsection.6.6.3.5}%
+\contentsline {subsubsection}{\numberline {6.6.3.6}hull\_tri}{23}{subsubsection.6.6.3.6}%
+\contentsline {subsubsection}{\numberline {6.6.3.7}triangles}{23}{subsubsection.6.6.3.7}%
+\contentsline {section}{\numberline {6.7}delaunator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Delaunator\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Point Struct Reference}{23}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Member Data Documentation}{24}{subsection.6.7.1}%
+\contentsline {subsubsection}{\numberline {6.7.1.1}i}{24}{subsubsection.6.7.1.1}%
+\contentsline {subsubsection}{\numberline {6.7.1.2}next}{24}{subsubsection.6.7.1.2}%
+\contentsline {subsubsection}{\numberline {6.7.1.3}prev}{24}{subsubsection.6.7.1.3}%
+\contentsline {subsubsection}{\numberline {6.7.1.4}removed}{24}{subsubsection.6.7.1.4}%
+\contentsline {subsubsection}{\numberline {6.7.1.5}t}{24}{subsubsection.6.7.1.5}%
+\contentsline {subsubsection}{\numberline {6.7.1.6}x}{24}{subsubsection.6.7.1.6}%
+\contentsline {subsubsection}{\numberline {6.7.1.7}y}{24}{subsubsection.6.7.1.7}%
+\contentsline {section}{\numberline {6.8}Edge$<$ T $>$ Struct Template Reference}{25}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{25}{subsection.6.8.1}%
+\contentsline {subsection}{\numberline {6.8.2}Constructor \& Destructor Documentation}{25}{subsection.6.8.2}%
+\contentsline {subsubsection}{\numberline {6.8.2.1}Edge()}{25}{subsubsection.6.8.2.1}%
+\contentsline {subsection}{\numberline {6.8.3}Member Data Documentation}{26}{subsection.6.8.3}%
+\contentsline {subsubsection}{\numberline {6.8.3.1}point1}{26}{subsubsection.6.8.3.1}%
+\contentsline {subsubsection}{\numberline {6.8.3.2}point2}{26}{subsubsection.6.8.3.2}%
+\contentsline {subsubsection}{\numberline {6.8.3.3}same\_color}{26}{subsubsection.6.8.3.3}%
+\contentsline {section}{\numberline {6.9}Logger Class Reference}{26}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{27}{subsection.6.9.1}%
+\contentsline {section}{\numberline {6.10}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Finding Class Reference}{27}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}Detailed Description}{27}{subsection.6.10.1}%
+\contentsline {subsection}{\numberline {6.10.2}Constructor \& Destructor Documentation}{27}{subsection.6.10.2}%
+\contentsline {subsubsection}{\numberline {6.10.2.1}PathFinding()}{27}{subsubsection.6.10.2.1}%
+\contentsline {subsubsection}{\numberline {6.10.2.2}$\sim $PathFinding()}{28}{subsubsection.6.10.2.2}%
+\contentsline {subsection}{\numberline {6.10.3}Member Function Documentation}{28}{subsection.6.10.3}%
+\contentsline {subsubsection}{\numberline {6.10.3.1}calculateDirection()}{28}{subsubsection.6.10.3.1}%
+\contentsline {subsubsection}{\numberline {6.10.3.2}findPath()}{28}{subsubsection.6.10.3.2}%
+\contentsline {subsection}{\numberline {6.10.4}Member Data Documentation}{29}{subsection.6.10.4}%
+\contentsline {subsubsection}{\numberline {6.10.4.1}edges}{29}{subsubsection.6.10.4.1}%
+\contentsline {subsubsection}{\numberline {6.10.4.2}path}{29}{subsubsection.6.10.4.2}%
+\contentsline {section}{\numberline {6.11}Point$<$ T $>$ Struct Template Reference}{29}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{29}{subsection.6.11.1}%
+\contentsline {subsection}{\numberline {6.11.2}Constructor \& Destructor Documentation}{30}{subsection.6.11.2}%
+\contentsline {subsubsection}{\numberline {6.11.2.1}Point()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{30}{subsubsection.6.11.2.1}%
+\contentsline {subsubsection}{\numberline {6.11.2.2}Point()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{30}{subsubsection.6.11.2.2}%
+\contentsline {subsubsection}{\numberline {6.11.2.3}Point()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{30}{subsubsection.6.11.2.3}%
+\contentsline {subsection}{\numberline {6.11.3}Member Function Documentation}{31}{subsection.6.11.3}%
+\contentsline {subsubsection}{\numberline {6.11.3.1}getX()}{31}{subsubsection.6.11.3.1}%
+\contentsline {subsubsection}{\numberline {6.11.3.2}getY()}{31}{subsubsection.6.11.3.2}%
+\contentsline {subsubsection}{\numberline {6.11.3.3}operator$<$()}{31}{subsubsection.6.11.3.3}%
+\contentsline {subsubsection}{\numberline {6.11.3.4}operator==()}{31}{subsubsection.6.11.3.4}%
+\contentsline {subsubsection}{\numberline {6.11.3.5}print()}{32}{subsubsection.6.11.3.5}%
+\contentsline {subsection}{\numberline {6.11.4}Member Data Documentation}{32}{subsection.6.11.4}%
+\contentsline {subsubsection}{\numberline {6.11.4.1}color}{32}{subsubsection.6.11.4.1}%
+\contentsline {subsubsection}{\numberline {6.11.4.2}point}{32}{subsubsection.6.11.4.2}%
+\contentsline {section}{\numberline {6.12}Rekt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Net Class Reference}{32}{section.6.12}%
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{33}{subsection.6.12.1}%
+\contentsline {subsection}{\numberline {6.12.2}Constructor \& Destructor Documentation}{34}{subsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.2.1}RektNet()}{34}{subsubsection.6.12.2.1}%
+\contentsline {subsubsection}{\numberline {6.12.2.2}$\sim $RektNet()}{34}{subsubsection.6.12.2.2}%
+\contentsline {subsection}{\numberline {6.12.3}Member Function Documentation}{34}{subsection.6.12.3}%
+\contentsline {subsubsection}{\numberline {6.12.3.1}getKeypoints()}{34}{subsubsection.6.12.3.1}%
+\contentsline {section}{\numberline {6.13}Tensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dimensions Struct Reference}{34}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{35}{subsection.6.13.1}%
+\contentsline {subsection}{\numberline {6.13.2}Constructor \& Destructor Documentation}{35}{subsection.6.13.2}%
+\contentsline {subsubsection}{\numberline {6.13.2.1}TensorDimensions()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{35}{subsubsection.6.13.2.1}%
+\contentsline {subsubsection}{\numberline {6.13.2.2}TensorDimensions()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{35}{subsubsection.6.13.2.2}%
+\contentsline {subsection}{\numberline {6.13.3}Member Data Documentation}{36}{subsection.6.13.3}%
+\contentsline {subsubsection}{\numberline {6.13.3.1}height}{36}{subsubsection.6.13.3.1}%
+\contentsline {subsubsection}{\numberline {6.13.3.2}max\_number\_of\_batches}{36}{subsubsection.6.13.3.2}%
+\contentsline {subsubsection}{\numberline {6.13.3.3}number\_of\_anchors}{36}{subsubsection.6.13.3.3}%
+\contentsline {subsubsection}{\numberline {6.13.3.4}number\_of\_channels}{36}{subsubsection.6.13.3.4}%
+\contentsline {subsubsection}{\numberline {6.13.3.5}size}{36}{subsubsection.6.13.3.5}%
+\contentsline {subsubsection}{\numberline {6.13.3.6}width}{36}{subsubsection.6.13.3.6}%
+\contentsline {section}{\numberline {6.14}Tensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Engine Class Reference}{37}{section.6.14}%
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{37}{subsection.6.14.1}%
+\contentsline {subsection}{\numberline {6.14.2}Constructor \& Destructor Documentation}{38}{subsection.6.14.2}%
+\contentsline {subsubsection}{\numberline {6.14.2.1}TensorEngine()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{38}{subsubsection.6.14.2.1}%
+\contentsline {subsubsection}{\numberline {6.14.2.2}TensorEngine()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{38}{subsubsection.6.14.2.2}%
+\contentsline {subsubsection}{\numberline {6.14.2.3}$\sim $TensorEngine()}{38}{subsubsection.6.14.2.3}%
+\contentsline {subsection}{\numberline {6.14.3}Member Function Documentation}{39}{subsection.6.14.3}%
+\contentsline {subsubsection}{\numberline {6.14.3.1}checkCudaErrorCode()}{39}{subsubsection.6.14.3.1}%
+\contentsline {subsubsection}{\numberline {6.14.3.2}runInference()}{39}{subsubsection.6.14.3.2}%
+\contentsline {subsection}{\numberline {6.14.4}Member Data Documentation}{39}{subsection.6.14.4}%
+\contentsline {subsubsection}{\numberline {6.14.4.1}buffers}{39}{subsubsection.6.14.4.1}%
+\contentsline {subsubsection}{\numberline {6.14.4.2}context}{39}{subsubsection.6.14.4.2}%
+\contentsline {subsubsection}{\numberline {6.14.4.3}device\_index}{39}{subsubsection.6.14.4.3}%
+\contentsline {subsubsection}{\numberline {6.14.4.4}engine}{39}{subsubsection.6.14.4.4}%
+\contentsline {subsubsection}{\numberline {6.14.4.5}input\_dimensions}{40}{subsubsection.6.14.4.5}%
+\contentsline {subsubsection}{\numberline {6.14.4.6}max\_batch\_size}{40}{subsubsection.6.14.4.6}%
+\contentsline {subsubsection}{\numberline {6.14.4.7}number\_of\_batches}{40}{subsubsection.6.14.4.7}%
+\contentsline {subsubsection}{\numberline {6.14.4.8}output\_dimensions}{40}{subsubsection.6.14.4.8}%
+\contentsline {subsubsection}{\numberline {6.14.4.9}runtime}{40}{subsubsection.6.14.4.9}%
+\contentsline {section}{\numberline {6.15}Vision3D Class Reference}{40}{section.6.15}%
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{41}{subsection.6.15.1}%
+\contentsline {subsection}{\numberline {6.15.2}Constructor \& Destructor Documentation}{41}{subsection.6.15.2}%
+\contentsline {subsubsection}{\numberline {6.15.2.1}Vision3D()}{41}{subsubsection.6.15.2.1}%
+\contentsline {subsubsection}{\numberline {6.15.2.2}$\sim $Vision3D()}{41}{subsubsection.6.15.2.2}%
+\contentsline {subsection}{\numberline {6.15.3}Member Function Documentation}{41}{subsection.6.15.3}%
+\contentsline {subsubsection}{\numberline {6.15.3.1}calculatePosition()}{41}{subsubsection.6.15.3.1}%
+\contentsline {section}{\numberline {6.16}Window Class Reference}{42}{section.6.16}%
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{42}{subsection.6.16.1}%
+\contentsline {subsection}{\numberline {6.16.2}Constructor \& Destructor Documentation}{42}{subsection.6.16.2}%
+\contentsline {subsubsection}{\numberline {6.16.2.1}Window()}{42}{subsubsection.6.16.2.1}%
+\contentsline {subsubsection}{\numberline {6.16.2.2}$\sim $Window()}{43}{subsubsection.6.16.2.2}%
+\contentsline {subsection}{\numberline {6.16.3}Member Function Documentation}{43}{subsection.6.16.3}%
+\contentsline {subsubsection}{\numberline {6.16.3.1}load2Frames()}{43}{subsubsection.6.16.3.1}%
+\contentsline {subsubsection}{\numberline {6.16.3.2}loadFrame()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{43}{subsubsection.6.16.3.2}%
+\contentsline {subsubsection}{\numberline {6.16.3.3}loadFrame()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{44}{subsubsection.6.16.3.3}%
+\contentsline {section}{\numberline {6.17}Yolo Class Reference}{44}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{45}{subsection.6.17.1}%
+\contentsline {subsection}{\numberline {6.17.2}Constructor \& Destructor Documentation}{45}{subsection.6.17.2}%
+\contentsline {subsubsection}{\numberline {6.17.2.1}Yolo()}{45}{subsubsection.6.17.2.1}%
+\contentsline {subsubsection}{\numberline {6.17.2.2}$\sim $Yolo()}{46}{subsubsection.6.17.2.2}%
+\contentsline {subsection}{\numberline {6.17.3}Member Function Documentation}{46}{subsection.6.17.3}%
+\contentsline {subsubsection}{\numberline {6.17.3.1}getCones()}{46}{subsubsection.6.17.3.1}%
+\contentsline {chapter}{\numberline {7}File Documentation}{47}{chapter.7}%
+\contentsline {section}{\numberline {7.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Basler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Camera.hpp File Reference}{47}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Basler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Camera.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{47}{section.7.2}%
+\contentsline {section}{\numberline {7.3}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Car.hpp File Reference}{48}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Car.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{49}{section.7.4}%
+\contentsline {section}{\numberline {7.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cone.hpp File Reference}{50}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Macro Definition Documentation}{50}{subsection.7.5.1}%
+\contentsline {subsubsection}{\numberline {7.5.1.1}BLUE\_CONE}{50}{subsubsection.7.5.1.1}%
+\contentsline {subsubsection}{\numberline {7.5.1.2}YELLOW\_CONE}{50}{subsubsection.7.5.1.2}%
+\contentsline {section}{\numberline {7.6}Cone.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{51}{section.7.6}%
+\contentsline {section}{\numberline {7.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Draw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Map.hpp File Reference}{51}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Draw\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Map.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{52}{section.7.8}%
+\contentsline {section}{\numberline {7.9}include/external/delaunator.hpp File Reference}{53}{section.7.9}%
+\contentsline {section}{\numberline {7.10}delaunator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{54}{section.7.10}%
+\contentsline {section}{\numberline {7.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Finding.hpp File Reference}{60}{section.7.11}%
+\contentsline {subsection}{\numberline {7.11.1}Function Documentation}{61}{subsection.7.11.1}%
+\contentsline {subsubsection}{\numberline {7.11.1.1}calculateAngle()}{61}{subsubsection.7.11.1.1}%
+\contentsline {subsubsection}{\numberline {7.11.1.2}compareDistance()}{62}{subsubsection.7.11.1.2}%
+\contentsline {subsubsection}{\numberline {7.11.1.3}distance()}{62}{subsubsection.7.11.1.3}%
+\contentsline {subsubsection}{\numberline {7.11.1.4}intersects()}{63}{subsubsection.7.11.1.4}%
+\contentsline {section}{\numberline {7.12}Path\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Finding.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{63}{section.7.12}%
+\contentsline {section}{\numberline {7.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rekt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Net.hpp File Reference}{66}{section.7.13}%
+\contentsline {section}{\numberline {7.14}Rekt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Net.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{66}{section.7.14}%
+\contentsline {section}{\numberline {7.15}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Engine.hpp File Reference}{68}{section.7.15}%
+\contentsline {subsection}{\numberline {7.15.1}Enumeration Type Documentation}{68}{subsection.7.15.1}%
+\contentsline {subsubsection}{\numberline {7.15.1.1}Precision}{68}{subsubsection.7.15.1.1}%
+\contentsline {section}{\numberline {7.16}Tensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Engine.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{69}{section.7.16}%
+\contentsline {section}{\numberline {7.17}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Track.hpp File Reference}{71}{section.7.17}%
+\contentsline {section}{\numberline {7.18}Track.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{71}{section.7.18}%
+\contentsline {section}{\numberline {7.19}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}UI.hpp File Reference}{72}{section.7.19}%
+\contentsline {subsection}{\numberline {7.19.1}Macro Definition Documentation}{72}{subsection.7.19.1}%
+\contentsline {subsubsection}{\numberline {7.19.1.1}COLOR\_BLUE}{72}{subsubsection.7.19.1.1}%
+\contentsline {subsubsection}{\numberline {7.19.1.2}COLOR\_GREEN}{72}{subsubsection.7.19.1.2}%
+\contentsline {subsubsection}{\numberline {7.19.1.3}COLOR\_GREY}{72}{subsubsection.7.19.1.3}%
+\contentsline {subsubsection}{\numberline {7.19.1.4}COLOR\_RED}{72}{subsubsection.7.19.1.4}%
+\contentsline {subsubsection}{\numberline {7.19.1.5}COLOR\_YELLOW}{72}{subsubsection.7.19.1.5}%
+\contentsline {section}{\numberline {7.20}UI.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{73}{section.7.20}%
+\contentsline {section}{\numberline {7.21}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Vision3D.hpp File Reference}{73}{section.7.21}%
+\contentsline {section}{\numberline {7.22}Vision3\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}D.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{74}{section.7.22}%
+\contentsline {section}{\numberline {7.23}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Yolo.hpp File Reference}{75}{section.7.23}%
+\contentsline {section}{\numberline {7.24}Yolo.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{75}{section.7.24}%
+\contentsline {section}{\numberline {7.25}src/main.cpp File Reference}{78}{section.7.25}%
+\contentsline {subsection}{\numberline {7.25.1}Function Documentation}{78}{subsection.7.25.1}%
+\contentsline {subsubsection}{\numberline {7.25.1.1}main()}{78}{subsubsection.7.25.1.1}%
+\contentsline {chapter}{Index}{79}{section*.67}%

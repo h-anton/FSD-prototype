@@ -1,0 +1,111 @@
+\doxysection{Car Class Reference}
+\hypertarget{classCar}{}\label{classCar}\index{Car@{Car}}
+
+
+Provides an interface to control a car via CAN bus communication.  
+
+
+
+
+{\ttfamily \#include $<$Car.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCar_a1c803f7c5038d3e31b368b0d0a35493c}{Car}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCar}{Car} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCar_a5933bb06e96b159fe339a128abda888a}{\texorpdfstring{$\sim$}{\string~}\+Car}} ()
+\item 
+int \mbox{\hyperlink{classCar_aab9761e05a74207adeea3f16e8d8910a}{drive}} (uint8\+\_\+t angle, uint8\+\_\+t speedL, uint8\+\_\+t speedR)
+\begin{DoxyCompactList}\small\item\em Sends a drive command to the car. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classCar_a5ff8ea54352bd45eab34773fb5440177}{max\+\_\+angle\+\_\+left}} = 52
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classCar_adcd7c8cb7838f84d56440981ca8b4379}{max\+\_\+angle\+\_\+right}} = 132
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides an interface to control a car via CAN bus communication. 
+
+This class is responsible for controlling the car\textquotesingle{}s steering and speed by sending appropriate commands through the CAN bus. It initializes the CAN interface, sends commands to the car, and formats CAN messages for transmission.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCar_a1c803f7c5038d3e31b368b0d0a35493c}\index{Car@{Car}!Car@{Car}}
+\index{Car@{Car}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{Car()}{Car()}}
+{\footnotesize\ttfamily \label{classCar_a1c803f7c5038d3e31b368b0d0a35493c} 
+Car\+::\+Car (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \doxylink{classCar}{Car} class. 
+
+Initializes the CAN interface and the car\textquotesingle{}s robot system. Calls the {\ttfamily init\+CAN} and {\ttfamily init\+Robot} functions to set up the car for operation.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+\Hypertarget{classCar_a5933bb06e96b159fe339a128abda888a}\index{Car@{Car}!````~Car@{\texorpdfstring{$\sim$}{\string~}Car}}
+\index{````~Car@{\texorpdfstring{$\sim$}{\string~}Car}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Car()}{\string~Car()}}
+{\footnotesize\ttfamily \label{classCar_a5933bb06e96b159fe339a128abda888a} 
+Car\+::\texorpdfstring{$\sim$}{\string~}\+Car (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCar_aab9761e05a74207adeea3f16e8d8910a}\index{Car@{Car}!drive@{drive}}
+\index{drive@{drive}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{drive()}{drive()}}
+{\footnotesize\ttfamily \label{classCar_aab9761e05a74207adeea3f16e8d8910a} 
+int Car\+::drive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{angle}{, }\item[{uint8\+\_\+t}]{speedL}{, }\item[{uint8\+\_\+t}]{speedR}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sends a drive command to the car. 
+
+Sends a command to control the car\textquotesingle{}s steering angle and wheel speeds. The angle is clamped within the allowed range, and a CAN message is constructed and sent to the car.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The desired steering angle in degrees. \\
+\hline
+{\em speedL} & The speed of the left wheel. \\
+\hline
+{\em speedR} & The speed of the right wheel.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer status code from the {\ttfamily system} call, indicating success or failure of the command execution. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCar_a5ff8ea54352bd45eab34773fb5440177}\index{Car@{Car}!max\_angle\_left@{max\_angle\_left}}
+\index{max\_angle\_left@{max\_angle\_left}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{max\_angle\_left}{max\_angle\_left}}
+{\footnotesize\ttfamily \label{classCar_a5ff8ea54352bd45eab34773fb5440177} 
+uint8\+\_\+t Car\+::max\+\_\+angle\+\_\+left = 52}
+
+\Hypertarget{classCar_adcd7c8cb7838f84d56440981ca8b4379}\index{Car@{Car}!max\_angle\_right@{max\_angle\_right}}
+\index{max\_angle\_right@{max\_angle\_right}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{max\_angle\_right}{max\_angle\_right}}
+{\footnotesize\ttfamily \label{classCar_adcd7c8cb7838f84d56440981ca8b4379} 
+uint8\+\_\+t Car\+::max\+\_\+angle\+\_\+right = 132}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Car_8hpp}{Car.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,251 @@
+\doxysection{Path\+Finding.\+hpp}
+\hypertarget{PathFinding_8hpp_source}{}\label{PathFinding_8hpp_source}\index{include/PathFinding.hpp@{include/PathFinding.hpp}}
+\mbox{\hyperlink{PathFinding_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PATH\_FINDING\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PATH\_FINDING\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{delaunator_8hpp}{external/delaunator.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Cone_8hpp}{Cone.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Track_8hpp}{Track.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00028\ T\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ p2)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ T\ dx\ =\ p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}();}
+\DoxyCodeLine{00030\ \ \ \ \ T\ dy\ =\ p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(dx\ *\ dx\ +\ dy\ *\ dy);}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{PathFinding_8hpp_a4107596e4c574e74846c23d09c459bad}{compareDistance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ p2,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<T>}}\&\ reference\_point)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ T\ dist1\ =\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(reference\_point,\ p1);}
+\DoxyCodeLine{00057\ \ \ \ \ T\ dist2\ =\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(reference\_point,\ p2);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ dist1\ <\ dist2;}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T1,\ \textcolor{keyword}{typename}\ T2>}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{PathFinding_8hpp_a2a75ca43b5e5bbf799bc9d13f41bee0f}{intersects}}(\mbox{\hyperlink{structPoint}{Point<T1>}}\&\ p1,\ \mbox{\hyperlink{structPoint}{Point<T1>}}\&\ p2,\ \mbox{\hyperlink{structPoint}{Point<T2>}}\&\ p3,\ \mbox{\hyperlink{structPoint}{Point<T2>}}\&\ p4)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ orientation\ of\ triplet\ (p1,\ p2,\ p3)}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{auto}\ orientation1\ =\ (p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p3.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}())\ -\/\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (p3.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}());}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ orientation\ of\ triplet\ (p1,\ p2,\ p4)}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{auto}\ orientation2\ =\ (p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p4.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}())\ -\/\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (p4.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p1.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}());}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ orientation\ of\ triplet\ (p3,\ p4,\ p1)}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{auto}\ orientation3\ =\ (p4.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p3.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p1.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p4.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}())\ -\/\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (p1.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p4.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p4.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p3.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}());}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ orientation\ of\ triplet\ (p3,\ p4,\ p2)}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{auto}\ orientation4\ =\ (p4.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p3.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p2.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p4.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}())\ -\/\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (p2.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ p4.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}())\ *\ (p4.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ p3.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}());}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ orientations\ are\ different}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ (orientation1\ *\ orientation2\ <\ 0)\ \&\&\ (orientation3\ *\ orientation4\ <\ 0);}
+\DoxyCodeLine{00081\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{PathFinding_8hpp_a5cb24109f10d7e28bd13a13f25607e49}{calculateAngle}}(\mbox{\hyperlink{structPoint}{Point<T>}}\ A,\ \mbox{\hyperlink{structPoint}{Point<T>}}\ B)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ T\ dx\ =\ B.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ -\/\ A.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}();}
+\DoxyCodeLine{00106\ \ \ \ \ T\ dy\ =\ B.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}()\ -\/\ A.\mbox{\hyperlink{structPoint_a6520580d609cdebbcf0f21360ce10d8b}{getY}}();}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ 90.0;}
+\DoxyCodeLine{00108\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (dx\ !=\ 0)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (B.\mbox{\hyperlink{structPoint_aae54e53975289666c9f592fa98cad5e7}{getX}}()\ >\ 0)\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ 180\ -\/\ std::atan(dy/dx)\ *\ 180\ /\ 141592653589793;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ std::atan(dy/-\/dx)\ *\ 180\ /\ 3.141592653589793;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{00118\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPathFinding}{PathFinding}}\ \{}
+\DoxyCodeLine{00130\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ std::vector<Edge<double>>\ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}};\ \textcolor{comment}{//\ All\ the\ edges\ of\ the\ track}}
+\DoxyCodeLine{00133\ \ \ \ \ std::vector<Point<int>>\ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}};\ \textcolor{comment}{//\ All\ the\ points\ on\ the\ path}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ the\ class\ PathFinding}}
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{classPathFinding_ad282d3ad66f2cf020f7c78b1fd9145dd}{PathFinding}}()\ \{\}}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ class\ PathFinding}}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{classPathFinding_a0fc7389a32fa31a194a940a89f252bdb}{\string~PathFinding}}()\ \{\}}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPathFinding_a2366eb97b9197f9832c023b332feca72}{findPath}}(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ triangulate(cones);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ filterTriangleEdges();}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a2366eb97b9197f9832c023b332feca72}{findPath}}();}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{classPathFinding_aafad33c570050df6f5ed252f1228e4a8}{calculateDirection}}()\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ angles\ between\ all\ the\ line\ sections\ of\ the\ path}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ lenght\ of\ each\ line\ section\ of\ the\ path}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ std::vector<double>\ angles;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ std::vector<double>\ lengths;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}.size();\ i++)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ angle\_i\ =\ \mbox{\hyperlink{PathFinding_8hpp_a5cb24109f10d7e28bd13a13f25607e49}{calculateAngle}}(\mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}[i-\/1],\ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}[i])\ -\/\ 90.0;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\_i\ <\ 90)\ angle\_i\ +=\ 180;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\_i\ >\ 90)\ angle\_i\ -\/=\ 180;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ angles.push\_back(angle\_i);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ lengths.push\_back(\mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(\mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}[i-\/1],\ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}[i]));}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Caculate\ angle\ the\ car\ should\ go\ to}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ 0.0;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ angle\ =\ angles[0]*1.0;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//angle\ +=\ angles[0]\ *\ 0.8;}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//angle\ +=\ angles[1]\ *\ 0.4;}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ angle\ +=\ 90.0;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (uint8\_t)angle;}
+\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00197\ \ \ \ \ std::vector<Point<double>>\ points;\ \textcolor{comment}{//\ This\ vector\ contains\ the\ coordinates\ of\ all\ the\ cones}}
+\DoxyCodeLine{00198\ \ \ \ \ std::vector<double>\ coordinates;\ \textcolor{comment}{//\ This\ vector\ will\ be\ used\ by\ the\ Delaunator\ library}}
+\DoxyCodeLine{00199\ \ \ \ \ std::vector<std::size\_t>\ triangles;\ \textcolor{comment}{//\ This\ vector\ contains\ all\ the\ triangles\ made\ by\ the\ Delaunator\ library}}
+\DoxyCodeLine{00200\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{void}\ triangulate(std::vector<Cone>*\ cones)\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ all\ the\ vectors\ are\ empty}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ points.clear();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ coordinates.clear();}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ triangles.clear();}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.clear();}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Populate\ the\ vectors}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ cones-\/>size();\ i++)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ (double)(*cones)[i].world\_coordinates\_mm[0];}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ (double)(*cones)[i].world\_coordinates\_mm[1];}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ coordinates.emplace\_back(x);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ coordinates.emplace\_back(y);}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ color\ =\ (*cones)[i].type;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ points.emplace\_back(\mbox{\hyperlink{structPoint}{Point}}(x,\ y,\ color));}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdelaunator_1_1Delaunator}{delaunator::Delaunator}}\ delaunay(coordinates);\ \textcolor{comment}{//\ Triangulate\ the\ points}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ triangles\ =\ delaunay.triangles;\ \textcolor{comment}{//\ Save\ the\ triangulation}}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{void}\ filterTriangleEdges()\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::size\_t\ i\ =\ 0;\ i\ <\ triangles.size();\ i+=3)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ 3\ points\ from\ the\ triangle}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point1\_x\ =\ coordinates[2\ *\ triangles[i\ +\ 0]];}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point1\_y\ =\ coordinates[2\ *\ triangles[i\ +\ 0]\ +\ 1];}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point2\_x\ =\ coordinates[2\ *\ triangles[i\ +\ 1]];}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point2\_y\ =\ coordinates[2\ *\ triangles[i\ +\ 1]\ +\ 1];}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point3\_x\ =\ coordinates[2\ *\ triangles[i\ +\ 2]];}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ point3\_y\ =\ coordinates[2\ *\ triangles[i\ +\ 2]\ +\ 1];}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ index\ of\ triangle\ points\ in\ the\ vector\ points}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Point<double>>::iterator\ iterator\_point1\ =\ std::find(points.begin(),\ points.end(),\ \mbox{\hyperlink{structPoint}{Point}}(point1\_x,\ point1\_y));}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Point<double>>::iterator\ iterator\_point2\ =\ std::find(points.begin(),\ points.end(),\ \mbox{\hyperlink{structPoint}{Point}}(point2\_x,\ point2\_y));}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Point<double>>::iterator\ iterator\_point3\ =\ std::find(points.begin(),\ points.end(),\ \mbox{\hyperlink{structPoint}{Point}}(point3\_x,\ point3\_y));}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_point1\ =\ std::distance(points.begin(),\ iterator\_point1);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_point2\ =\ std::distance(points.begin(),\ iterator\_point2);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_point3\ =\ std::distance(points.begin(),\ iterator\_point3);}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reconstruct\ the\ points\ (these\ now\ also\ have\ color\ information)}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point}}\ point1\ =\ points[index\_point1];}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point}}\ point2\ =\ points[index\_point2];}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point}}\ point3\ =\ points[index\_point3];}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ are\ not\ interested\ by\ triangles\ with\ all\ points\ of\ the\ same\ color}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{int})(point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ +\ (\textcolor{keywordtype}{int})(point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ +\ (\textcolor{keywordtype}{int})(point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ !=\ 3)\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ keep\ the\ edge\ connecting\ the\ 2\ points\ with\ the\ same\ color}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ From\ the\ other\ 2\ edges,\ we\ keep\ the\ shortest\ one}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}\ ==\ point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point2,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point1,\ point3)\ <\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point2,\ point3))\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point3,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point2,\ point3,\ point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}\ ==\ point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point3,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point1,\ point2)\ <\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point2,\ point3))\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point2,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point2,\ point3,\ point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}\ ==\ point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}})\ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point2,\ point3,\ point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point1,\ point2)\ <\ \mbox{\hyperlink{PathFinding_8hpp_a5eeb7c1a9eb1b1803ac06a55e3b10c27}{distance}}(point1,\ point3))\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point2,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point2.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}}.push\_back(\mbox{\hyperlink{structEdge}{Edge}}(point1,\ point3,\ point1.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}==point3.\mbox{\hyperlink{structPoint_ade98c962df2391dda7ed9d7c7174e466}{color}}));}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPathFinding_a2366eb97b9197f9832c023b332feca72}{findPath}}()\ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vectors\ for\ the\ (un)sorted\ path\_points.\ The\ first\ point\ of\ the\ path\ is\ always\ (0,\ 0)}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ std::vector<Point<int>>\ path\_points\_unsorted;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ std::vector<Point<int>>\ path\_points\_sorted;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ path\_points\_sorted.push\_back(\mbox{\hyperlink{structPoint}{Point}}(0,\ 0));}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ set\ is\ used\ to\ avoid\ duplicates\ in\ path\_points\_unsorted}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ std::set<Point<int>>\ unique\_points;}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ all\ the\ points\ in\ the\ middle\ of\ the\ track}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structEdge}{Edge<double>}}\ edge:\ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}})\ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ A\ point\ on\ the\ middle\ of\ the\ track\ always\ lies\ on\ an\ edge\ connecting\ 2\ points\ of\ different\ colors}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!edge.same\_color)\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ middle\ of\ that\ edge}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ (edge.point1.getX()+edge.point2.getX())/2;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ (edge.point1.getY()+edge.point2.getY())/2;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<int>}}\ point((\textcolor{keywordtype}{int})x,\ (\textcolor{keywordtype}{int})y);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ point\ is\ already\ in\ the\ set,\ in\ order\ to\ avoid\ duplicates}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (unique\_points.find(point)\ ==\ unique\_points.end())\ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ not\ found,\ add\ it\ to\ both\ the\ vector\ and\ the\ set}}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\_points\_unsorted.push\_back(point);}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ unique\_points.insert(point);}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ number\_of\_points\ =\ path\_points\_unsorted.size();}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sort\ these\ points\ in\ order\ of\ appearance}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (path\_points\_sorted.size()\ <\ number\_of\_points\ +\ 1)\ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<int>}}\ last\_sorted\_point\ =\ path\_points\_sorted.back();}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ point\ which\ is\ closest\ to\ last\_sorted\_point}}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Point<int>>::iterator\ iterator\_next\_point\ =\ std::min\_element(path\_points\_unsorted.begin(),\ path\_points\_unsorted.end(),}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [last\_sorted\_point](\textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<int>}}\&\ p1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPoint}{Point<int>}}\&\ p2)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ compareDistance(p1,\ p2,\ last\_sorted\_point);}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<int>}}\ next\_point\ =\ *iterator\_next\_point;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ edge\ between\ last\_sorted\_point\ and\ next\_point\ intersects\ the\ track\ boundaries,\ we\ have\ reached\ the\ end\ of\ the\ path}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ intersects\_track\_edge\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structEdge}{Edge<double>}}\ edge:\ \mbox{\hyperlink{classPathFinding_a1c65b980c0eb9c08e67cda8ce814561a}{edges}})\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ An\ edge\ is\ a\ track\ boundary\ if\ it\ connects\ 2\ points\ of\ the\ same\ color}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge.same\_color)\ \{}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<double>}}\ boundary1\ =\ edge.point1;}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point<double>}}\ boundary2\ =\ edge.point2;}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{PathFinding_8hpp_a2a75ca43b5e5bbf799bc9d13f41bee0f}{intersects}}(next\_point,\ last\_sorted\_point,\ boundary1,\ boundary2))\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ intersects\_track\_edge\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intersects\_track\_edge)\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ path\_points\_sorted.push\_back(next\_point);}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ path\_points\_unsorted.erase(iterator\_next\_point);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPathFinding_ac35f74a03fa85823d6bcbcdd9cc998c0}{path}}\ =\ path\_points\_sorted;}
+\DoxyCodeLine{00361\ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ }
+\DoxyCodeLine{00363\ \ \ \ \ }
+\DoxyCodeLine{00364\ \};}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PATH\_FINDING\_HPP}}
+\DoxyCodeLine{00367\ }
+
+\end{DoxyCode}

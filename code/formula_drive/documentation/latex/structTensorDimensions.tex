@@ -1,0 +1,128 @@
+\doxysection{Tensor\+Dimensions Struct Reference}
+\hypertarget{structTensorDimensions}{}\label{structTensorDimensions}\index{TensorDimensions@{TensorDimensions}}
+
+
+A structure representing the dimensions of a tensor.  
+
+
+
+
+{\ttfamily \#include $<$Tensor\+Engine.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structTensorDimensions_a43520b6f16b58a58303cb660cbf059ab}{Tensor\+Dimensions}} (int batches, int channels, int w, int h)
+\begin{DoxyCompactList}\small\item\em Constructor for input tensor dimensions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structTensorDimensions_a1929f1f1a739991cb7ca161a5f000aed}{Tensor\+Dimensions}} (int batches, int channels, int anchors)
+\begin{DoxyCompactList}\small\item\em Constructor for output tensor dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}{max\+\_\+number\+\_\+of\+\_\+batches}}
+\item 
+int \mbox{\hyperlink{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}{number\+\_\+of\+\_\+channels}}
+\item 
+int \mbox{\hyperlink{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c}{number\+\_\+of\+\_\+anchors}}
+\item 
+int \mbox{\hyperlink{structTensorDimensions_a0d520be423e322919e78f565aeb84dae}{width}}
+\item 
+int \mbox{\hyperlink{structTensorDimensions_a051043649a23c66206f2d042f205c975}{height}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structTensorDimensions_a6ff924a52180791ca195e3173e979865}{size}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure representing the dimensions of a tensor. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structTensorDimensions_a43520b6f16b58a58303cb660cbf059ab}\index{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}}
+\index{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{TensorDimensions()}{TensorDimensions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a43520b6f16b58a58303cb660cbf059ab} 
+Tensor\+Dimensions\+::\+Tensor\+Dimensions (\begin{DoxyParamCaption}\item[{int}]{batches}{, }\item[{int}]{channels}{, }\item[{int}]{w}{, }\item[{int}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for input tensor dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batches} & The maximum number of batches. \\
+\hline
+{\em channels} & The number of channels in the tensor. \\
+\hline
+{\em w} & The width of the tensor. \\
+\hline
+{\em h} & The height of the tensor. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structTensorDimensions_a1929f1f1a739991cb7ca161a5f000aed}\index{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}}
+\index{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{TensorDimensions()}{TensorDimensions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a1929f1f1a739991cb7ca161a5f000aed} 
+Tensor\+Dimensions\+::\+Tensor\+Dimensions (\begin{DoxyParamCaption}\item[{int}]{batches}{, }\item[{int}]{channels}{, }\item[{int}]{anchors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for output tensor dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em batches} & The maximum number of batches. \\
+\hline
+{\em channels} & The number of channels in the tensor. \\
+\hline
+{\em anchors} & The number of anchors in the output tensor. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structTensorDimensions_a051043649a23c66206f2d042f205c975}\index{TensorDimensions@{TensorDimensions}!height@{height}}
+\index{height@{height}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a051043649a23c66206f2d042f205c975} 
+int Tensor\+Dimensions\+::height}
+
+The height of the tensor (for input tensors). \Hypertarget{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3}\index{TensorDimensions@{TensorDimensions}!max\_number\_of\_batches@{max\_number\_of\_batches}}
+\index{max\_number\_of\_batches@{max\_number\_of\_batches}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{max\_number\_of\_batches}{max\_number\_of\_batches}}
+{\footnotesize\ttfamily \label{structTensorDimensions_aad13d31da00c42d4164afedb120a90f3} 
+int Tensor\+Dimensions\+::max\+\_\+number\+\_\+of\+\_\+batches}
+
+The maximum number of batches. \Hypertarget{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c}\index{TensorDimensions@{TensorDimensions}!number\_of\_anchors@{number\_of\_anchors}}
+\index{number\_of\_anchors@{number\_of\_anchors}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{number\_of\_anchors}{number\_of\_anchors}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a8bf4045dc4cf6ab93d7c8baac3129c3c} 
+int Tensor\+Dimensions\+::number\+\_\+of\+\_\+anchors}
+
+The number of anchors (for output tensors). \Hypertarget{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60}\index{TensorDimensions@{TensorDimensions}!number\_of\_channels@{number\_of\_channels}}
+\index{number\_of\_channels@{number\_of\_channels}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{number\_of\_channels}{number\_of\_channels}}
+{\footnotesize\ttfamily \label{structTensorDimensions_ad0edd59d304ed93b3ab5e1c79e8c3d60} 
+int Tensor\+Dimensions\+::number\+\_\+of\+\_\+channels}
+
+The number of channels in the tensor. \Hypertarget{structTensorDimensions_a6ff924a52180791ca195e3173e979865}\index{TensorDimensions@{TensorDimensions}!size@{size}}
+\index{size@{size}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a6ff924a52180791ca195e3173e979865} 
+size\+\_\+t Tensor\+Dimensions\+::size}
+
+The total size of the tensor, calculated based on the dimensions. \Hypertarget{structTensorDimensions_a0d520be423e322919e78f565aeb84dae}\index{TensorDimensions@{TensorDimensions}!width@{width}}
+\index{width@{width}!TensorDimensions@{TensorDimensions}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{structTensorDimensions_a0d520be423e322919e78f565aeb84dae} 
+int Tensor\+Dimensions\+::width}
+
+The width of the tensor (for input tensors). 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{TensorEngine_8hpp}{Tensor\+Engine.\+hpp}}\end{DoxyCompactItemize}

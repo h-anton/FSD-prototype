@@ -1,0 +1,42 @@
+\doxysection{Cone.\+hpp}
+\hypertarget{Cone_8hpp_source}{}\label{Cone_8hpp_source}\index{include/Cone.hpp@{include/Cone.hpp}}
+\mbox{\hyperlink{Cone_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONE\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONE\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ YELLOW\_CONE\ 0}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ BLUE\_CONE\ 1}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCone}{Cone}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_a1ae183a3acb1412109761f42287671da}{type}};\ \textcolor{comment}{//\ Color\ of\ the\ cone}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_abc9f29a7bd520b5a69e1805479ab935b}{world\_coordinates\_mm}}[2];\ \textcolor{comment}{//\ x-\/\ and\ y-\/world\ coordinates\ of\ the\ cone}}
+\DoxyCodeLine{00022\ \ \ \ \ cv::Mat\ \mbox{\hyperlink{structCone_a03a383ce95f0f75f12bc011926364b75}{frame}};\ \textcolor{comment}{//\ Cropped\ image\ frame\ that\ contains\ the\ cone,\ used\ for\ keypoint\ detection}}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Top\ left\ pixel\ coordinates\ of\ bounding\ box}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_ad70b4301e3cf39d38bbc745cc490bb6f}{start\_x}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_ab96105cf40849ccff8d4e7114381699f}{start\_y}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Bottom\ right\ pixel\ coordinates\ of\ bounding\ box}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_ac602adf2067693ea492a68561d2c51aa}{end\_x}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_a8fede9e2467e4cb63fce91eedc423ee3}{end\_y}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Width\ and\ height\ of\ bounding\ box}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_ad3a30e293659bdd8de857167f44a380c}{width}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCone_adb170d776d55011fdb9c4c84738fce12}{height}};}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<std::pair<float,\ float>>\ \mbox{\hyperlink{structCone_afb5b1d7805225e77086661121aa4045e}{keypoints}};\ \textcolor{comment}{//\ Vector\ with\ the\ keypoints\ of\ the\ cone}}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ cone\ object}}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{structCone_a45ba12c27149901567682e222369ca4c}{Cone}}(\textcolor{keywordtype}{int}\ cone\_type,\ \textcolor{keywordtype}{int}\ pixel\_x,\ \textcolor{keywordtype}{int}\ pixel\_y,\ cv::Mat\ cone\_frame)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structCone_a1ae183a3acb1412109761f42287671da}{type}}(cone\_type),\ \mbox{\hyperlink{structCone_ad70b4301e3cf39d38bbc745cc490bb6f}{start\_x}}(pixel\_x),\ \mbox{\hyperlink{structCone_ab96105cf40849ccff8d4e7114381699f}{start\_y}}(pixel\_y),\ \mbox{\hyperlink{structCone_a03a383ce95f0f75f12bc011926364b75}{frame}}(cone\_frame)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCone_ad3a30e293659bdd8de857167f44a380c}{width}}\ =\ cone\_frame.cols;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCone_adb170d776d55011fdb9c4c84738fce12}{height}}\ =\ cone\_frame.rows;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCone_ac602adf2067693ea492a68561d2c51aa}{end\_x}}\ =\ \mbox{\hyperlink{structCone_ad70b4301e3cf39d38bbc745cc490bb6f}{start\_x}}\ +\ \mbox{\hyperlink{structCone_ad3a30e293659bdd8de857167f44a380c}{width}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structCone_a8fede9e2467e4cb63fce91eedc423ee3}{end\_y}}\ =\ \mbox{\hyperlink{structCone_ab96105cf40849ccff8d4e7114381699f}{start\_y}}\ +\ \mbox{\hyperlink{structCone_adb170d776d55011fdb9c4c84738fce12}{height}};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ Cone\_HPP}}
+\DoxyCodeLine{00047\ }
+
+\end{DoxyCode}

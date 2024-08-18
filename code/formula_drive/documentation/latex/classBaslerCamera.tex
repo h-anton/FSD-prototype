@@ -1,0 +1,145 @@
+\doxysection{Basler\+Camera Class Reference}
+\hypertarget{classBaslerCamera}{}\label{classBaslerCamera}\index{BaslerCamera@{BaslerCamera}}
+
+
+A class to interface with a Basler camera or emulate a camera using a video file.  
+
+
+
+
+{\ttfamily \#include $<$Basler\+Camera.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBaslerCamera_a471cc0de8dda6e4665b033bf7144c9bb}{Basler\+Camera}} (float exposure\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classBaslerCamera}{Basler\+Camera} object for a real camera with the specified exposure time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBaslerCamera_a3287e75955755310bc43eb4a0df9c9e8}{Basler\+Camera}} (const std\+::string path\+\_\+to\+\_\+video\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classBaslerCamera}{Basler\+Camera} object to emulate a camera using a video file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBaslerCamera_a6e39c0bfa5c92f1f3f3870a80a266c0b}{\texorpdfstring{$\sim$}{\string~}\+Basler\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{classBaslerCamera}{Basler\+Camera} class. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{classBaslerCamera_a64e29ae3ddac48478542a6cff2dfb77d}{get\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the next frame from the camera or video file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classBaslerCamera_a6afd2d3b5c8e542e34a85636675f72a5}{camera\+\_\+timeout}} = 5000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to interface with a Basler camera or emulate a camera using a video file. 
+
+This class allows users to either interface with a physical Basler camera or emulate a camera by reading frames from a video file. It provides functionality to initialize the camera, retrieve frames, and handle resources properly.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBaslerCamera_a471cc0de8dda6e4665b033bf7144c9bb}\index{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}}
+\index{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}}
+\doxysubsubsection{\texorpdfstring{BaslerCamera()}{BaslerCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBaslerCamera_a471cc0de8dda6e4665b033bf7144c9bb} 
+Basler\+Camera\+::\+Basler\+Camera (\begin{DoxyParamCaption}\item[{float}]{exposure\+\_\+time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classBaslerCamera}{Basler\+Camera} object for a real camera with the specified exposure time. 
+
+Initializes the Basler camera, sets it to continuous acquisition mode, and configures the exposure time.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em exposure\+\_\+time} & The exposure time for the camera in microseconds. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the camera initialization fails. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classBaslerCamera_a3287e75955755310bc43eb4a0df9c9e8}\index{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}}
+\index{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}}
+\doxysubsubsection{\texorpdfstring{BaslerCamera()}{BaslerCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBaslerCamera_a3287e75955755310bc43eb4a0df9c9e8} 
+Basler\+Camera\+::\+Basler\+Camera (\begin{DoxyParamCaption}\item[{const std\+::string}]{path\+\_\+to\+\_\+video\+\_\+file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classBaslerCamera}{Basler\+Camera} object to emulate a camera using a video file. 
+
+Opens the specified video file for reading frames.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em path\+\_\+to\+\_\+video\+\_\+file} & The path to the video file to be used for emulation. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the video file cannot be opened. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classBaslerCamera_a6e39c0bfa5c92f1f3f3870a80a266c0b}\index{BaslerCamera@{BaslerCamera}!````~BaslerCamera@{\texorpdfstring{$\sim$}{\string~}BaslerCamera}}
+\index{````~BaslerCamera@{\texorpdfstring{$\sim$}{\string~}BaslerCamera}!BaslerCamera@{BaslerCamera}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BaslerCamera()}{\string~BaslerCamera()}}
+{\footnotesize\ttfamily \label{classBaslerCamera_a6e39c0bfa5c92f1f3f3870a80a266c0b} 
+Basler\+Camera\+::\texorpdfstring{$\sim$}{\string~}\+Basler\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor for the \doxylink{classBaslerCamera}{Basler\+Camera} class. 
+
+Closes the camera and releases resources if the camera is not in emulation mode.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBaslerCamera_a64e29ae3ddac48478542a6cff2dfb77d}\index{BaslerCamera@{BaslerCamera}!getFrame@{getFrame}}
+\index{getFrame@{getFrame}!BaslerCamera@{BaslerCamera}}
+\doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
+{\footnotesize\ttfamily \label{classBaslerCamera_a64e29ae3ddac48478542a6cff2dfb77d} 
+cv\+::\+Mat Basler\+Camera\+::get\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the next frame from the camera or video file. 
+
+If the camera is being emulated, it reads the next frame from the video file. If the camera is real, it grabs the latest frame from the camera.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+cv\+::\+Mat The captured frame as an Open\+CV Mat object. If the end of the video file is reached, it will return an empty frame. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if a frame cannot be retrieved or if the camera is not grabbing frames. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBaslerCamera_a6afd2d3b5c8e542e34a85636675f72a5}\index{BaslerCamera@{BaslerCamera}!camera\_timeout@{camera\_timeout}}
+\index{camera\_timeout@{camera\_timeout}!BaslerCamera@{BaslerCamera}}
+\doxysubsubsection{\texorpdfstring{camera\_timeout}{camera\_timeout}}
+{\footnotesize\ttfamily \label{classBaslerCamera_a6afd2d3b5c8e542e34a85636675f72a5} 
+int Basler\+Camera\+::camera\+\_\+timeout = 5000}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{BaslerCamera_8hpp}{Basler\+Camera.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,126 @@
+\doxysection{Rekt\+Net Class Reference}
+\hypertarget{classRektNet}{}\label{classRektNet}\index{RektNet@{RektNet}}
+
+
+A class for running Rektnet inference with Tensor\+RT.  
+
+
+
+
+{\ttfamily \#include $<$Rekt\+Net.\+hpp$>$}
+
+Inheritance diagram for Rekt\+Net\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRektNet}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRektNet_a828df7fa85dea83eb32452d8ad430f4a}{Rekt\+Net}} (std\+::string engine\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classRektNet}{Rekt\+Net} object and initializes the Tensor\+RT engine. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRektNet_a3ba068108d04091000a45d500af5aea1}{\texorpdfstring{$\sim$}{\string~}\+Rekt\+Net}} ()
+\item 
+void \mbox{\hyperlink{classRektNet_ae54e8bf8ba26f6745b5beb218ee40b8f}{get\+Keypoints}} (std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}cones)
+\begin{DoxyCompactList}\small\item\em Processes a vector of \doxylink{structCone}{Cone} objects to extract keypoints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTensorEngine_a88a79f11cd886cca0c5e360657651c9d}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object and loads the network from the specified engine file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensorEngine_a6d0ebfd04ca58f0ac9e088502ca02d57}{Tensor\+Engine}} (std\+::string engine\+\_\+path, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} precision, int max\+\_\+number\+\_\+of\+\_\+batches)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classTensorEngine}{Tensor\+Engine} object with a specified maximum batch size and loads the network. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classTensorEngine_a82d12691a322c557177f4613ffe60ba2}{\texorpdfstring{$\sim$}{\string~}\+Tensor\+Engine}} ()
+\item 
+void \mbox{\hyperlink{classTensorEngine_a1c6363ad8d10b595584ce34f047ae383}{run\+Inference}} ()
+\begin{DoxyCompactList}\small\item\em Runs inference on the loaded Tensor\+RT engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classTensorEngine_a50d538fbde35be94433458e2b0a927d7}{check\+Cuda\+Error\+Code}} (cuda\+Error\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Default function to checks for CUDA error codes and throws an exception if an error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTensorEngine_a5d892b63d42b30bf7da1f484efe40d39}{device\+\_\+index}} = 0
+\item 
+std\+::vector$<$ void \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classTensorEngine_a6d406e30a128a59f35e80398b71a6bbb}{buffers}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classTensorEngine_a691ee7c1c8f15d5fd85d0789de48f230}{number\+\_\+of\+\_\+batches}}
+\item 
+int \mbox{\hyperlink{classTensorEngine_af2cc928fec73edf68c16bca9f4b67655}{max\+\_\+batch\+\_\+size}} = -\/1
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_a884b05e5db955bc47f93a4e0c715052f}{input\+\_\+dimensions}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}} $>$ \mbox{\hyperlink{classTensorEngine_af050c42f8c63b708fce92731dd318998}{output\+\_\+dimensions}}
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IRuntime $>$ \mbox{\hyperlink{classTensorEngine_af98338193654bfd53091d61c62033aaa}{runtime}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+ICuda\+Engine $>$ \mbox{\hyperlink{classTensorEngine_a7ffd1a99267282024c36efcfc80578cc}{engine}} = nullptr
+\item 
+std\+::unique\+\_\+ptr$<$ nvinfer1\+::\+IExecution\+Context $>$ \mbox{\hyperlink{classTensorEngine_a9e9d6760f8e544acfb8a0c30dc296582}{context}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for running Rektnet inference with Tensor\+RT. 
+
+This class extends the \doxylink{classTensorEngine}{Tensor\+Engine} class to provide functionality specific to \doxylink{classRektNet}{Rekt\+Net}, which is used for detecting keypoints on objects. It handles preprocessing of input data, running inference, and post-\/processing to extract keypoints from the results.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRektNet_a828df7fa85dea83eb32452d8ad430f4a}\index{RektNet@{RektNet}!RektNet@{RektNet}}
+\index{RektNet@{RektNet}!RektNet@{RektNet}}
+\doxysubsubsection{\texorpdfstring{RektNet()}{RektNet()}}
+{\footnotesize\ttfamily \label{classRektNet_a828df7fa85dea83eb32452d8ad430f4a} 
+Rekt\+Net\+::\+Rekt\+Net (\begin{DoxyParamCaption}\item[{std\+::string}]{engine\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classRektNet}{Rekt\+Net} object and initializes the Tensor\+RT engine. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+\_\+path} & Path to the Tensor\+RT engine file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRektNet_a3ba068108d04091000a45d500af5aea1}\index{RektNet@{RektNet}!````~RektNet@{\texorpdfstring{$\sim$}{\string~}RektNet}}
+\index{````~RektNet@{\texorpdfstring{$\sim$}{\string~}RektNet}!RektNet@{RektNet}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RektNet()}{\string~RektNet()}}
+{\footnotesize\ttfamily \label{classRektNet_a3ba068108d04091000a45d500af5aea1} 
+Rekt\+Net\+::\texorpdfstring{$\sim$}{\string~}\+Rekt\+Net (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRektNet_ae54e8bf8ba26f6745b5beb218ee40b8f}\index{RektNet@{RektNet}!getKeypoints@{getKeypoints}}
+\index{getKeypoints@{getKeypoints}!RektNet@{RektNet}}
+\doxysubsubsection{\texorpdfstring{getKeypoints()}{getKeypoints()}}
+{\footnotesize\ttfamily \label{classRektNet_ae54e8bf8ba26f6745b5beb218ee40b8f} 
+void Rekt\+Net\+::get\+Keypoints (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structCone}{Cone}} $>$ \texorpdfstring{$\ast$}{*}}]{cones}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Processes a vector of \doxylink{structCone}{Cone} objects to extract keypoints. 
+
+This method performs preprocessing on the input cones, runs inference using the \doxylink{classRektNet}{Rekt\+Net} model, and then post-\/processes the results to extract keypoints for each cone.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cones} & A pointer to a vector of \doxylink{structCone}{Cone} objects. The keypoints for each cone will be populated after inference. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{RektNet_8hpp}{Rekt\+Net.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,45 @@
+\doxysection{include/\+Tensor\+Engine.hpp File Reference}
+\hypertarget{TensorEngine_8hpp}{}\label{TensorEngine_8hpp}\index{include/TensorEngine.hpp@{include/TensorEngine.hpp}}
+{\ttfamily \#include $<$cuda\+\_\+runtime.\+h$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include "{}Nv\+Infer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTensorDimensions}{Tensor\+Dimensions}}
+\begin{DoxyCompactList}\small\item\em A structure representing the dimensions of a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classLogger}{Logger}}
+\begin{DoxyCompactList}\small\item\em The default logger class for handling Tensor\+RT logging messages. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classTensorEngine}{Tensor\+Engine}}
+\begin{DoxyCompactList}\small\item\em A class for managing Tensor\+RT inference operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}} \{ \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2a693aa0bef84c25fe81c7e62e72f9313d}{FP32}}
+, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aa4bf99d6945c25077fd6660d536af8a0}{FP16}}
+, \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aee9d73311ff0658494edfff14c3ec1e3}{INT8}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}\index{TensorEngine.hpp@{TensorEngine.hpp}!Precision@{Precision}}
+\index{Precision@{Precision}!TensorEngine.hpp@{TensorEngine.hpp}}
+\doxysubsubsection{\texorpdfstring{Precision}{Precision}}
+{\footnotesize\ttfamily \label{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2} 
+enum class \mbox{\hyperlink{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2}{Precision}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FP32@{FP32}!TensorEngine.hpp@{TensorEngine.hpp}}\index{TensorEngine.hpp@{TensorEngine.hpp}!FP32@{FP32}}}\Hypertarget{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2a693aa0bef84c25fe81c7e62e72f9313d}\label{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2} 
+FP32&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FP16@{FP16}!TensorEngine.hpp@{TensorEngine.hpp}}\index{TensorEngine.hpp@{TensorEngine.hpp}!FP16@{FP16}}}\Hypertarget{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aa4bf99d6945c25077fd6660d536af8a0}\label{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2} 
+FP16&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INT8@{INT8}!TensorEngine.hpp@{TensorEngine.hpp}}\index{TensorEngine.hpp@{TensorEngine.hpp}!INT8@{INT8}}}\Hypertarget{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2aee9d73311ff0658494edfff14c3ec1e3}\label{TensorEngine_8hpp_ad1fbd6a28bdb0f04414d526ebeaed0e2} 
+INT8&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,310 @@
+\indexentry{delaunator@{delaunator}|hyperpage}{9}
+\indexentry{delaunator@{delaunator}!check\_pts\_equal@{check\_pts\_equal}|hyperpage}{9}
+\indexentry{check\_pts\_equal@{check\_pts\_equal}!delaunator@{delaunator}|hyperpage}{9}
+\indexentry{delaunator@{delaunator}!circumcenter@{circumcenter}|hyperpage}{9}
+\indexentry{circumcenter@{circumcenter}!delaunator@{delaunator}|hyperpage}{9}
+\indexentry{delaunator@{delaunator}!circumradius@{circumradius}|hyperpage}{10}
+\indexentry{circumradius@{circumradius}!delaunator@{delaunator}|hyperpage}{10}
+\indexentry{delaunator@{delaunator}!dist@{dist}|hyperpage}{10}
+\indexentry{dist@{dist}!delaunator@{delaunator}|hyperpage}{10}
+\indexentry{delaunator@{delaunator}!fast\_mod@{fast\_mod}|hyperpage}{10}
+\indexentry{fast\_mod@{fast\_mod}!delaunator@{delaunator}|hyperpage}{10}
+\indexentry{delaunator@{delaunator}!in\_circle@{in\_circle}|hyperpage}{10}
+\indexentry{in\_circle@{in\_circle}!delaunator@{delaunator}|hyperpage}{10}
+\indexentry{delaunator@{delaunator}!orient@{orient}|hyperpage}{10}
+\indexentry{orient@{orient}!delaunator@{delaunator}|hyperpage}{10}
+\indexentry{delaunator@{delaunator}!pseudo\_angle@{pseudo\_angle}|hyperpage}{11}
+\indexentry{pseudo\_angle@{pseudo\_angle}!delaunator@{delaunator}|hyperpage}{11}
+\indexentry{delaunator@{delaunator}!sum@{sum}|hyperpage}{11}
+\indexentry{sum@{sum}!delaunator@{delaunator}|hyperpage}{11}
+\indexentry{delaunator@{delaunator}!EPSILON@{EPSILON}|hyperpage}{11}
+\indexentry{EPSILON@{EPSILON}!delaunator@{delaunator}|hyperpage}{11}
+\indexentry{delaunator@{delaunator}!INVALID\_INDEX@{INVALID\_INDEX}|hyperpage}{11}
+\indexentry{INVALID\_INDEX@{INVALID\_INDEX}!delaunator@{delaunator}|hyperpage}{11}
+\indexentry{DrawMap@{DrawMap}|hyperpage}{11}
+\indexentry{DrawMap@{DrawMap}!getMapFrame@{getMapFrame}|hyperpage}{12}
+\indexentry{getMapFrame@{getMapFrame}!DrawMap@{DrawMap}|hyperpage}{12}
+\indexentry{BaslerCamera@{BaslerCamera}|hyperpage}{13}
+\indexentry{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}|hyperpage}{14}
+\indexentry{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}|hyperpage}{14}
+\indexentry{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}|hyperpage}{14}
+\indexentry{BaslerCamera@{BaslerCamera}!BaslerCamera@{BaslerCamera}|hyperpage}{14}
+\indexentry{BaslerCamera@{BaslerCamera}!````~BaslerCamera@{\texorpdfstring{$\sim$}{\string~}BaslerCamera}|hyperpage}{14}
+\indexentry{````~BaslerCamera@{\texorpdfstring{$\sim$}{\string~}BaslerCamera}!BaslerCamera@{BaslerCamera}|hyperpage}{14}
+\indexentry{BaslerCamera@{BaslerCamera}!getFrame@{getFrame}|hyperpage}{15}
+\indexentry{getFrame@{getFrame}!BaslerCamera@{BaslerCamera}|hyperpage}{15}
+\indexentry{BaslerCamera@{BaslerCamera}!camera\_timeout@{camera\_timeout}|hyperpage}{15}
+\indexentry{camera\_timeout@{camera\_timeout}!BaslerCamera@{BaslerCamera}|hyperpage}{15}
+\indexentry{CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!E@{E}|hyperpage}{16}
+\indexentry{E@{E}!CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!F@{F}|hyperpage}{16}
+\indexentry{F@{F}!CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!K\_inv@{K\_inv}|hyperpage}{16}
+\indexentry{K\_inv@{K\_inv}!CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!P@{P}|hyperpage}{16}
+\indexentry{P@{P}!CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!pixel\_height@{pixel\_height}|hyperpage}{16}
+\indexentry{pixel\_height@{pixel\_height}!CalibrationData@{CalibrationData}|hyperpage}{16}
+\indexentry{CalibrationData@{CalibrationData}!pixel\_width@{pixel\_width}|hyperpage}{17}
+\indexentry{pixel\_width@{pixel\_width}!CalibrationData@{CalibrationData}|hyperpage}{17}
+\indexentry{CalibrationData@{CalibrationData}!R\_inv@{R\_inv}|hyperpage}{17}
+\indexentry{R\_inv@{R\_inv}!CalibrationData@{CalibrationData}|hyperpage}{17}
+\indexentry{CalibrationData@{CalibrationData}!t@{t}|hyperpage}{17}
+\indexentry{t@{t}!CalibrationData@{CalibrationData}|hyperpage}{17}
+\indexentry{Car@{Car}|hyperpage}{17}
+\indexentry{Car@{Car}!Car@{Car}|hyperpage}{18}
+\indexentry{Car@{Car}!Car@{Car}|hyperpage}{18}
+\indexentry{Car@{Car}!````~Car@{\texorpdfstring{$\sim$}{\string~}Car}|hyperpage}{18}
+\indexentry{````~Car@{\texorpdfstring{$\sim$}{\string~}Car}!Car@{Car}|hyperpage}{18}
+\indexentry{Car@{Car}!drive@{drive}|hyperpage}{18}
+\indexentry{drive@{drive}!Car@{Car}|hyperpage}{18}
+\indexentry{Car@{Car}!max\_angle\_left@{max\_angle\_left}|hyperpage}{19}
+\indexentry{max\_angle\_left@{max\_angle\_left}!Car@{Car}|hyperpage}{19}
+\indexentry{Car@{Car}!max\_angle\_right@{max\_angle\_right}|hyperpage}{19}
+\indexentry{max\_angle\_right@{max\_angle\_right}!Car@{Car}|hyperpage}{19}
+\indexentry{delaunator::compare@{delaunator::compare}|hyperpage}{19}
+\indexentry{delaunator::compare@{delaunator::compare}!operator()@{operator()}|hyperpage}{19}
+\indexentry{operator()@{operator()}!delaunator::compare@{delaunator::compare}|hyperpage}{19}
+\indexentry{delaunator::compare@{delaunator::compare}!coords@{coords}|hyperpage}{19}
+\indexentry{coords@{coords}!delaunator::compare@{delaunator::compare}|hyperpage}{19}
+\indexentry{delaunator::compare@{delaunator::compare}!cx@{cx}|hyperpage}{19}
+\indexentry{cx@{cx}!delaunator::compare@{delaunator::compare}|hyperpage}{19}
+\indexentry{delaunator::compare@{delaunator::compare}!cy@{cy}|hyperpage}{20}
+\indexentry{cy@{cy}!delaunator::compare@{delaunator::compare}|hyperpage}{20}
+\indexentry{Cone@{Cone}|hyperpage}{20}
+\indexentry{Cone@{Cone}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!end\_x@{end\_x}|hyperpage}{21}
+\indexentry{end\_x@{end\_x}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!end\_y@{end\_y}|hyperpage}{21}
+\indexentry{end\_y@{end\_y}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!frame@{frame}|hyperpage}{21}
+\indexentry{frame@{frame}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!height@{height}|hyperpage}{21}
+\indexentry{height@{height}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!keypoints@{keypoints}|hyperpage}{21}
+\indexentry{keypoints@{keypoints}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!start\_x@{start\_x}|hyperpage}{21}
+\indexentry{start\_x@{start\_x}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!start\_y@{start\_y}|hyperpage}{21}
+\indexentry{start\_y@{start\_y}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!type@{type}|hyperpage}{21}
+\indexentry{type@{type}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!width@{width}|hyperpage}{21}
+\indexentry{width@{width}!Cone@{Cone}|hyperpage}{21}
+\indexentry{Cone@{Cone}!world\_coordinates\_mm@{world\_coordinates\_mm}|hyperpage}{22}
+\indexentry{world\_coordinates\_mm@{world\_coordinates\_mm}!Cone@{Cone}|hyperpage}{22}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{22}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!Delaunator@{Delaunator}|hyperpage}{22}
+\indexentry{Delaunator@{Delaunator}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{22}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!get\_hull\_area@{get\_hull\_area}|hyperpage}{22}
+\indexentry{get\_hull\_area@{get\_hull\_area}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{22}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!coords@{coords}|hyperpage}{23}
+\indexentry{coords@{coords}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!halfedges@{halfedges}|hyperpage}{23}
+\indexentry{halfedges@{halfedges}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!hull\_next@{hull\_next}|hyperpage}{23}
+\indexentry{hull\_next@{hull\_next}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!hull\_prev@{hull\_prev}|hyperpage}{23}
+\indexentry{hull\_prev@{hull\_prev}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!hull\_start@{hull\_start}|hyperpage}{23}
+\indexentry{hull\_start@{hull\_start}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!hull\_tri@{hull\_tri}|hyperpage}{23}
+\indexentry{hull\_tri@{hull\_tri}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::Delaunator@{delaunator::Delaunator}!triangles@{triangles}|hyperpage}{23}
+\indexentry{triangles@{triangles}!delaunator::Delaunator@{delaunator::Delaunator}|hyperpage}{23}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{23}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!i@{i}|hyperpage}{24}
+\indexentry{i@{i}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!next@{next}|hyperpage}{24}
+\indexentry{next@{next}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!prev@{prev}|hyperpage}{24}
+\indexentry{prev@{prev}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!removed@{removed}|hyperpage}{24}
+\indexentry{removed@{removed}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!t@{t}|hyperpage}{24}
+\indexentry{t@{t}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!x@{x}|hyperpage}{24}
+\indexentry{x@{x}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}!y@{y}|hyperpage}{24}
+\indexentry{y@{y}!delaunator::DelaunatorPoint@{delaunator::DelaunatorPoint}|hyperpage}{24}
+\indexentry{Edge$<$ T $>$@{Edge$<$ T $>$}|hyperpage}{25}
+\indexentry{Edge$<$ T $>$@{Edge$<$ T $>$}!Edge@{Edge}|hyperpage}{25}
+\indexentry{Edge@{Edge}!Edge$<$ T $>$@{Edge$<$ T $>$}|hyperpage}{25}
+\indexentry{Edge$<$ T $>$@{Edge$<$ T $>$}!point1@{point1}|hyperpage}{26}
+\indexentry{point1@{point1}!Edge$<$ T $>$@{Edge$<$ T $>$}|hyperpage}{26}
+\indexentry{Edge$<$ T $>$@{Edge$<$ T $>$}!point2@{point2}|hyperpage}{26}
+\indexentry{point2@{point2}!Edge$<$ T $>$@{Edge$<$ T $>$}|hyperpage}{26}
+\indexentry{Edge$<$ T $>$@{Edge$<$ T $>$}!same\_color@{same\_color}|hyperpage}{26}
+\indexentry{same\_color@{same\_color}!Edge$<$ T $>$@{Edge$<$ T $>$}|hyperpage}{26}
+\indexentry{Logger@{Logger}|hyperpage}{26}
+\indexentry{PathFinding@{PathFinding}|hyperpage}{27}
+\indexentry{PathFinding@{PathFinding}!PathFinding@{PathFinding}|hyperpage}{27}
+\indexentry{PathFinding@{PathFinding}!PathFinding@{PathFinding}|hyperpage}{27}
+\indexentry{PathFinding@{PathFinding}!````~PathFinding@{\texorpdfstring{$\sim$}{\string~}PathFinding}|hyperpage}{27}
+\indexentry{````~PathFinding@{\texorpdfstring{$\sim$}{\string~}PathFinding}!PathFinding@{PathFinding}|hyperpage}{27}
+\indexentry{PathFinding@{PathFinding}!calculateDirection@{calculateDirection}|hyperpage}{28}
+\indexentry{calculateDirection@{calculateDirection}!PathFinding@{PathFinding}|hyperpage}{28}
+\indexentry{PathFinding@{PathFinding}!findPath@{findPath}|hyperpage}{28}
+\indexentry{findPath@{findPath}!PathFinding@{PathFinding}|hyperpage}{28}
+\indexentry{PathFinding@{PathFinding}!edges@{edges}|hyperpage}{29}
+\indexentry{edges@{edges}!PathFinding@{PathFinding}|hyperpage}{29}
+\indexentry{PathFinding@{PathFinding}!path@{path}|hyperpage}{29}
+\indexentry{path@{path}!PathFinding@{PathFinding}|hyperpage}{29}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{29}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!Point@{Point}|hyperpage}{30}
+\indexentry{Point@{Point}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{30}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!Point@{Point}|hyperpage}{30}
+\indexentry{Point@{Point}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{30}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!Point@{Point}|hyperpage}{30}
+\indexentry{Point@{Point}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{30}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!getX@{getX}|hyperpage}{31}
+\indexentry{getX@{getX}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{31}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!getY@{getY}|hyperpage}{31}
+\indexentry{getY@{getY}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{31}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!operator$<$@{operator$<$}|hyperpage}{31}
+\indexentry{operator$<$@{operator$<$}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{31}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!operator==@{operator==}|hyperpage}{31}
+\indexentry{operator==@{operator==}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{31}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!print@{print}|hyperpage}{32}
+\indexentry{print@{print}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{32}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!color@{color}|hyperpage}{32}
+\indexentry{color@{color}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{32}
+\indexentry{Point$<$ T $>$@{Point$<$ T $>$}!point@{point}|hyperpage}{32}
+\indexentry{point@{point}!Point$<$ T $>$@{Point$<$ T $>$}|hyperpage}{32}
+\indexentry{RektNet@{RektNet}|hyperpage}{32}
+\indexentry{RektNet@{RektNet}!RektNet@{RektNet}|hyperpage}{34}
+\indexentry{RektNet@{RektNet}!RektNet@{RektNet}|hyperpage}{34}
+\indexentry{RektNet@{RektNet}!````~RektNet@{\texorpdfstring{$\sim$}{\string~}RektNet}|hyperpage}{34}
+\indexentry{````~RektNet@{\texorpdfstring{$\sim$}{\string~}RektNet}!RektNet@{RektNet}|hyperpage}{34}
+\indexentry{RektNet@{RektNet}!getKeypoints@{getKeypoints}|hyperpage}{34}
+\indexentry{getKeypoints@{getKeypoints}!RektNet@{RektNet}|hyperpage}{34}
+\indexentry{TensorDimensions@{TensorDimensions}|hyperpage}{34}
+\indexentry{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}|hyperpage}{35}
+\indexentry{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}|hyperpage}{35}
+\indexentry{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}|hyperpage}{35}
+\indexentry{TensorDimensions@{TensorDimensions}!TensorDimensions@{TensorDimensions}|hyperpage}{35}
+\indexentry{TensorDimensions@{TensorDimensions}!height@{height}|hyperpage}{36}
+\indexentry{height@{height}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorDimensions@{TensorDimensions}!max\_number\_of\_batches@{max\_number\_of\_batches}|hyperpage}{36}
+\indexentry{max\_number\_of\_batches@{max\_number\_of\_batches}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorDimensions@{TensorDimensions}!number\_of\_anchors@{number\_of\_anchors}|hyperpage}{36}
+\indexentry{number\_of\_anchors@{number\_of\_anchors}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorDimensions@{TensorDimensions}!number\_of\_channels@{number\_of\_channels}|hyperpage}{36}
+\indexentry{number\_of\_channels@{number\_of\_channels}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorDimensions@{TensorDimensions}!size@{size}|hyperpage}{36}
+\indexentry{size@{size}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorDimensions@{TensorDimensions}!width@{width}|hyperpage}{36}
+\indexentry{width@{width}!TensorDimensions@{TensorDimensions}|hyperpage}{36}
+\indexentry{TensorEngine@{TensorEngine}|hyperpage}{37}
+\indexentry{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}|hyperpage}{38}
+\indexentry{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}|hyperpage}{38}
+\indexentry{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}|hyperpage}{38}
+\indexentry{TensorEngine@{TensorEngine}!TensorEngine@{TensorEngine}|hyperpage}{38}
+\indexentry{TensorEngine@{TensorEngine}!````~TensorEngine@{\texorpdfstring{$\sim$}{\string~}TensorEngine}|hyperpage}{38}
+\indexentry{````~TensorEngine@{\texorpdfstring{$\sim$}{\string~}TensorEngine}!TensorEngine@{TensorEngine}|hyperpage}{38}
+\indexentry{TensorEngine@{TensorEngine}!checkCudaErrorCode@{checkCudaErrorCode}|hyperpage}{39}
+\indexentry{checkCudaErrorCode@{checkCudaErrorCode}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!runInference@{runInference}|hyperpage}{39}
+\indexentry{runInference@{runInference}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!buffers@{buffers}|hyperpage}{39}
+\indexentry{buffers@{buffers}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!context@{context}|hyperpage}{39}
+\indexentry{context@{context}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!device\_index@{device\_index}|hyperpage}{39}
+\indexentry{device\_index@{device\_index}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!engine@{engine}|hyperpage}{39}
+\indexentry{engine@{engine}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!input\_dimensions@{input\_dimensions}|hyperpage}{39}
+\indexentry{input\_dimensions@{input\_dimensions}!TensorEngine@{TensorEngine}|hyperpage}{39}
+\indexentry{TensorEngine@{TensorEngine}!max\_batch\_size@{max\_batch\_size}|hyperpage}{40}
+\indexentry{max\_batch\_size@{max\_batch\_size}!TensorEngine@{TensorEngine}|hyperpage}{40}
+\indexentry{TensorEngine@{TensorEngine}!number\_of\_batches@{number\_of\_batches}|hyperpage}{40}
+\indexentry{number\_of\_batches@{number\_of\_batches}!TensorEngine@{TensorEngine}|hyperpage}{40}
+\indexentry{TensorEngine@{TensorEngine}!output\_dimensions@{output\_dimensions}|hyperpage}{40}
+\indexentry{output\_dimensions@{output\_dimensions}!TensorEngine@{TensorEngine}|hyperpage}{40}
+\indexentry{TensorEngine@{TensorEngine}!runtime@{runtime}|hyperpage}{40}
+\indexentry{runtime@{runtime}!TensorEngine@{TensorEngine}|hyperpage}{40}
+\indexentry{Vision3D@{Vision3D}|hyperpage}{40}
+\indexentry{Vision3D@{Vision3D}!Vision3D@{Vision3D}|hyperpage}{41}
+\indexentry{Vision3D@{Vision3D}!Vision3D@{Vision3D}|hyperpage}{41}
+\indexentry{Vision3D@{Vision3D}!````~Vision3D@{\texorpdfstring{$\sim$}{\string~}Vision3D}|hyperpage}{41}
+\indexentry{````~Vision3D@{\texorpdfstring{$\sim$}{\string~}Vision3D}!Vision3D@{Vision3D}|hyperpage}{41}
+\indexentry{Vision3D@{Vision3D}!calculatePosition@{calculatePosition}|hyperpage}{41}
+\indexentry{calculatePosition@{calculatePosition}!Vision3D@{Vision3D}|hyperpage}{41}
+\indexentry{Window@{Window}|hyperpage}{42}
+\indexentry{Window@{Window}!Window@{Window}|hyperpage}{42}
+\indexentry{Window@{Window}!Window@{Window}|hyperpage}{42}
+\indexentry{Window@{Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}|hyperpage}{43}
+\indexentry{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Window@{Window}|hyperpage}{43}
+\indexentry{Window@{Window}!load2Frames@{load2Frames}|hyperpage}{43}
+\indexentry{load2Frames@{load2Frames}!Window@{Window}|hyperpage}{43}
+\indexentry{Window@{Window}!loadFrame@{loadFrame}|hyperpage}{43}
+\indexentry{loadFrame@{loadFrame}!Window@{Window}|hyperpage}{43}
+\indexentry{Window@{Window}!loadFrame@{loadFrame}|hyperpage}{44}
+\indexentry{loadFrame@{loadFrame}!Window@{Window}|hyperpage}{44}
+\indexentry{Yolo@{Yolo}|hyperpage}{44}
+\indexentry{Yolo@{Yolo}!Yolo@{Yolo}|hyperpage}{45}
+\indexentry{Yolo@{Yolo}!Yolo@{Yolo}|hyperpage}{45}
+\indexentry{Yolo@{Yolo}!````~Yolo@{\texorpdfstring{$\sim$}{\string~}Yolo}|hyperpage}{46}
+\indexentry{````~Yolo@{\texorpdfstring{$\sim$}{\string~}Yolo}!Yolo@{Yolo}|hyperpage}{46}
+\indexentry{Yolo@{Yolo}!getCones@{getCones}|hyperpage}{46}
+\indexentry{getCones@{getCones}!Yolo@{Yolo}|hyperpage}{46}
+\indexentry{include/BaslerCamera.hpp@{include/BaslerCamera.hpp}|hyperpage}{47}
+\indexentry{include/BaslerCamera.hpp@{include/BaslerCamera.hpp}|hyperpage}{47}
+\indexentry{include/Car.hpp@{include/Car.hpp}|hyperpage}{48}
+\indexentry{include/Car.hpp@{include/Car.hpp}|hyperpage}{49}
+\indexentry{include/Cone.hpp@{include/Cone.hpp}|hyperpage}{50}
+\indexentry{Cone.hpp@{Cone.hpp}!BLUE\_CONE@{BLUE\_CONE}|hyperpage}{50}
+\indexentry{BLUE\_CONE@{BLUE\_CONE}!Cone.hpp@{Cone.hpp}|hyperpage}{50}
+\indexentry{Cone.hpp@{Cone.hpp}!YELLOW\_CONE@{YELLOW\_CONE}|hyperpage}{50}
+\indexentry{YELLOW\_CONE@{YELLOW\_CONE}!Cone.hpp@{Cone.hpp}|hyperpage}{50}
+\indexentry{include/Cone.hpp@{include/Cone.hpp}|hyperpage}{51}
+\indexentry{include/DrawMap.hpp@{include/DrawMap.hpp}|hyperpage}{51}
+\indexentry{include/DrawMap.hpp@{include/DrawMap.hpp}|hyperpage}{52}
+\indexentry{include/external/delaunator.hpp@{include/external/delaunator.hpp}|hyperpage}{53}
+\indexentry{include/external/delaunator.hpp@{include/external/delaunator.hpp}|hyperpage}{54}
+\indexentry{include/PathFinding.hpp@{include/PathFinding.hpp}|hyperpage}{60}
+\indexentry{PathFinding.hpp@{PathFinding.hpp}!calculateAngle@{calculateAngle}|hyperpage}{61}
+\indexentry{calculateAngle@{calculateAngle}!PathFinding.hpp@{PathFinding.hpp}|hyperpage}{61}
+\indexentry{PathFinding.hpp@{PathFinding.hpp}!compareDistance@{compareDistance}|hyperpage}{61}
+\indexentry{compareDistance@{compareDistance}!PathFinding.hpp@{PathFinding.hpp}|hyperpage}{61}
+\indexentry{PathFinding.hpp@{PathFinding.hpp}!distance@{distance}|hyperpage}{62}
+\indexentry{distance@{distance}!PathFinding.hpp@{PathFinding.hpp}|hyperpage}{62}
+\indexentry{PathFinding.hpp@{PathFinding.hpp}!intersects@{intersects}|hyperpage}{63}
+\indexentry{intersects@{intersects}!PathFinding.hpp@{PathFinding.hpp}|hyperpage}{63}
+\indexentry{include/PathFinding.hpp@{include/PathFinding.hpp}|hyperpage}{63}
+\indexentry{include/RektNet.hpp@{include/RektNet.hpp}|hyperpage}{66}
+\indexentry{include/RektNet.hpp@{include/RektNet.hpp}|hyperpage}{66}
+\indexentry{include/TensorEngine.hpp@{include/TensorEngine.hpp}|hyperpage}{68}
+\indexentry{TensorEngine.hpp@{TensorEngine.hpp}!Precision@{Precision}|hyperpage}{68}
+\indexentry{Precision@{Precision}!TensorEngine.hpp@{TensorEngine.hpp}|hyperpage}{68}
+\indexentry{FP32@{FP32}!TensorEngine.hpp@{TensorEngine.hpp}|hyperpage}{68}
+\indexentry{TensorEngine.hpp@{TensorEngine.hpp}!FP32@{FP32}|hyperpage}{68}
+\indexentry{FP16@{FP16}!TensorEngine.hpp@{TensorEngine.hpp}|hyperpage}{68}
+\indexentry{TensorEngine.hpp@{TensorEngine.hpp}!FP16@{FP16}|hyperpage}{68}
+\indexentry{INT8@{INT8}!TensorEngine.hpp@{TensorEngine.hpp}|hyperpage}{68}
+\indexentry{TensorEngine.hpp@{TensorEngine.hpp}!INT8@{INT8}|hyperpage}{68}
+\indexentry{include/TensorEngine.hpp@{include/TensorEngine.hpp}|hyperpage}{69}
+\indexentry{include/Track.hpp@{include/Track.hpp}|hyperpage}{71}
+\indexentry{include/Track.hpp@{include/Track.hpp}|hyperpage}{71}
+\indexentry{include/UI.hpp@{include/UI.hpp}|hyperpage}{72}
+\indexentry{UI.hpp@{UI.hpp}!COLOR\_BLUE@{COLOR\_BLUE}|hyperpage}{72}
+\indexentry{COLOR\_BLUE@{COLOR\_BLUE}!UI.hpp@{UI.hpp}|hyperpage}{72}
+\indexentry{UI.hpp@{UI.hpp}!COLOR\_GREEN@{COLOR\_GREEN}|hyperpage}{72}
+\indexentry{COLOR\_GREEN@{COLOR\_GREEN}!UI.hpp@{UI.hpp}|hyperpage}{72}
+\indexentry{UI.hpp@{UI.hpp}!COLOR\_GREY@{COLOR\_GREY}|hyperpage}{72}
+\indexentry{COLOR\_GREY@{COLOR\_GREY}!UI.hpp@{UI.hpp}|hyperpage}{72}
+\indexentry{UI.hpp@{UI.hpp}!COLOR\_RED@{COLOR\_RED}|hyperpage}{72}
+\indexentry{COLOR\_RED@{COLOR\_RED}!UI.hpp@{UI.hpp}|hyperpage}{72}
+\indexentry{UI.hpp@{UI.hpp}!COLOR\_YELLOW@{COLOR\_YELLOW}|hyperpage}{72}
+\indexentry{COLOR\_YELLOW@{COLOR\_YELLOW}!UI.hpp@{UI.hpp}|hyperpage}{72}
+\indexentry{include/UI.hpp@{include/UI.hpp}|hyperpage}{73}
+\indexentry{include/Vision3D.hpp@{include/Vision3D.hpp}|hyperpage}{73}
+\indexentry{include/Vision3D.hpp@{include/Vision3D.hpp}|hyperpage}{74}
+\indexentry{include/Yolo.hpp@{include/Yolo.hpp}|hyperpage}{75}
+\indexentry{include/Yolo.hpp@{include/Yolo.hpp}|hyperpage}{75}
+\indexentry{src/main.cpp@{src/main.cpp}|hyperpage}{78}
+\indexentry{main.cpp@{main.cpp}!main@{main}|hyperpage}{78}
+\indexentry{main@{main}!main.cpp@{main.cpp}|hyperpage}{78}

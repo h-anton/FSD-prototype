@@ -1,0 +1,96 @@
+\doxysection{Calibration\+Data Struct Reference}
+\hypertarget{structCalibrationData}{}\label{structCalibrationData}\index{CalibrationData@{CalibrationData}}
+
+
+Stores calibration parameters and matrices for a camera system.  
+
+
+
+
+{\ttfamily \#include $<$Vision3\+D.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\+\_\+inv}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\+\_\+inv}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_aef72715c7adf87fad6ccc02836056133}{E}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}{F}}
+\item 
+int \mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\+\_\+width}}
+\item 
+int \mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\+\_\+height}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores calibration parameters and matrices for a camera system. 
+
+This struct contains various calibration matrices and parameters used in camera calibration, and in the linear camera model. It also stores the pixel width and height of the camera frame.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCalibrationData_aef72715c7adf87fad6ccc02836056133}\index{CalibrationData@{CalibrationData}!E@{E}}
+\index{E@{E}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{E}{E}}
+{\footnotesize\ttfamily \label{structCalibrationData_aef72715c7adf87fad6ccc02836056133} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::E}
+
+\Hypertarget{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9}\index{CalibrationData@{CalibrationData}!F@{F}}
+\index{F@{F}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{F}{F}}
+{\footnotesize\ttfamily \label{structCalibrationData_a0d87e08c607a117c22753c80fbdf03d9} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::F}
+
+\Hypertarget{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}\index{CalibrationData@{CalibrationData}!K\_inv@{K\_inv}}
+\index{K\_inv@{K\_inv}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{K\_inv}{K\_inv}}
+{\footnotesize\ttfamily \label{structCalibrationData_ab07f902516679ea36ee7c4f299dec400} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::\+K\+\_\+inv}
+
+\Hypertarget{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}\index{CalibrationData@{CalibrationData}!P@{P}}
+\index{P@{P}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{P}{P}}
+{\footnotesize\ttfamily \label{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::P}
+
+\Hypertarget{structCalibrationData_a3cf977127e593655a495a106a7afc077}\index{CalibrationData@{CalibrationData}!pixel\_height@{pixel\_height}}
+\index{pixel\_height@{pixel\_height}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{pixel\_height}{pixel\_height}}
+{\footnotesize\ttfamily \label{structCalibrationData_a3cf977127e593655a495a106a7afc077} 
+int Calibration\+Data\+::pixel\+\_\+height}
+
+\Hypertarget{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}\index{CalibrationData@{CalibrationData}!pixel\_width@{pixel\_width}}
+\index{pixel\_width@{pixel\_width}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{pixel\_width}{pixel\_width}}
+{\footnotesize\ttfamily \label{structCalibrationData_ad7048c209a325e56889f4e689fca25d6} 
+int Calibration\+Data\+::pixel\+\_\+width}
+
+\Hypertarget{structCalibrationData_aed6204a854396525bafa927e5b618747}\index{CalibrationData@{CalibrationData}!R\_inv@{R\_inv}}
+\index{R\_inv@{R\_inv}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{R\_inv}{R\_inv}}
+{\footnotesize\ttfamily \label{structCalibrationData_aed6204a854396525bafa927e5b618747} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::\+R\+\_\+inv}
+
+\Hypertarget{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}\index{CalibrationData@{CalibrationData}!t@{t}}
+\index{t@{t}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{t}{t}}
+{\footnotesize\ttfamily \label{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::t}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Vision3D_8hpp}{Vision3\+D.\+hpp}}\end{DoxyCompactItemize}
