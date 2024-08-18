@@ -1,0 +1,128 @@
+\doxysection{Chessboard Struct Reference}
+\hypertarget{structChessboard}{}\label{structChessboard}\index{Chessboard@{Chessboard}}
+
+
+Represents a chessboard used for camera calibration.  
+
+
+
+
+{\ttfamily \#include $<$Calibration.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0}{start\+\_\+pixel}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em x, y pixel coordinates of upper left corner of chessboard\+\_\+region \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_a168b679e1e4a65c4b8c32e6b31c2c5d9}{pixel\+\_\+width}}
+\begin{DoxyCompactList}\small\item\em pixel width of the whole chessboard \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_ab12f69d9ff9066cbbd4e8c420bec12e7}{pixel\+\_\+height}}
+\begin{DoxyCompactList}\small\item\em pixel height of the whole chessboard \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_a34b165de55be10e231a6e05621c6eefd}{world\+\_\+coordinates\+\_\+mm}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em x, y and z coordinates of upper left corner (= first element of std\+::vector$<$$>$ corners) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\+\_\+squares}} = 8
+\begin{DoxyCompactList}\small\item\em Number of squares on the chessboard, in the horizontal direction. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}{vertical\+\_\+squares}} = 4
+\begin{DoxyCompactList}\small\item\em Number of squares on the chessboard, in the vertical direction. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structChessboard_ad2cf30e08f5498133867353895a1a631}{square\+\_\+size\+\_\+mm}} = 10
+\begin{DoxyCompactList}\small\item\em Real world size of each square, in millimeters. \end{DoxyCompactList}\item 
+std\+::vector$<$ cv\+::\+Point2f $>$ \mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}
+\begin{DoxyCompactList}\small\item\em Vector containing all the world coordinates of the \doxylink{structChessboard}{Chessboard}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a chessboard used for camera calibration. 
+
+This structure contains information about the chessboard pattern, including its pixel coordinates, dimensions, and real-\/world location. It is used in the camera calibration process to map real-\/world coordinates to pixel coordinates and vice versa.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structChessboard_aea8bd0a74b04c922607072421c1aff2b}\index{Chessboard@{Chessboard}!corners@{corners}}
+\index{corners@{corners}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{corners}{corners}}
+{\footnotesize\ttfamily \label{structChessboard_aea8bd0a74b04c922607072421c1aff2b} 
+std\+::vector$<$cv\+::\+Point2f$>$ Chessboard\+::corners}
+
+
+
+Vector containing all the world coordinates of the \doxylink{structChessboard}{Chessboard}. 
+
+\Hypertarget{structChessboard_a6276936e38376d4ba85dd41b864f8998}\index{Chessboard@{Chessboard}!horizontal\_squares@{horizontal\_squares}}
+\index{horizontal\_squares@{horizontal\_squares}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{horizontal\_squares}{horizontal\_squares}}
+{\footnotesize\ttfamily \label{structChessboard_a6276936e38376d4ba85dd41b864f8998} 
+int Chessboard\+::horizontal\+\_\+squares = 8}
+
+
+
+Number of squares on the chessboard, in the horizontal direction. 
+
+\Hypertarget{structChessboard_ab12f69d9ff9066cbbd4e8c420bec12e7}\index{Chessboard@{Chessboard}!pixel\_height@{pixel\_height}}
+\index{pixel\_height@{pixel\_height}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{pixel\_height}{pixel\_height}}
+{\footnotesize\ttfamily \label{structChessboard_ab12f69d9ff9066cbbd4e8c420bec12e7} 
+int Chessboard\+::pixel\+\_\+height}
+
+
+
+pixel height of the whole chessboard 
+
+\Hypertarget{structChessboard_a168b679e1e4a65c4b8c32e6b31c2c5d9}\index{Chessboard@{Chessboard}!pixel\_width@{pixel\_width}}
+\index{pixel\_width@{pixel\_width}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{pixel\_width}{pixel\_width}}
+{\footnotesize\ttfamily \label{structChessboard_a168b679e1e4a65c4b8c32e6b31c2c5d9} 
+int Chessboard\+::pixel\+\_\+width}
+
+
+
+pixel width of the whole chessboard 
+
+\Hypertarget{structChessboard_ad2cf30e08f5498133867353895a1a631}\index{Chessboard@{Chessboard}!square\_size\_mm@{square\_size\_mm}}
+\index{square\_size\_mm@{square\_size\_mm}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{square\_size\_mm}{square\_size\_mm}}
+{\footnotesize\ttfamily \label{structChessboard_ad2cf30e08f5498133867353895a1a631} 
+int Chessboard\+::square\+\_\+size\+\_\+mm = 10}
+
+
+
+Real world size of each square, in millimeters. 
+
+\Hypertarget{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0}\index{Chessboard@{Chessboard}!start\_pixel@{start\_pixel}}
+\index{start\_pixel@{start\_pixel}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{start\_pixel}{start\_pixel}}
+{\footnotesize\ttfamily \label{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0} 
+int Chessboard\+::start\+\_\+pixel\mbox{[}2\mbox{]}}
+
+
+
+x, y pixel coordinates of upper left corner of chessboard\+\_\+region 
+
+\Hypertarget{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}\index{Chessboard@{Chessboard}!vertical\_squares@{vertical\_squares}}
+\index{vertical\_squares@{vertical\_squares}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{vertical\_squares}{vertical\_squares}}
+{\footnotesize\ttfamily \label{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c} 
+int Chessboard\+::vertical\+\_\+squares = 4}
+
+
+
+Number of squares on the chessboard, in the vertical direction. 
+
+\Hypertarget{structChessboard_a34b165de55be10e231a6e05621c6eefd}\index{Chessboard@{Chessboard}!world\_coordinates\_mm@{world\_coordinates\_mm}}
+\index{world\_coordinates\_mm@{world\_coordinates\_mm}!Chessboard@{Chessboard}}
+\doxysubsubsection{\texorpdfstring{world\_coordinates\_mm}{world\_coordinates\_mm}}
+{\footnotesize\ttfamily \label{structChessboard_a34b165de55be10e231a6e05621c6eefd} 
+int Chessboard\+::world\+\_\+coordinates\+\_\+mm\mbox{[}3\mbox{]}}
+
+
+
+x, y and z coordinates of upper left corner (= first element of std\+::vector$<$$>$ corners) 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Calibration_8hpp}{Calibration.\+hpp}}\end{DoxyCompactItemize}

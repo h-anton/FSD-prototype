@@ -1,0 +1,256 @@
+\doxysection{Calibration.\+hpp}
+\hypertarget{Calibration_8hpp_source}{}\label{Calibration_8hpp_source}\index{include/Calibration.hpp@{include/Calibration.hpp}}
+\mbox{\hyperlink{Calibration_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CALIBRATION\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CALIBRATION\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}\ \textcolor{comment}{//\ library\ to\ write\ and\ read\ from\ files}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <Dense>}\ \textcolor{comment}{//\ Eigen\ library\ for\ matrices}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BaslerCamera_8hpp}{BaslerCamera.hpp}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UI_8hpp}{UI.hpp}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structChessboard}{Chessboard}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0}{start\_pixel}}[2];}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_a168b679e1e4a65c4b8c32e6b31c2c5d9}{pixel\_width}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_ab12f69d9ff9066cbbd4e8c420bec12e7}{pixel\_height}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_a34b165de55be10e231a6e05621c6eefd}{world\_coordinates\_mm}}[3];}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}\ =\ 8;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}{vertical\_squares}}\ =\ 4;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structChessboard_ad2cf30e08f5498133867353895a1a631}{square\_size\_mm}}\ =\ 10;}
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<cv::Point2f>\ \mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}};}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCalibrationData}{CalibrationData}}\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}\ =\ Eigen::MatrixXd::Zero(3,\ 4);}
+\DoxyCodeLine{00073\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}};}
+\DoxyCodeLine{00077\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}};}
+\DoxyCodeLine{00081\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\_width}}\ =\ 1920;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\_height}}\ =\ 1200;}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCalibration}{Calibration}}\ \{}
+\DoxyCodeLine{00103\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{classCalibration_a15fc7fbce5d16de55791813fa8d68056}{Calibration}}(\mbox{\hyperlink{classBaslerCamera}{BaslerCamera}}*\ cam)\ :\ camera(cam)\ \{\}}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ Destructor\ for\ the\ Vision3D\ class}}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{classCalibration_a108efb6ccd8c98e5cac950be4bf0ac26}{\string~Calibration}}()\ \{\}}
+\DoxyCodeLine{00116\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCalibration_a9c866375fcd8d66a3d2e70f1f495474c}{findChessboardCorners}}(\mbox{\hyperlink{structChessboard}{Chessboard}}\ *chessboards[])\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classWindow}{Window}}\ window(\textcolor{stringliteral}{"{}Calibration"{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ chessboards[i]\ !=\ NULL;\ i++)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\_chessboard\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_x\ =\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0}{start\_pixel}}[0];}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_y\ =\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_a9850bb2b0b53dad2e1cc7f0e0aad59a0}{start\_pixel}}[1];}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width\ =\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_a168b679e1e4a65c4b8c32e6b31c2c5d9}{pixel\_width}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_ab12f69d9ff9066cbbd4e8c420bec12e7}{pixel\_height}};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Rect\ chessboard\_region(start\_x,\ start\_y,\ width,\ height);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Size\ chessboard\_size\ =\ cv::Size(chessboards[i]-\/>horizontal\_squares-\/1,\ chessboards[i]-\/>vertical\_squares-\/1);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!found\_chessboard)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ frame\ =\ camera-\/>\mbox{\hyperlink{classBaslerCamera_a64e29ae3ddac48478542a6cff2dfb77d}{getFrame}}();}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\_chessboard\ =\ cv::findChessboardCorners(frame(chessboard\_region),\ chessboard\_size\ ,\ chessboards[i]-\/>corners,\ cv::CALIB\_CB\_ADAPTIVE\_THRESH);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::rectangle(frame,\ chessboard\_region,\ \mbox{\hyperlink{UI_8hpp_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}},\ 3);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\mbox{\hyperlink{classWindow_a581919fb3895d01f3cea77343343783c}{loadFrame}}(frame,\ 768,\ 480);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Change\ chessboard\ coordinates\ to\ full\ frame\ instead\ of\ chessboard\_region}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size();\ j++)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[j].x\ +=\ start\_x;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[j].y\ +=\ start\_y;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_top\_left\ =\ 0;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_top\_right\ =\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}\ -\/\ 2;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_bottom\_left\ =\ (chessboards[i]-\/>\mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}-\/1)\ *\ (chessboards[i]-\/>vertical\_squares-\/2);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mirror\ chessboard\ so\ that\ x\ coordinates\ go\ from\ low\ to\ high}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chessboards[i]-\/>corners[index\_top\_left].x\ >\ chessboards[i]-\/>corners[index\_top\_right].x)\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}\ =\ mirrorXAxis(chessboards[i]);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mirror\ chessboard\ so\ that\ y\ coordinates\ go\ from\ low\ to\ high}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chessboards[i]-\/>corners[index\_top\_left].y\ >\ chessboards[i]-\/>corners[index\_bottom\_left].y)\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}\ =\ mirrorYAxis(chessboards[i]);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCalibration_a1058807aa9a09e022d2bc7659c007a87}{calibrate}}(\mbox{\hyperlink{structChessboard}{Chessboard}}*\ chessboards[])\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Count\ number\ of\ calibration\ points}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_points\ =\ 0;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ chessboards[i]\ !=\ NULL;\ i++)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ num\_points\ +=\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size();}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ and\ fill\ Matrix\ A\ (Section\ 4.2\ from\ preparatory\ research\ training)}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ A(num\_points*2,\ 12);}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ chessboards[k]\ !=\ NULL;\ k++)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_cols\ =\ chessboards[k]-\/>\mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}-\/1;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_rows\ =\ chessboards[k]-\/>\mbox{\hyperlink{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}{vertical\_squares}}-\/1;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Ly\ =\ (double)chessboards[k]-\/>world\_coordinates\_mm[1];}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Lz\ =\ (double)chessboards[k]-\/>world\_coordinates\_mm[2];}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_rows;\ i++)\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Lx\ =\ (double)chessboards[k]-\/>world\_coordinates\_mm[0];\ \textcolor{comment}{//\ FIX\ THIS}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ num\_cols;\ j++)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ u\ =\ chessboards[k]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[i\ *\ num\_cols\ +\ j].x;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ v\ =\ chessboards[k]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[i\ *\ num\_cols\ +\ j].y;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ (k*chessboards[k]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size())\ +\ (i\ *\ num\_cols\ +\ j);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A.row(2*index)\ <<\ Lx,\ Ly,\ Lz,\ 1,\ 0,\ 0,\ 0,\ 0,\ -\/u*Lx,\ -\/u*Ly,\ -\/u*Lz,\ -\/u;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A.row(2*index+1)\ <<\ 0,\ 0,\ 0,\ 0,\ Lx,\ Ly,\ Lz,\ 1,\ -\/v*Lx,\ -\/v*Ly,\ -\/v*Lz,\ -\/v;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Lx\ +=\ (double)chessboards[k]-\/>square\_size\_mm;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Ly\ -\/=\ (double)chessboards[k]-\/>square\_size\_mm;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ Eigenvectors\ and\ Eigenvalues\ (Section\ 4.2\ from\ preparatory\ research\ training)}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ ATA\ =\ A.transpose()\ *\ A;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ Eigen::EigenSolver<Eigen::MatrixXd>\ es;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ Eigen::VectorXd\ eigenvalues(12,\ 1);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ eigenvectors(12,\ 12);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ es.compute(ATA,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ eigenvalues\ =\ es.eigenvalues().real();}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ eigenvectors\ =\ es.eigenvectors().real();}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ Eigenvalue\ and\ Eigenvector\ combination\ with\ smallest\ Loss\ value\ (Section\ 4.2\ from\ preparatory\ research\ training)}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ min\ =\ FLT\_MAX;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ uint8\_t\ best\_index\ =\ 0;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ 12;\ i++)\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lambda\ =\ eigenvalues.row(i).coeff(0,\ 0);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ x\_normalized\ =\ eigenvectors.col(i);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ loss\_func\ =\ (x\_normalized.transpose()\ *\ ATA\ *\ x\_normalized).coeff(0,\ 0)\ -\/\ lambda\ *\ ((x\_normalized.transpose()\ *\ x\_normalized).coeff(0,\ 0)\ -\/\ 1);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (loss\_func\ <\ min)\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ best\_index\ =\ i;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fill\ matrix\ P}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ Eigen::VectorXd\ p\ =\ es.eigenvectors().real().col(best\_index);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ 3;\ i++)\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ j\ =\ 0;\ j\ <\ 4;\ j++)\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}(i,\ j)\ =\ p(i*4+j);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ matrix\ P\_1\ by\ omitting\ the\ last\ column\ of\ P\ (section\ 3.1\ from\ bachelor\ thesis)}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ P\_1\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.leftCols(calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.cols()\ -\/\ 1);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ matrix\ P\_2\ by\ extracting\ the\ last\ column\ of\ P\ (section\ 3.1\ from\ bachelor\ thesis)}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ P\_2\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.col(calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.cols()\ -\/\ 1);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RQ-\/Decomposition\ of\ P\_1\ (according\ to\ section\ 2\ of\ bachelor\ thesis)}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ pAT\ =\ P\_1.colwise().reverse().transpose();\ \textcolor{comment}{//\ cfr.\ Equation\ 1\ of\ bachelor\ thesis}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ Eigen::HouseholderQR<Eigen::MatrixXd>\ qr(pAT);\ \textcolor{comment}{//\ Perform\ QR-\/Decomposition}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ q\_tilde\ =\ qr.householderQ();}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ r\_tilde\ =\ qr.matrixQR().triangularView<Eigen::Upper>();}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Equation\ 8\ from\ bachelor\ thesis}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ Q\ =\ q\_tilde.transpose().colwise().reverse();}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ Eigen::MatrixXd\ R\ =\ r\_tilde.transpose().colwise().reverse().rowwise().reverse();}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fill\ calibration\_data}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}\ =\ R.inverse();}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}\ =\ Q.inverse();}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}\ *\ P\_2;\ \textcolor{comment}{//\ see\ Equation\ 9\ from\ bachelor\ thesis}}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCalibration_adc84a7fd201a92c9d7e2d2d2fa60920c}{save}}(\textcolor{keyword}{const}\ std::string\&\ filename)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ file}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ std::ofstream\ file(filename,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ open\ or\ create\ file\ for\ writing."{}});}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ pixel\ width\ and\ height}}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&calibration\_data.\mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\_width}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&calibration\_data.\mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\_height}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ matrix\ P}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rows,\ cols;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ rows\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.rows();}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ cols\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.cols();}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ matrix\ K\_inv}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ rows\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}.rows();}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ cols\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}.cols();}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\_inv}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ matrix\ R\_inv}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ rows\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}.rows();}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ cols\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}.cols();}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\_inv}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ matrix\ t}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ rows\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}.rows();}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ cols\ =\ calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}.cols();}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&rows),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cols),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(calibration\_data.\mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}.data()),\ rows\ *\ cols\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00314\ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \ \ \ \ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCalibration_aaec26e1c1e3d3c6609c818bbbf70c6f7}{drawChessboardCorners}}(cv::Mat*\ frame,\ \mbox{\hyperlink{structChessboard}{Chessboard}}*\ chessboards[])\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ chessboards[i]\ !=\ NULL;\ i++)\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ chessboards[i]-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size();\ j++)\ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cv::circle(*frame,\ chessboards[i]-\/>corners[j],\ 5,\ \mbox{\hyperlink{UI_8hpp_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}},\ -\/1);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ \ \ \ \ }
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{classBaslerCamera}{BaslerCamera}}*\ camera;}
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{structCalibrationData}{CalibrationData}}\ calibration\_data;}
+\DoxyCodeLine{00339\ \ \ \ \ }
+\DoxyCodeLine{00352\ \ \ \ \ std::vector<cv::Point2f>\ mirrorXAxis(\mbox{\hyperlink{structChessboard}{Chessboard}}*\ chessboard)\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ std::vector<cv::Point2f>\ mirroredVector(chessboard-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size());}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_cols\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}-\/1;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_rows\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}{vertical\_squares}}-\/1;}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_rows;\ i++)\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ num\_cols;\ j++)\ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mirroredVector[i\ *\ num\_cols\ +\ j]\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[i\ *\ num\_cols\ +\ num\_cols\ -\/\ 1\ -\/\ j];}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mirroredVector;}
+\DoxyCodeLine{00365\ \ \ \ \ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00379\ \ \ \ \ std::vector<cv::Point2f>\ mirrorYAxis(\mbox{\hyperlink{structChessboard}{Chessboard}}*\ chessboard)\ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ std::vector<cv::Point2f>\ mirroredVector(chessboard-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}.size());}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_cols\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_a6276936e38376d4ba85dd41b864f8998}{horizontal\_squares}}-\/1;}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_rows\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_ae0cbe806324be2aa6feb3a05cf22e48c}{vertical\_squares}}-\/1;}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_rows;\ i++)\ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ num\_cols;\ j++)\ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mirroredVector[i\ *\ num\_cols\ +\ j]\ =\ chessboard-\/>\mbox{\hyperlink{structChessboard_aea8bd0a74b04c922607072421c1aff2b}{corners}}[(num\_rows\ -\/\ 1\ -\/\ i)\ *\ num\_cols\ +\ j];}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mirroredVector;}
+\DoxyCodeLine{00392\ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \};}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CALIBRATION\_HPP}}
+
+\end{DoxyCode}

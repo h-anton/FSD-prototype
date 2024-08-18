@@ -1,0 +1,141 @@
+\doxysection{Window Class Reference}
+\hypertarget{classWindow}{}\label{classWindow}\index{Window@{Window}}
+
+
+A class to encapsulate an Open\+CV window for displaying frames.  
+
+
+
+
+{\ttfamily \#include $<$UI.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWindow_a4dd46cefbc11d477f18a3d99c1a3e84c}{Window}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Constructor that initializes the Open\+CV window with the given name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6}{\texorpdfstring{$\sim$}{\string~}\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that destroys the Open\+CV window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWindow_a581919fb3895d01f3cea77343343783c}{load\+Frame}} (cv\+::\+Mat frame)
+\begin{DoxyCompactList}\small\item\em Loads and displays a frame in the Open\+CV window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWindow_a16f107b89114576d2ba6fb73564badcb}{load\+Frame}} (cv\+::\+Mat \texorpdfstring{$\ast$}{*}frame, int width, int height)
+\begin{DoxyCompactList}\small\item\em Loads, resizes, and displays a frame in the Open\+CV window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWindow_a68e21cdbe153e5b9348abd7f1b649c4d}{load2\+Frames}} (cv\+::\+Mat \texorpdfstring{$\ast$}{*}frame\+\_\+left, cv\+::\+Mat \texorpdfstring{$\ast$}{*}frame\+\_\+right, int width, int height)
+\begin{DoxyCompactList}\small\item\em Loads, resizes, and displays a 2 frames next to each other in the Open\+CV window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to encapsulate an Open\+CV window for displaying frames. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classWindow_a4dd46cefbc11d477f18a3d99c1a3e84c}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily \label{classWindow_a4dd46cefbc11d477f18a3d99c1a3e84c} 
+Window\+::\+Window (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor that initializes the Open\+CV window with the given name. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classWindow_a245d821e6016fa1f6970ccbbedd635f6}\index{Window@{Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily \label{classWindow_a245d821e6016fa1f6970ccbbedd635f6} 
+Window\+::\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor that destroys the Open\+CV window. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWindow_a68e21cdbe153e5b9348abd7f1b649c4d}\index{Window@{Window}!load2Frames@{load2Frames}}
+\index{load2Frames@{load2Frames}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{load2Frames()}{load2Frames()}}
+{\footnotesize\ttfamily \label{classWindow_a68e21cdbe153e5b9348abd7f1b649c4d} 
+int Window\+::load2\+Frames (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \texorpdfstring{$\ast$}{*}}]{frame\+\_\+left}{, }\item[{cv\+::\+Mat \texorpdfstring{$\ast$}{*}}]{frame\+\_\+right}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads, resizes, and displays a 2 frames next to each other in the Open\+CV window. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+\_\+left} & The first frame to display. \\
+\hline
+{\em frame\+\_\+right} & The second frame to display \\
+\hline
+{\em width} & The width to resize both frames to. \\
+\hline
+{\em height} & The height to resize both frames to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the ASCII code of the key that was pressed, or -\/1 if no key was pressed. 
+\end{DoxyReturn}
+\Hypertarget{classWindow_a16f107b89114576d2ba6fb73564badcb}\index{Window@{Window}!loadFrame@{loadFrame}}
+\index{loadFrame@{loadFrame}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{loadFrame()}{loadFrame()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classWindow_a16f107b89114576d2ba6fb73564badcb} 
+int Window\+::load\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \texorpdfstring{$\ast$}{*}}]{frame}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads, resizes, and displays a frame in the Open\+CV window. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The frame to display. \\
+\hline
+{\em width} & The width to resize the frame to. \\
+\hline
+{\em height} & The height to resize the frame to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classWindow_a581919fb3895d01f3cea77343343783c}\index{Window@{Window}!loadFrame@{loadFrame}}
+\index{loadFrame@{loadFrame}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{loadFrame()}{loadFrame()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classWindow_a581919fb3895d01f3cea77343343783c} 
+int Window\+::load\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{frame}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads and displays a frame in the Open\+CV window. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The frame to display. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{UI_8hpp}{UI.\+hpp}}\end{DoxyCompactItemize}

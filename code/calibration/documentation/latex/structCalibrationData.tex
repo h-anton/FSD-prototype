@@ -1,0 +1,104 @@
+\doxysection{Calibration\+Data Struct Reference}
+\hypertarget{structCalibrationData}{}\label{structCalibrationData}\index{CalibrationData@{CalibrationData}}
+
+
+Contains data related to camera calibration.  
+
+
+
+
+{\ttfamily \#include $<$Calibration.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}{P}} = Eigen\+::\+Matrix\+Xd\+::\+Zero(3, 4)
+\begin{DoxyCompactList}\small\item\em The projection matrix of the camera. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}{K\+\_\+inv}}
+\begin{DoxyCompactList}\small\item\em The inverse of the intrinsic matrix of the camera. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_aed6204a854396525bafa927e5b618747}{R\+\_\+inv}}
+\begin{DoxyCompactList}\small\item\em The inverse of the rotation matrix of the camera. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}{t}}
+\begin{DoxyCompactList}\small\item\em The translation vector of the camera. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}{pixel\+\_\+width}} = 1920
+\begin{DoxyCompactList}\small\item\em Pixel width of the calibrated camera. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structCalibrationData_a3cf977127e593655a495a106a7afc077}{pixel\+\_\+height}} = 1200
+\begin{DoxyCompactList}\small\item\em Pixel height of the calibrated camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains data related to camera calibration. 
+
+This structure holds the intrinsic and extrinsic parameters of the camera obtained from the calibration process. It includes the projection matrix, inverse intrinsic matrix, inverse rotation matrix, translation vector, and image dimensions.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCalibrationData_ab07f902516679ea36ee7c4f299dec400}\index{CalibrationData@{CalibrationData}!K\_inv@{K\_inv}}
+\index{K\_inv@{K\_inv}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{K\_inv}{K\_inv}}
+{\footnotesize\ttfamily \label{structCalibrationData_ab07f902516679ea36ee7c4f299dec400} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::\+K\+\_\+inv}
+
+
+
+The inverse of the intrinsic matrix of the camera. 
+
+\Hypertarget{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a}\index{CalibrationData@{CalibrationData}!P@{P}}
+\index{P@{P}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{P}{P}}
+{\footnotesize\ttfamily \label{structCalibrationData_adcbc291af36f22f01c014c3c1a78714a} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::P = Eigen\+::\+Matrix\+Xd\+::\+Zero(3, 4)}
+
+
+
+The projection matrix of the camera. 
+
+\Hypertarget{structCalibrationData_a3cf977127e593655a495a106a7afc077}\index{CalibrationData@{CalibrationData}!pixel\_height@{pixel\_height}}
+\index{pixel\_height@{pixel\_height}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{pixel\_height}{pixel\_height}}
+{\footnotesize\ttfamily \label{structCalibrationData_a3cf977127e593655a495a106a7afc077} 
+int Calibration\+Data\+::pixel\+\_\+height = 1200}
+
+
+
+Pixel height of the calibrated camera. 
+
+\Hypertarget{structCalibrationData_ad7048c209a325e56889f4e689fca25d6}\index{CalibrationData@{CalibrationData}!pixel\_width@{pixel\_width}}
+\index{pixel\_width@{pixel\_width}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{pixel\_width}{pixel\_width}}
+{\footnotesize\ttfamily \label{structCalibrationData_ad7048c209a325e56889f4e689fca25d6} 
+int Calibration\+Data\+::pixel\+\_\+width = 1920}
+
+
+
+Pixel width of the calibrated camera. 
+
+\Hypertarget{structCalibrationData_aed6204a854396525bafa927e5b618747}\index{CalibrationData@{CalibrationData}!R\_inv@{R\_inv}}
+\index{R\_inv@{R\_inv}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{R\_inv}{R\_inv}}
+{\footnotesize\ttfamily \label{structCalibrationData_aed6204a854396525bafa927e5b618747} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::\+R\+\_\+inv}
+
+
+
+The inverse of the rotation matrix of the camera. 
+
+\Hypertarget{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a}\index{CalibrationData@{CalibrationData}!t@{t}}
+\index{t@{t}!CalibrationData@{CalibrationData}}
+\doxysubsubsection{\texorpdfstring{t}{t}}
+{\footnotesize\ttfamily \label{structCalibrationData_acf5ea1858d61faf39e1a1076201f1d5a} 
+Eigen\+::\+Matrix\+Xd Calibration\+Data\+::t}
+
+
+
+The translation vector of the camera. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Calibration_8hpp}{Calibration.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,158 @@
+\doxysection{Calibration Class Reference}
+\hypertarget{classCalibration}{}\label{classCalibration}\index{Calibration@{Calibration}}
+
+
+Performs camera calibration using a series of chessboard patterns.  
+
+
+
+
+{\ttfamily \#include $<$Calibration.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCalibration_a15fc7fbce5d16de55791813fa8d68056}{Calibration}} (\mbox{\hyperlink{classBaslerCamera}{Basler\+Camera}} \texorpdfstring{$\ast$}{*}cam)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classCalibration}{Calibration} object with the given \doxylink{classBaslerCamera}{Basler\+Camera}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCalibration_a108efb6ccd8c98e5cac950be4bf0ac26}{\texorpdfstring{$\sim$}{\string~}\+Calibration}} ()
+\item 
+void \mbox{\hyperlink{classCalibration_a9c866375fcd8d66a3d2e70f1f495474c}{find\+Chessboard\+Corners}} (\mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}chessboards\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Finds and records chessboard corners in images. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCalibration_a1058807aa9a09e022d2bc7659c007a87}{calibrate}} (\mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}chessboards\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Performs camera calibration using the detected chessboard corners. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCalibration_adc84a7fd201a92c9d7e2d2d2fa60920c}{save}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Saves the calibration data to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCalibration_aaec26e1c1e3d3c6609c818bbbf70c6f7}{draw\+Chessboard\+Corners}} (cv\+::\+Mat \texorpdfstring{$\ast$}{*}frame, \mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}chessboards\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Draws detected chessboard corners on the provided image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Performs camera calibration using a series of chessboard patterns. 
+
+This class handles the process of camera calibration by finding chessboard corners in images, computing the camera\textquotesingle{}s intrinsic and extrinsic parameters, and saving these parameters to a file. It also provides functionality to visualize the detected chessboard corners.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCalibration_a15fc7fbce5d16de55791813fa8d68056}\index{Calibration@{Calibration}!Calibration@{Calibration}}
+\index{Calibration@{Calibration}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{Calibration()}{Calibration()}}
+{\footnotesize\ttfamily \label{classCalibration_a15fc7fbce5d16de55791813fa8d68056} 
+Calibration\+::\+Calibration (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBaslerCamera}{Basler\+Camera}} \texorpdfstring{$\ast$}{*}}]{cam}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{classCalibration}{Calibration} object with the given \doxylink{classBaslerCamera}{Basler\+Camera}. 
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cam} & Pointer to a \doxylink{classBaslerCamera}{Basler\+Camera} object used to capture images for calibration. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCalibration_a108efb6ccd8c98e5cac950be4bf0ac26}\index{Calibration@{Calibration}!````~Calibration@{\texorpdfstring{$\sim$}{\string~}Calibration}}
+\index{````~Calibration@{\texorpdfstring{$\sim$}{\string~}Calibration}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Calibration()}{\string~Calibration()}}
+{\footnotesize\ttfamily \label{classCalibration_a108efb6ccd8c98e5cac950be4bf0ac26} 
+Calibration\+::\texorpdfstring{$\sim$}{\string~}\+Calibration (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCalibration_a1058807aa9a09e022d2bc7659c007a87}\index{Calibration@{Calibration}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily \label{classCalibration_a1058807aa9a09e022d2bc7659c007a87} 
+void Calibration\+::calibrate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}}]{chessboards}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Performs camera calibration using the detected chessboard corners. 
+
+This method computes the camera\textquotesingle{}s calibration parameters based on the corners detected in the chessboard images. It constructs matrices for calibration, performs matrix decompositions, and computes the intrinsic and extrinsic parameters.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em chessboards} & Array of pointers to \doxylink{structChessboard}{Chessboard} objects containing the detected corners and chessboard details. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCalibration_aaec26e1c1e3d3c6609c818bbbf70c6f7}\index{Calibration@{Calibration}!drawChessboardCorners@{drawChessboardCorners}}
+\index{drawChessboardCorners@{drawChessboardCorners}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{drawChessboardCorners()}{drawChessboardCorners()}}
+{\footnotesize\ttfamily \label{classCalibration_aaec26e1c1e3d3c6609c818bbbf70c6f7} 
+void Calibration\+::draw\+Chessboard\+Corners (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \texorpdfstring{$\ast$}{*}}]{frame}{, }\item[{\mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}}]{chessboards}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Draws detected chessboard corners on the provided image. 
+
+This method visualizes the detected chessboard corners by drawing circles around them on the given image frame.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & Pointer to a cv\+::\+Mat object representing the image where the corners will be drawn. \\
+\hline
+{\em chessboards} & Array of pointers to \doxylink{structChessboard}{Chessboard} objects containing the detected corners. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCalibration_a9c866375fcd8d66a3d2e70f1f495474c}\index{Calibration@{Calibration}!findChessboardCorners@{findChessboardCorners}}
+\index{findChessboardCorners@{findChessboardCorners}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{findChessboardCorners()}{findChessboardCorners()}}
+{\footnotesize\ttfamily \label{classCalibration_a9c866375fcd8d66a3d2e70f1f495474c} 
+void Calibration\+::find\+Chessboard\+Corners (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChessboard}{Chessboard}} \texorpdfstring{$\ast$}{*}}]{chessboards}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finds and records chessboard corners in images. 
+
+This method iterates through an array of \doxylink{structChessboard}{Chessboard} objects and captures images from the camera to find chessboard corners within specified regions. It displays the frames with detected corners and adjusts corner coordinates based on the full frame.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em chessboards} & Array of pointers to \doxylink{structChessboard}{Chessboard} objects, each representing a calibration pattern. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCalibration_adc84a7fd201a92c9d7e2d2d2fa60920c}\index{Calibration@{Calibration}!save@{save}}
+\index{save@{save}!Calibration@{Calibration}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily \label{classCalibration_adc84a7fd201a92c9d7e2d2d2fa60920c} 
+void Calibration\+::save (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Saves the calibration data to a file. 
+
+This method writes the camera calibration parameters, including the projection matrix, intrinsic matrix, rotation matrix, and translation vector, to a specified binary file. It also includes image dimensions.
+
+\begin{DoxyAuthor}{Author}
+Anton Haes
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file where calibration data will be saved.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the file cannot be opened or created for writing. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Calibration_8hpp}{Calibration.\+hpp}}\end{DoxyCompactItemize}

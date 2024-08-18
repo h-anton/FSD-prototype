@@ -1,0 +1,98 @@
+\doxysection{src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\newline
+{\ttfamily \#include "{}Basler\+Camera.\+hpp"{}}\newline
+{\ttfamily \#include "{}UI.\+hpp"{}}\newline
+{\ttfamily \#include "{}Calibration.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structChessboard}{Chessboard}} \mbox{\hyperlink{main_8cpp_ae138c755f55511feaf7ab0105ce0b921}{lower\+\_\+chessboard\+\_\+tower}}
+\item 
+\mbox{\hyperlink{structChessboard}{Chessboard}} \mbox{\hyperlink{main_8cpp_abb92f6684eefbbbe9c923896503dff42}{upper\+\_\+chessboard\+\_\+tower}}
+\item 
+\mbox{\hyperlink{structChessboard}{Chessboard}} \mbox{\hyperlink{main_8cpp_ae0d55d40f13b7fb6345ff94da9969eea}{lower\+\_\+chessboard\+\_\+car}}
+\item 
+\mbox{\hyperlink{structChessboard}{Chessboard}} \mbox{\hyperlink{main_8cpp_a48a32b3023116d68b39758f538ab3909}{upper\+\_\+chessboard\+\_\+car}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_ae0d55d40f13b7fb6345ff94da9969eea}\index{main.cpp@{main.cpp}!lower\_chessboard\_car@{lower\_chessboard\_car}}
+\index{lower\_chessboard\_car@{lower\_chessboard\_car}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lower\_chessboard\_car}{lower\_chessboard\_car}}
+{\footnotesize\ttfamily \label{main_8cpp_ae0d55d40f13b7fb6345ff94da9969eea} 
+\mbox{\hyperlink{structChessboard}{Chessboard}} lower\+\_\+chessboard\+\_\+car}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .start\_pixel\ =\ \{685,\ 500\},}
+\DoxyCodeLine{\ \ \ \ .pixel\_width\ =\ 580,}
+\DoxyCodeLine{\ \ \ \ .pixel\_height\ =\ 160,}
+\DoxyCodeLine{\ \ \ \ .world\_coordinates\_mm\ =\ \{-\/30,\ 20,\ 26\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{main_8cpp_ae138c755f55511feaf7ab0105ce0b921}\index{main.cpp@{main.cpp}!lower\_chessboard\_tower@{lower\_chessboard\_tower}}
+\index{lower\_chessboard\_tower@{lower\_chessboard\_tower}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lower\_chessboard\_tower}{lower\_chessboard\_tower}}
+{\footnotesize\ttfamily \label{main_8cpp_ae138c755f55511feaf7ab0105ce0b921} 
+\mbox{\hyperlink{structChessboard}{Chessboard}} lower\+\_\+chessboard\+\_\+tower}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .start\_pixel\ =\ \{685,\ 675\},}
+\DoxyCodeLine{\ \ \ \ .pixel\_width\ =\ 580,}
+\DoxyCodeLine{\ \ \ \ .pixel\_height\ =\ 275,}
+\DoxyCodeLine{\ \ \ \ .world\_coordinates\_mm\ =\ \{-\/30,\ 20,\ 5\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{main_8cpp_a48a32b3023116d68b39758f538ab3909}\index{main.cpp@{main.cpp}!upper\_chessboard\_car@{upper\_chessboard\_car}}
+\index{upper\_chessboard\_car@{upper\_chessboard\_car}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{upper\_chessboard\_car}{upper\_chessboard\_car}}
+{\footnotesize\ttfamily \label{main_8cpp_a48a32b3023116d68b39758f538ab3909} 
+\mbox{\hyperlink{structChessboard}{Chessboard}} upper\+\_\+chessboard\+\_\+car}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .start\_pixel\ =\ \{775,\ 365\},}
+\DoxyCodeLine{\ \ \ \ .pixel\_width\ =\ 420,}
+\DoxyCodeLine{\ \ \ \ .pixel\_height\ =\ 115,}
+\DoxyCodeLine{\ \ \ \ .world\_coordinates\_mm\ =\ \{-\/30,\ 60,\ 36\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{main_8cpp_abb92f6684eefbbbe9c923896503dff42}\index{main.cpp@{main.cpp}!upper\_chessboard\_tower@{upper\_chessboard\_tower}}
+\index{upper\_chessboard\_tower@{upper\_chessboard\_tower}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{upper\_chessboard\_tower}{upper\_chessboard\_tower}}
+{\footnotesize\ttfamily \label{main_8cpp_abb92f6684eefbbbe9c923896503dff42} 
+\mbox{\hyperlink{structChessboard}{Chessboard}} upper\+\_\+chessboard\+\_\+tower}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .start\_pixel\ =\ \{720,\ 500\},}
+\DoxyCodeLine{\ \ \ \ .pixel\_width\ =\ 520,}
+\DoxyCodeLine{\ \ \ \ .pixel\_height\ =\ 175,}
+\DoxyCodeLine{\ \ \ \ .world\_coordinates\_mm\ =\ \{-\/30,\ 60,\ 15\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

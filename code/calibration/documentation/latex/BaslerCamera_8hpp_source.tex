@@ -1,0 +1,91 @@
+\doxysection{Basler\+Camera.\+hpp}
+\hypertarget{BaslerCamera_8hpp_source}{}\label{BaslerCamera_8hpp_source}\index{include/BaslerCamera.hpp@{include/BaslerCamera.hpp}}
+\mbox{\hyperlink{BaslerCamera_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BASLER\_CAMERA\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BASLER\_CAMERA\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <pylon/PylonIncludes.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBaslerCamera}{BaslerCamera}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ timeout\ when\ grabbing\ frames\ from\ the\ camera}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classBaslerCamera_a6afd2d3b5c8e542e34a85636675f72a5}{camera\_timeout}}\ =\ 5000;}
+\DoxyCodeLine{00022\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classBaslerCamera_a471cc0de8dda6e4665b033bf7144c9bb}{BaslerCamera}}(\textcolor{keywordtype}{float}\ exposure\_time)\ :\ is\_emulated(false)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ Basler\ camera\ using\ Pylon\ API}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ Pylon::PylonInitialize();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ camera\ =\ \textcolor{keyword}{new}\ Pylon::CInstantCamera(Pylon::CTlFactory::GetInstance().CreateFirstDevice());}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sets\ up\ free-\/running\ continuous\ acquisition.}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ camera-\/>StartGrabbing(Pylon::GrabStrategy\_LatestImageOnly);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ configure\ exposure\ time}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ GenApi::INodeMap\&\ nodemap\ =\ camera-\/>GetNodeMap();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ Pylon::CFloatParameter(nodemap,\ \textcolor{stringliteral}{"{}ExposureTime"{}}).SetValue(exposure\_time);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Specify\ the\ output\ pixel\ format.}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ format\_converter.OutputPixelFormat\ =\ Pylon::PixelType\_BGR8packed;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classBaslerCamera_a3287e75955755310bc43eb4a0df9c9e8}{BaslerCamera}}(\textcolor{keyword}{const}\ std::string\ path\_to\_video\_file)\ :\ is\_emulated(true)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ OpenCV\ library\ to\ read\ and\ playback\ video\ file}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!video\_capture.open(path\_to\_video\_file))\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ throw\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ opening\ video\ file."{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classBaslerCamera_a6e39c0bfa5c92f1f3f3870a80a266c0b}{\string~BaslerCamera}}()\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_emulated)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ camera-\/>Close();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ camera;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ Pylon::PylonTerminate();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ cv::Mat\ \mbox{\hyperlink{classBaslerCamera_a64e29ae3ddac48478542a6cff2dfb77d}{getFrame}}()\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Case\ where\ the\ camera\ is\ being\ emulated}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_emulated)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ cv::Mat\ frame;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ next\ frame\ from\ video}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ successful\ =\ video\_capture.read(frame);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!successful)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv::Mat();\ \textcolor{comment}{//\ Return\ an\ empty\ Mat\ to\ indacte\ the\ end\ of\ the\ video\ file}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frame;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Case\ where\ the\ camera\ is\ not\ being\ emulated}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!camera-\/>IsGrabbing())\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Camera\ is\ currently\ not\ grabbing\ frames."{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wait\ for\ an\ image\ and\ then\ retrieve\ it}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ camera-\/>RetrieveResult(\mbox{\hyperlink{classBaslerCamera_a6afd2d3b5c8e542e34a85636675f72a5}{camera\_timeout}},\ ptr\_grab\_result,\ Pylon::TimeoutHandling\_ThrowException);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ image\ was\ grabbed\ successfully}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ptr\_grab\_result-\/>GrabSucceeded())\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Image\ not\ grabbed\ successfully\ from\ camera."{}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ image\ to\ pylonImage}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ format\_converter.Convert(pylon\_image,\ ptr\_grab\_result);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ image\ to\ OpenCV\ Mat}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ cv::Mat\ frame(ptr\_grab\_result-\/>GetHeight(),\ ptr\_grab\_result-\/>GetWidth(),\ CV\_8UC3,\ (uint8\_t*)pylon\_image.GetBuffer());}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ frame\ to\ ensure\ memory\ safety}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ frame\ =\ frame.clone();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ frame;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_emulated;\ \textcolor{comment}{//\ variable\ to\ indicate\ if\ the\ camera\ is\ being\ emulated\ with\ a\ video\ file}}
+\DoxyCodeLine{00123\ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Pylon\ objects\ for\ Basler\ camera}}
+\DoxyCodeLine{00125\ \ \ \ \ Pylon::CInstantCamera*\ camera;}
+\DoxyCodeLine{00126\ \ \ \ \ Pylon::CGrabResultPtr\ ptr\_grab\_result;}
+\DoxyCodeLine{00127\ \ \ \ \ Pylon::CPylonImage\ pylon\_image;}
+\DoxyCodeLine{00128\ \ \ \ \ Pylon::CImageFormatConverter\ format\_converter;}
+\DoxyCodeLine{00129\ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ OpenCV\ object\ to\ read\ video\ file}}
+\DoxyCodeLine{00131\ \ \ \ \ cv::VideoCapture\ video\_capture;}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BASLER\_CAMERA\_HPP}}
+\DoxyCodeLine{00135\ }
+
+\end{DoxyCode}
